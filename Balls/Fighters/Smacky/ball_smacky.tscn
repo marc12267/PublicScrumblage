@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://dn0utxqegxyp2"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_f20k1"]
+[ext_resource type="Script" uid="uid://col0pyn8stih7" path="res://Balls/Fighters/Smacky/smacky_script.gd" id="2_ccsww"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="4_hu8ri"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="6_qbjd5"]
+[ext_resource type="Texture2D" uid="uid://c2ebvqqyg4o1k" path="res://Balls/Fighters/Smacky/Smacky2.png" id="7_liq7j"]
+[ext_resource type="Texture2D" uid="uid://dw0riwruy8k8t" path="res://Balls/Fighters/Smacky/Smacky.png" id="7_mbmq5"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="7_waje8"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="8_jly2h"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="9_2op4r"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="10_2mltx"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="11_220e2"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="12_d153q"]
+[ext_resource type="Texture2D" uid="uid://cfopxrp13yp6o" path="res://Balls/Fighters/Smacky/SmackyBat.png" id="12_liq7j"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="13_0jqin"]
+[ext_resource type="PackedScene" uid="uid://vtu8ejttgl1p" path="res://Balls/Moods/mood_aggressive.tscn" id="16_g7tio"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="17_o1bw3"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="18_ljggr"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="19_ykopx"]
+[ext_resource type="Texture2D" uid="uid://chilti8qx3lv4" path="res://Balls/Fighters/Smacky/Smacky_VS.png" id="20_24aji"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cibg1"]
+size = Vector2(26, 106.01999)
+
+[node name="SmackyBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_f20k1")
+bounce_speed_boost = 320.0
+
+[node name="SmackyScript" type="Node" parent="." unique_id=802057626]
+script = ExtResource("2_ccsww")
+
+[node name="GainHit" type="Node" parent="SmackyScript" unique_id=473181438 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("4_hu8ri")
+id = "Sword"
+multiplier = 7.5
+meter_manager = NodePath("../../MeterManager")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("6_qbjd5")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("7_waje8")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("7_mbmq5")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_liq7j")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=466768462 node_paths=PackedStringArray("ball")]
+script = ExtResource("8_jly2h")
+ball = NodePath("..")
+rotation_rate = 4.5
+bounce_spin_boost = 4.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1476451661 node_paths=PackedStringArray("ball")]
+position = Vector2(76, 0)
+script = ExtResource("9_2op4r")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=811104591 node_paths=PackedStringArray("rotater")]
+script = ExtResource("10_2mltx")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("11_220e2")]
+position = Vector2(51.04, 0)
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=823705917]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1734721494]
+position = Vector2(7.9999695, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_liq7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=822110230]
+position = Vector2(33.969994, -3.5012798e-07)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_cibg1")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=522708154 node_paths=PackedStringArray("ball")]
+script = ExtResource("12_d153q")
+ball = NodePath("../../../../..")
+projectile_deflecter = true
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1344898340 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_0jqin")
+ball = NodePath("../../../../..")
+id = "Sword"
+
+[node name="Aggressive" parent="." unique_id=1873440633 node_paths=PackedStringArray("ball") instance=ExtResource("16_g7tio")]
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("17_o1bw3")
+hitprocessor = NodePath("../HitProcessor")
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("18_ljggr")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("19_ykopx")]
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 84.0
+offset_bottom = 183.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "SMACKY THE TEMPLATE"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "SMACKY SMACK SMALL.
+THEN SMACK BIG!
+USE SMACKY AS TEMPLATE FOR MELEE FIGHTERS!"
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "Template"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("7_mbmq5")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_text = "SMACKY"
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -547.0
+offset_right = 453.0
+texture = ExtResource("20_24aji")
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.06251755, 0.49231514, 0.7922764, 1)
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_left = -144.0
+offset_top = 141.0
+offset_right = -104.0
+offset_bottom = 181.0
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(750446237, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+text = "\"SMACKY\""
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c25x7u31xmpjq"]
+
+[ext_resource type="Texture2D" uid="uid://b6gquwruicxs0" path="res://Assets/Heart.png" id="1_h4kyt"]
+[ext_resource type="Script" uid="uid://cudrjl2hsvahp" path="res://Balls/xtra_lives.gd" id="1_udwvn"]
+[ext_resource type="LabelSettings" uid="uid://cup76ope8qaow" path="res://Fonts/OutlineFont.tres" id="2_udwvn"]
+[ext_resource type="Texture2D" uid="uid://bymr2g8pp06gs" path="res://Assets/BrokenHeart.png" id="3_548gg"]
+
+[node name="XtraLives" type="Node2D" unique_id=230147484]
+light_mask = 32768
+script = ExtResource("1_udwvn")
+
+[node name="Heartbroken" type="Sprite2D" parent="." unique_id=1806848969]
+visible = false
+modulate = Color(0, 0, 0, 1)
+light_mask = 32768
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("3_548gg")
+
+[node name="Heart" type="Node2D" parent="." unique_id=270765118]
+light_mask = 32768
+scale = Vector2(1.2, 1.2)
+
+[node name="Heart" type="Sprite2D" parent="Heart" unique_id=1705654055]
+modulate = Color(0, 0, 0, 1)
+light_mask = 32768
+position = Vector2(0, 4.166667)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_h4kyt")
+
+[node name="Heart3" type="Sprite2D" parent="Heart" unique_id=2129132670]
+light_mask = 32768
+position = Vector2(0, 1.6666679)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_h4kyt")
+
+[node name="Heart2" type="Sprite2D" parent="Heart" unique_id=1425701587]
+modulate = Color(0.8874506, 0.013463904, 0.36548704, 1)
+light_mask = 32768
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_h4kyt")
+
+[node name="Label" type="Label" parent="Heart" unique_id=1440816280]
+light_mask = 32768
+offset_left = -123.00001
+offset_top = -32.90909
+offset_right = 122.434685
+offset_bottom = 31.090912
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "1"
+label_settings = ExtResource("2_udwvn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

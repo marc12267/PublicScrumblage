@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bqg1gwhhmy62p"]
+
+[ext_resource type="Script" uid="uid://daamkaq7wocud" path="res://Balls/Effects/Electrocute/status_electrocuted.gd" id="1_vtgyl"]
+[ext_resource type="PackedScene" uid="uid://6aa35bhrg15f" path="res://Balls/Effects/Electrocute/ElectroParticle.tscn" id="2_s6bxu"]
+
+[node name="Electrocuted" type="Node" unique_id=1455675050 node_paths=PackedStringArray("gpu_particles_2d")]
+script = ExtResource("1_vtgyl")
+gpu_particles_2d = NodePath("GPUParticles2D")
+have_icon = true
+icon_effect = "res://Balls/Effects/Electrocute/ElectrocuteIcon.png"
+
+[node name="GPUParticles2D" parent="." unique_id=879643417 instance=ExtResource("2_s6bxu")]

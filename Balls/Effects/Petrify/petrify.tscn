@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg02v5taes621"]
+
+[ext_resource type="Script" uid="uid://cu3xv38tffkk8" path="res://Balls/Effects/Petrify/status_petrify.gd" id="1_hryd5"]
+
+[node name="Petrify" type="Node" unique_id=1998345100]
+script = ExtResource("1_hryd5")

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://baqkbo8m4cw8j"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_yvwna"]
+[ext_resource type="AudioStream" uid="uid://dk7af3ds83e8" path="res://Balls/Teams/vee7_teamname.wav" id="2_qjh1x"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_d6oso"]
+[ext_resource type="PackedScene" uid="uid://doy2a3aleawho" path="res://Balls/Fighters/T7/ball_t7.tscn" id="4_tsvuj"]
+[ext_resource type="PackedScene" uid="uid://7u2bgsyl5c52" path="res://Balls/Fighters/Vee/ball_vee.tscn" id="5_pydui"]
+[ext_resource type="Texture2D" uid="uid://cl8a1476kw64h" path="res://Balls/Fighters/Vee/vee2v2.png" id="6_qjh1x"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_yvwna")
+team_name = "VEE-7"
+team_audio = ExtResource("2_qjh1x")
+ball1 = NodePath("T7Ball")
+ball2 = NodePath("VeeBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_d6oso")]
+position = Vector2(324, -445)
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.45882353, 1, 0.6, 1)
+text = "\"I'm surprised you could keep up!\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.63, 0.3465, 0.5638499, 1)
+text = "\"I'm as surprised as you are.\""
+
+[node name="T7Ball" parent="." unique_id=1629520744 instance=ExtResource("4_tsvuj")]
+position = Vector2(375, -46)
+
+[node name="VeeBall" parent="." unique_id=1403036725 instance=ExtResource("5_pydui")]
+position = Vector2(5, -77)
+
+[node name="TextureRect" parent="VeeBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1403036725, 2045748137, 2081690940) index="0" unique_id=1997730014]
+texture = ExtResource("6_qjh1x")
+
+[editable path="WinBubble"]
+[editable path="VeeBall"]
+[editable path="VeeBall/Visuals"]
+[editable path="VeeBall/StatsUI/BallStatDisplay"]
+[editable path="VeeBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://bsd3phtfung5n"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_h184v"]
+[ext_resource type="Script" uid="uid://55k03gdtx8b4" path="res://Balls/Bosses/Bmation/balt_minion.gd" id="2_5114v"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_ft0jr"]
+[ext_resource type="Texture2D" uid="uid://ds5ko8bkrup2h" path="res://Balls/Bosses/Bmation/betaling.png" id="5_5114v"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_nhfup"]
+[ext_resource type="Texture2D" uid="uid://civbbvmjf6x0g" path="res://Balls/Bosses/Bmation/betalingboss.png" id="5_o6qn5"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="9_xwau1"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="10_dwdxk"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="11_gih6i"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="12_w8afp"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="13_ikfdp"]
+[ext_resource type="Texture2D" uid="uid://domsuwodfy2i0" path="res://Balls/Bosses/Bmation/betafist.png" id="14_7vnhv"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="15_b5wpw"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="16_2skfu"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="17_03v86"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="17_o6qn5"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="18_k0bv8"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="19_vrcy8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulkvy"]
+radius = 45.999996
+
+[node name="BetaBall" type="RigidBody2D" unique_id=1651906983]
+collision_layer = 112
+collision_mask = 17
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_h184v")
+ball_scale = 0.6
+groups = Array[String](["Minion"])
+velocity = 200.0
+normalizer_speed_down = 30.0
+
+[node name="BetaScript" type="Node" parent="." unique_id=340361340]
+script = ExtResource("2_5114v")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=137423556 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_ft0jr")
+ball = NodePath("..")
+hitstop_scale = 0.0
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_nhfup")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("5_o6qn5")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("5_5114v")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+rotation = 0.05353478
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066642577]
+shape = ExtResource("9_xwau1")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=5050418 node_paths=PackedStringArray("ball")]
+script = ExtResource("10_dwdxk")
+ball = NodePath("..")
+normalizer_rate = 20.0
+bounce_spin_boost = 10.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1603554862 node_paths=PackedStringArray("ball")]
+position = Vector2(87, 0)
+rotation = 3.1415927
+script = ExtResource("11_gih6i")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=2078554308 node_paths=PackedStringArray("rotater")]
+script = ExtResource("12_w8afp")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=1056974398 node_paths=PackedStringArray("ball") instance=ExtResource("13_ikfdp")]
+position = Vector2(-41, 3.5843336e-06)
+collision_mask = 288
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=701806307]
+position = Vector2(0, -8.7422904e-08)
+
+[node name="Weapon2" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=786421927]
+position = Vector2(2.999998, 5.999999)
+rotation = -1.927233
+scale = Vector2(0.39980602, 0.5521377)
+texture = ExtResource("14_7vnhv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1899240573]
+position = Vector2(1, 4.000004)
+rotation = -0.052101523
+scale = Vector2(1, -1)
+shape = SubResource("CircleShape2D_ulkvy")
+
+[node name="HitFlipper" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=99515316 node_paths=PackedStringArray("ball")]
+script = ExtResource("15_b5wpw")
+ball = NodePath("../../../../..")
+damage = 2.0
+directional_strength = 0.141
+crit_chance = 0.0
+hitstop_scale = 0.0
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=641149660 node_paths=PackedStringArray("ball")]
+script = ExtResource("16_2skfu")
+ball = NodePath("../../../../..")
+ignorable = true
+
+[node name="Aggressive" type="Node2D" parent="." unique_id=1242787689 node_paths=PackedStringArray("ball")]
+script = ExtResource("17_03v86")
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=2047138599 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("18_k0bv8")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 12.0
+
+[node name="Node" type="Node" parent="HealthManager" unique_id=1476040646]
+script = ExtResource("17_o6qn5")
+
+[node name="MeterManager" type="Node" parent="." unique_id=1002660597]
+script = ExtResource("19_vrcy8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]

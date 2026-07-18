@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://deuigfe3neorf"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_nvt1f"]
+[ext_resource type="AudioStream" uid="uid://by6ggyj48oo4w" path="res://Balls/Teams/bigearners_teamname.wav" id="2_mxu2n"]
+[ext_resource type="PackedScene" uid="uid://ywyejmpvdqiu" path="res://Balls/Fighters/Kordell/ball_kordell.tscn" id="4_mxu2n"]
+[ext_resource type="PackedScene" uid="uid://b8e4liwo3m1qj" path="res://Balls/Fighters/Jane/ball_jane.tscn" id="5_nvt1f"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="6_k61wn"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_nvt1f")
+team_name = "BIG EARNERS"
+team_audio = ExtResource("2_mxu2n")
+ball1 = NodePath("KordellBall")
+ball2 = NodePath("JaneBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("6_k61wn")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.007843138, 0.38039216, 0.90588236, 1)
+text = "\"HAHA cant catch watcha
+cant see! right Jane?\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.7137255, 0.44705883, 0.35686275, 1)
+text = "\"There's no changing that,
+Blue bolt~\""
+
+[node name="KordellBall" parent="." unique_id=319659747 instance=ExtResource("4_mxu2n")]
+
+[node name="JaneBall" parent="." unique_id=417938260 instance=ExtResource("5_nvt1f")]
+
+[editable path="WinBubble"]

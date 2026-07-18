@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bq4bd5wolnqsy"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_63301"]
+[ext_resource type="AudioStream" uid="uid://c1uhuo4e6qvp7" path="res://Balls/Teams/somnophilia_teamname.wav" id="2_4fwpp"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_11naf"]
+[ext_resource type="PackedScene" uid="uid://bjvxlu2n7cbvi" path="res://Balls/Fighters/Thong/ball_thong.tscn" id="5_63301"]
+[ext_resource type="PackedScene" uid="uid://bejudojdnd6ls" path="res://Balls/Fighters/Somnia/ball_somnia.tscn" id="6_hm7bf"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_63301")
+team_name = "SOMNOPHILIA"
+team_audio = ExtResource("2_4fwpp")
+ball1 = NodePath("ThongBall")
+ball2 = NodePath("SomniaBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_11naf")]
+position = Vector2(436, -431)
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.5921569, 0.8901961, 0.9647059, 1)
+offset_top = -162.0
+offset_bottom = 22.0
+text = "\"That was exhausting! I sure could use a nap right now~\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.47843137, 0.68235296, 1, 1)
+offset_top = -6.0
+offset_bottom = 165.0
+text = "\"Quit batting your eyes at me!\""
+
+[node name="ThongBall" parent="." unique_id=1376789563 instance=ExtResource("5_63301")]
+
+[node name="SomniaBall" parent="." unique_id=1629520744 instance=ExtResource("6_hm7bf")]
+
+[editable path="WinBubble"]

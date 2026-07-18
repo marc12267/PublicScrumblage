@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dj74vvqb4pth"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_4ofv6"]
+[ext_resource type="AudioStream" uid="uid://bxweu7xqay0gh" path="res://Balls/Teams/fistersisters_teamname.wav" id="2_bxxe1"]
+[ext_resource type="PackedScene" uid="uid://cnry6umasfeh5" path="res://Balls/Fighters/Phil/ball_phil.tscn" id="3_usahs"]
+[ext_resource type="PackedScene" uid="uid://bjvxlu2n7cbvi" path="res://Balls/Fighters/Thong/ball_thong.tscn" id="4_r3mq2"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="6_27wc2"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_4ofv6")
+team_name = "PHL&SHRTwTHNG"
+team_audio = ExtResource("2_bxxe1")
+ball1 = NodePath("PhilBall")
+ball2 = NodePath("ThongBall")
+
+[node name="PhilBall" parent="." unique_id=1403036725 instance=ExtResource("3_usahs")]
+
+[node name="TextureRect" parent="PhilBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1403036725, 2045748137, 2081690940) index="0" unique_id=1997730014]
+offset_left = -409.00006
+offset_top = -497.99994
+offset_right = 590.99994
+offset_bottom = 902.00006
+
+[node name="ThongBall" parent="." unique_id=1376789563 instance=ExtResource("4_r3mq2")]
+
+[node name="TextureRect" parent="ThongBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1376789563, 1948559442, 2081690940) index="0" unique_id=1997730014]
+offset_top = -398.0
+offset_bottom = 1002.0
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("6_27wc2")]
+
+[editable path="PhilBall"]
+[editable path="PhilBall/Visuals"]
+[editable path="PhilBall/StatsUI/BallStatDisplay"]
+[editable path="PhilBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="ThongBall"]
+[editable path="ThongBall/Visuals"]
+[editable path="ThongBall/StatsUI/BallStatDisplay"]
+[editable path="ThongBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,1083 @@
+[gd_scene format=3 uid="uid://bo3ssenkwo76p"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_yt1xn"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="2_7eooa"]
+[ext_resource type="Script" uid="uid://dwigm6aau4fax" path="res://Balls/Components/scaler.gd" id="2_sj1e5"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="2_t4oes"]
+[ext_resource type="Script" uid="uid://drg52e1tr56vw" path="res://Balls/Bosses/Bmation/altbeta_script.gd" id="3_lvkx8"]
+[ext_resource type="Script" uid="uid://fo53apxu04vr" path="res://Balls/Components/looper.gd" id="4_l4mo1"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_sj1e5"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_usgql"]
+[ext_resource type="Texture2D" uid="uid://dnrja3v084otl" path="res://Balls/Bosses/Bmation/betaaltboss.png" id="7_t4oes"]
+[ext_resource type="Texture2D" uid="uid://q5lgta040uge" path="res://Balls/Bosses/Bmation/beta3altboss.png" id="8_7eooa"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="9_104dh"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="13_xc2vp"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="14_vvfev"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="15_wi376"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="16_sc4yd"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="17_yuyoq"]
+[ext_resource type="Texture2D" uid="uid://domsuwodfy2i0" path="res://Balls/Bosses/Bmation/betafist.png" id="18_ijsi0"]
+[ext_resource type="Script" uid="uid://bu8lf26jjbrdg" path="res://Balls/Moods/mood_aggressive.gd" id="18_yt1xn"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="19_axn3s"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="20_ggbc5"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="20_yt1xn"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="22_ocxjq"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="23_6iral"]
+[ext_resource type="PackedScene" uid="uid://7meckvgvv1kl" path="res://GameStuff/BossStuff/boss_stat_display.tscn" id="23_lvkx8"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="24_isl1g"]
+[ext_resource type="Texture2D" uid="uid://b8crouxug0gpm" path="res://Balls/Bosses/Bmation/not_beta_2 - Copy.png" id="24_yt1xn"]
+[ext_resource type="AudioStream" uid="uid://ch56as1p2w6vm" path="res://Balls/Bosses/Bmation/name_beta.wav" id="25_e7g8j"]
+[ext_resource type="AudioStream" uid="uid://bh0sfmcln7tg8" path="res://Balls/Bosses/Bmation/GET GET GET BACK(InGameVer).mp3" id="28_8p1ug"]
+[ext_resource type="Texture2D" uid="uid://frhtn0ln33yy" path="res://Balls/Bosses/Bmation/altb_icon.png" id="28_y6imm"]
+[ext_resource type="Texture2D" uid="uid://cqqgriwqfqeli" path="res://Assets/ArtShowcase.png" id="29_qvnnk"]
+[ext_resource type="AudioStream" uid="uid://u5pvobr0vx83" path="res://GameStuff/BossStuff/Sound/alert.wav" id="30_104dh"]
+[ext_resource type="AudioStream" uid="uid://bcbj6otdaeu3k" path="res://Balls/Bosses/SuperSmacky/rumble.ogg" id="31_104dh"]
+[ext_resource type="AudioStream" uid="uid://bjq58pchs2o1q" path="res://Balls/Bosses/SuperSmacky/beta raor.wav" id="31_y6imm"]
+[ext_resource type="AudioStream" uid="uid://dtsse2pu0bars" path="res://Balls/Bosses/SuperSmacky/emerge.ogg" id="32_y6imm"]
+[ext_resource type="Texture2D" uid="uid://c8cms8uigb443" path="res://Assets/Circular_Outline.png" id="33_fdvov"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="Gradient" id="Gradient_sj1e5"]
+offsets = PackedFloat32Array(0, 0.13734567, 0.3132716, 0.60339504, 0.8132716, 1)
+colors = PackedColorArray(0, 0, 0, 0.8509804, 0.031348124, 0.25689188, 0.07254694, 1, 0.11, 0.071885005, 0.025300002, 0.9137255, 0.06870002, 0.18, 0.054000005, 0.90588236, 0.0532, 0.28, 0.09856001, 0.53333336, 0.19, 1, 0.35200006, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_usgql"]
+gradient = SubResource("Gradient_sj1e5")
+
+[sub_resource type="Curve" id="Curve_7wvrt"]
+_data = [Vector2(0, 0.8011273), 0.0, 0.0, 0, 0, Vector2(0.2997199, 0.9790661), 0.0, 0.0, 0, 0, Vector2(1, 0.28510994), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wa7vk"]
+curve = SubResource("Curve_7wvrt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qvnnk"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 80.0
+gravity = Vector3(0, 20, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_wa7vk")
+color_ramp = SubResource("GradientTexture1D_usgql")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fww6g"]
+size = Vector2(61.538, 88.462)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d571"]
+size = Vector2(52.915916, 79.616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj1e5"]
+size = Vector2(40.524284, 46.47345)
+
+[sub_resource type="FontVariation" id="FontVariation_fdvov"]
+spacing_glyph = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0sw6"]
+
+[sub_resource type="Animation" id="Animation_dtg4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss/BossBanner:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAND1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(261, 576)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAND2:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAND3:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("alert:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HAND2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(865, 622)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HAND3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(628, 628)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HAND1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_vmp87"]
+resource_name = "banner_anim"
+length = 4.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss/BossBanner:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2, 1.6, 4.534037, 4.6000004),
+"transitions": PackedFloat32Array(1, 1, 0.125, 2, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 0.091744624), Vector2(1, 0.091744624), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAND1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.6, 4.5432725, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 1, 1),
+"update": 0,
+"values": [Vector2(261, 576), Vector2(261, 576), Vector2(261, 283), Vector2(261, 283), Vector2(261, 576)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAND2:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.031666666, -0.166665, 0, 0, 1, -0.038888894, -0.16666502, 0, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 4.5432725, 4.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAND3:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.038888894, -0.16666502, 0, 0, 1, -0.038888894, -0.16666502, 0, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6666667, 0.90000004, 4.5432725, 4.6)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../BetaScript")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.90000004, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("30_104dh")
+}, {
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("30_104dh")
+}, {
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("30_104dh")
+}],
+"times": PackedFloat32Array(0, 0.8333333, 1.7333333)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Roar")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_y6imm")
+}],
+"times": PackedFloat32Array(1.0666667)
+}
+tracks/6/use_blend = true
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("alert:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.76666665, 1.1, 1.4666667, 2.05, 2.4166665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HAND2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.6, 4.5432725, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 2, 1),
+"update": 0,
+"values": [Vector2(865, 622), Vector2(865, 622), Vector2(865, 947), Vector2(865, 947), Vector2(865, 622)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HAND3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.7, 1.2, 1.6, 4.5432725, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 2, 1),
+"update": 0,
+"values": [Vector2(628, 628), Vector2(628, 628), Vector2(628, 958), Vector2(628, 958), Vector2(628, 628)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HAND1:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.1, 2.5000002, 4.5432725, 4.6000004),
+"transitions": PackedFloat32Array(1, 1, 0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(2, 1), Vector2(2, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xc2vp"]
+_data = {
+&"RESET": SubResource("Animation_dtg4n"),
+&"banner_anim": SubResource("Animation_vmp87")
+}
+
+[sub_resource type="Animation" id="Animation_lmly3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silouhette:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1743)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BETASpawnAnimationAssets/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Silouhette:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dust:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jboke"]
+resource_name = "spawn_animation"
+length = 7.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silouhette:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -1743), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BETASpawnAnimationAssets/ColorRect:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.2333333, 3.9333334, 4.0666666),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5647059), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Silouhette:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dust:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BetaScript")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.3, 2.4666667, 3.0666666, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [1.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}]
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BETASpawnAnimationAssets/BetaRoar")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("31_y6imm")
+}],
+"times": PackedFloat32Array(3.8)
+}
+tracks/8/use_blend = true
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BETASpawnAnimationAssets/SFX")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.87,
+"start_offset": 0.0,
+"stream": ExtResource("31_104dh")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("32_y6imm")
+}],
+"times": PackedFloat32Array(1.4333333, 3.8)
+}
+tracks/9/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0sw6"]
+_data = {
+&"RESET": SubResource("Animation_lmly3"),
+&"spawn_animation": SubResource("Animation_jboke")
+}
+
+[sub_resource type="Curve" id="Curve_xc2vp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5122951, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_vvfev"]
+offsets = PackedFloat32Array(0, 0.61009175)
+colors = PackedColorArray(0.17641911, 0.17641908, 0.17641908, 1, 0.67, 0.67, 0.67, 0)
+
+[node name="AltBetaBall" type="RigidBody2D" unique_id=1651906983 groups=["Boss"]]
+collision_layer = 112
+collision_mask = 17
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_yt1xn")
+velocity = 360.0
+normalizer_speed_down = 30.0
+
+[node name="Scaler" type="Node2D" parent="." unique_id=15116225 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_sj1e5")
+ball = NodePath("..")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Scaler" unique_id=1629763131]
+z_index = -1
+emitting = false
+amount = 12
+texture = ExtResource("2_7eooa")
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_qvnnk")
+
+[node name="ContactDamage" type="Node" parent="." unique_id=1988262465 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_t4oes")
+enabled = false
+ball = NodePath("..")
+contact_damage = 6
+
+[node name="BetaScript" type="Node" parent="." unique_id=340361340]
+script = ExtResource("3_lvkx8")
+
+[node name="looper" type="Node" parent="BetaScript" unique_id=1067380815]
+script = ExtResource("4_l4mo1")
+delay_time = 3.0
+added_rand_time = 6.0
+
+[node name="HitProcessor" type="Node" parent="." unique_id=137423556 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_sj1e5")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_usgql")]
+visible = false
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("7_t4oes")
+
+[node name="Rampage" type="Sprite2D" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="1" unique_id=2113720760]
+visible = false
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_7eooa")
+script = ExtResource("9_104dh")
+locked_visual = true
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_t4oes")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+visible = false
+rotation = 0.05353478
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066642577]
+shape = ExtResource("13_xc2vp")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=5050418 node_paths=PackedStringArray("ball")]
+visible = false
+script = ExtResource("14_vvfev")
+ball = NodePath("..")
+rotation_rate = 0.8
+normalizer_rate = 20.0
+bounce_spin_boost = 8.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1603554862 node_paths=PackedStringArray("ball")]
+position = Vector2(87, 0)
+rotation = 3.1415927
+script = ExtResource("15_wi376")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=2078554308 node_paths=PackedStringArray("rotater")]
+script = ExtResource("16_sc4yd")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=1056974398 node_paths=PackedStringArray("ball") instance=ExtResource("17_yuyoq")]
+position = Vector2(-41, 3.5843336e-06)
+collision_mask = 288
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=701806307]
+position = Vector2(0, -8.7422904e-08)
+
+[node name="Weapon2" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=786421927]
+position = Vector2(20.776772, 0.25710443)
+rotation = -1.6503941
+scale = Vector2(0.4, 0.4252614)
+texture = ExtResource("18_ijsi0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1899240573]
+position = Vector2(16.800217, 2.4418447)
+rotation = -0.052101523
+scale = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_fww6g")
+
+[node name="HitFlipper" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=99515316 node_paths=PackedStringArray("ball")]
+script = ExtResource("19_axn3s")
+ball = NodePath("../../../../..")
+directional_strength = 0.458
+self_knockback = 0.0
+crit_chance = 0.03
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=641149660 node_paths=PackedStringArray("ball")]
+script = ExtResource("20_ggbc5")
+ball = NodePath("../../../../..")
+cleave = true
+ignore_clash = true
+ignorable = true
+
+[node name="WeaponHitbox2" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=919142895 node_paths=PackedStringArray("ball") instance=ExtResource("17_yuyoq")]
+position = Vector2(-41, 3.5843336e-06)
+collision_mask = 288
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" unique_id=1374417727]
+position = Vector2(0, -8.7422904e-08)
+
+[node name="Weapon4" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2/WeaponVisual" unique_id=216008777]
+position = Vector2(222, -53.000015)
+rotation = 1.1248941
+scale = Vector2(0.2450346, 0.2450346)
+texture = ExtResource("18_ijsi0")
+
+[node name="Weapon3" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2/WeaponVisual" unique_id=514091813]
+position = Vector2(199.00002, 89.99999)
+rotation = 2.4874156
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("18_ijsi0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" unique_id=10042346]
+position = Vector2(202.99998, 90.99999)
+rotation = 0.7987112
+shape = SubResource("RectangleShape2D_6d571")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" unique_id=1689759573]
+position = Vector2(218.49997, -52.50002)
+rotation = -0.5706377
+shape = SubResource("RectangleShape2D_sj1e5")
+
+[node name="HitFlipper" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" unique_id=440996576 node_paths=PackedStringArray("ball")]
+script = ExtResource("19_axn3s")
+ball = NodePath("../../../../..")
+directional_strength = 0.458
+self_knockback = 0.0
+crit_chance = 0.03
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" unique_id=196294549 node_paths=PackedStringArray("ball")]
+script = ExtResource("20_ggbc5")
+ball = NodePath("../../../../..")
+cleave = true
+ignore_clash = true
+ignorable = true
+
+[node name="Aggressive" type="Node2D" parent="." unique_id=1242787689 node_paths=PackedStringArray("ball")]
+script = ExtResource("18_yt1xn")
+ball = NodePath("..")
+trigger_chance = 0.3
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=2047138599 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("22_ocxjq")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 500.0
+
+[node name="Decreaser" type="Node" parent="HealthManager" unique_id=1549778634]
+script = ExtResource("20_yt1xn")
+drain_per_second = 0.5
+
+[node name="MeterManager" type="Node" parent="." unique_id=1002660597]
+script = ExtResource("23_6iral")
+
+[node name="StatsUI" type="Node" parent="." unique_id=1085504826]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=444730092 instance=ExtResource("24_isl1g")]
+offset_left = 2557.0
+offset_top = -1606.0
+offset_right = 2597.0
+offset_bottom = -1566.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(444730092, 624450934) index="1" unique_id=1921250255]
+text = "THE ABETAMATION"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(444730092, 624450934) index="3" unique_id=794553254]
+offset_top = 179.0
+offset_bottom = 402.0
+text = "A mutant offshoot of the Beta clones.
+Origin for it's creation is unknown.
+
+Note: Keep a watchful eye on subjects for any tampering."
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = ""
+
+[node name="HealthLabel" parent="StatsUI/BallStatDisplay/BattleBar/Healthbar/Healthbar" parent_id_path=PackedInt32Array(444730092, 1875357996) index="0" unique_id=1229604741]
+offset_left = 6.0
+offset_right = 128.0
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(444730092, 846234039) index="3" unique_id=1728433949]
+offset_top = -20.0
+offset_bottom = 110.0
+texture = ExtResource("7_t4oes")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(444730092, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+offset_left = 1697.0
+offset_top = -74.0
+offset_right = 1697.0
+offset_bottom = -74.0
+name_sound = ExtResource("25_e7g8j")
+name_text = "Beta???"
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -441.0
+offset_top = -307.0
+offset_right = 655.0
+offset_bottom = 1082.0
+texture = ExtResource("24_yt1xn")
+
+[node name="AlignmentChart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=1935891313]
+visible = false
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" index="0" unique_id=858608945]
+modulate = Color(0.21938649, 0.21938649, 0.83532035, 1)
+grid_value = Vector2(0, 0.33793104)
+
+[node name="Octogon" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart/Chart" index="0" unique_id=1976510263]
+visible = false
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" index="5" unique_id=2127130666]
+offset_top = 49.0
+offset_bottom = 89.0
+grid_value = Vector2(0, 0.33793104)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(444730092, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.14509805, 0.8039216, 0.06666667, 1)
+z_index = 3
+offset_top = -76.0
+offset_bottom = 303.0
+text = "\"GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET BACK GET\""
+
+[node name="BossDisplay" parent="StatsUI" unique_id=750446237 node_paths=PackedStringArray("meterbar", "health_chaser") instance=ExtResource("23_lvkx8")]
+offset_left = 1150.0
+offset_top = -1104.0
+offset_right = 1190.0
+offset_bottom = -1064.0
+custom_music_override = ExtResource("28_8p1ug")
+custom_music_override_ender = "res://Music/hit it win.mp3"
+meterbar = NodePath("BattleBar/Meterbar")
+health_chaser = NodePath("BattleBar/Healthbar/HealthChaser")
+
+[node name="Description" parent="StatsUI/BossDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1737318353]
+text = "[b]CANCEROUS GROWTH[/b]
+Their size permanently expands in size.
+[b]ROARING RAMPAGE[/b]
+They gain a damage resistance of up to 65% before entering their 3-armed rampage.
+[b]DEEP ROT MITOSIS[/b]
+As more of their body falls into disrepair, they spawn more homunculi."
+
+[node name="Healthbar" parent="StatsUI/BossDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="2" unique_id=634706039]
+offset_left = 15.0
+offset_right = 55.0
+
+[node name="Healthbar" parent="StatsUI/BossDisplay/BattleBar/Healthbar" index="4" unique_id=1875357996]
+offset_left = -5.0
+offset_right = 1453.0
+
+[node name="Name" parent="StatsUI/BossDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1322474825]
+offset_left = 79.0
+offset_right = 694.0
+text = "THE ABETAMATION"
+
+[node name="Icon" parent="StatsUI/BossDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="4" unique_id=735791092]
+offset_left = -101.0
+offset_right = 29.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("28_y6imm")
+
+[node name="BANNER" type="CanvasLayer" parent="." unique_id=1431525552]
+
+[node name="HAND1" type="Sprite2D" parent="BANNER" unique_id=273218636]
+light_mask = 0
+z_index = 17
+position = Vector2(261, 576)
+rotation = -3.1415925
+scale = Vector2(1, 1e-05)
+texture = ExtResource("18_ijsi0")
+
+[node name="HAND2" type="Sprite2D" parent="BANNER" unique_id=2117798565]
+light_mask = 0
+z_index = 17
+position = Vector2(865, 622)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("18_ijsi0")
+
+[node name="HAND3" type="Sprite2D" parent="BANNER" unique_id=1072487504]
+light_mask = 0
+z_index = 17
+position = Vector2(628, 628)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("18_ijsi0")
+
+[node name="Boss" type="Node2D" parent="BANNER" unique_id=2014159150]
+light_mask = 0
+z_index = 12
+position = Vector2(630, 498)
+scale = Vector2(1.5, 1.5)
+
+[node name="BossBanner" type="ColorRect" parent="BANNER/Boss" unique_id=1241911540]
+light_mask = 0
+custom_minimum_size = Vector2(1500, 0)
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -160.0
+offset_right = 750.0
+offset_bottom = 318.3333
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(0, 225)
+color = Color(1.92523e-07, 0, 0.6274538, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BANNER/Boss/BossBanner" unique_id=448319910]
+light_mask = 0
+z_index = 4
+custom_minimum_size = Vector2(1500, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="BANNER/Boss/BossBanner" unique_id=1897024385]
+light_mask = 0
+z_index = 4
+custom_minimum_size = Vector2(1500, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -49.666656
+offset_right = 1500.0
+offset_bottom = 0.3333435
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="SplashART" type="TextureRect" parent="BANNER/Boss/BossBanner" unique_id=33117049]
+light_mask = 0
+layout_mode = 0
+offset_left = 313.3333
+offset_top = -165.33334
+offset_right = 1202.0
+offset_bottom = 1234.6666
+texture = ExtResource("24_yt1xn")
+expand_mode = 4
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="bossName" type="Label" parent="BANNER/Boss/BossBanner" unique_id=274591858]
+light_mask = 0
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -655.0
+offset_top = 96.16669
+offset_right = 655.0
+offset_bottom = 997.1666
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_fdvov")
+text = "THE ABETAMATION"
+horizontal_alignment = 1
+autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BANNER/Boss/BossBanner" unique_id=289643280]
+light_mask = 0
+z_index = -1
+material = SubResource("ShaderMaterial_v0sw6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("29_qvnnk")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BannerAnimation" type="AnimationPlayer" parent="BANNER" unique_id=2086556504]
+libraries/ = SubResource("AnimationLibrary_xc2vp")
+
+[node name="alert" type="ColorRect" parent="BANNER" unique_id=120138575]
+modulate = Color(1, 1, 1, 0)
+light_mask = 0
+z_index = 500
+custom_minimum_size = Vector2(1210, 1350)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -625.0
+offset_top = -675.0
+offset_right = 585.0
+offset_bottom = 675.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.19000006, 0.100000024, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1414778902]
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="." unique_id=385052733]
+
+[node name="BETASpawnAnimationAssets" type="Node" parent="." unique_id=2010995076]
+
+[node name="BETASpawnAnimation" type="AnimationPlayer" parent="BETASpawnAnimationAssets" unique_id=240676100]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_v0sw6")
+
+[node name="BetaRoar" type="AudioStreamPlayer2D" parent="BETASpawnAnimationAssets" unique_id=1890345021]
+volume_db = 7.0
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="BETASpawnAnimationAssets" unique_id=418888870]
+
+[node name="ColorRect" type="ColorRect" parent="BETASpawnAnimationAssets" unique_id=1281167299]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -464.0
+offset_right = -208.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Silouhette" type="Sprite2D" parent="." unique_id=1196991408]
+modulate = Color(0.020007145, 0.07632356, 0.023869928, 1)
+position = Vector2(0, -1743)
+scale = Vector2(2, 2)
+texture = ExtResource("2_7eooa")
+
+[node name="Dust" type="CPUParticles2D" parent="." unique_id=1380571641]
+emitting = false
+amount = 1
+texture = ExtResource("33_fdvov")
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_min = 7.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_xc2vp")
+color = Color(0.66245234, 0.66245234, 0.6624523, 1)
+color_ramp = SubResource("Gradient_vvfev")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox2" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="StatsUI/BossDisplay"]

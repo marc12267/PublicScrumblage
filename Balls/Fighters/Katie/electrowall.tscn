@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cmbq253h65yke"]
+
+[ext_resource type="Script" uid="uid://bggu8glnusrbm" path="res://Balls/Components/connector_lazer.gd" id="1_7mp1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbmqm"]
+radius = 8.0
+
+[sub_resource type="Curve" id="Curve_7mp1u"]
+_data = [Vector2(0, 0.8262806), 0.0, 0.0, 0, 0, Vector2(0.099150136, 0.5729399), 0.0, 0.0, 0, 0, Vector2(0.19263455, 0.9493318), 0.0, 0.0, 0, 0, Vector2(0.34560907, 0.48608023), 0.0, 0.0, 0, 0, Vector2(0.5042493, 1), 0.0, 0.0, 0, 0, Vector2(0.63172805, 0.52227175), 0.0, 0.0, 0, 0, Vector2(0.79036826, 0.9348552), 0.0, 0.0, 0, 0, Vector2(0.9121813, 0.5439867), 0.0, 0.0, 0, 0, Vector2(1, 0.7466593), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[node name="Area2D" type="ShapeCast2D" unique_id=504228143 node_paths=PackedStringArray("line_2d")]
+shape = SubResource("CircleShape2D_bbmqm")
+collision_mask = 32
+script = ExtResource("1_7mp1u")
+line_2d = NodePath("Line2D")
+tick_wait = 0.08
+knockaway = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1982247541]
+top_level = true
+z_index = -1
+width = 15.0
+width_curve = SubResource("Curve_7mp1u")
+default_color = Color(0.08651241, 0.96060497, 0.7016839, 1)

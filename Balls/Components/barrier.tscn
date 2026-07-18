@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://gghgkrhjqikg"]
+
+[ext_resource type="Script" uid="uid://cdkut4yuok45n" path="res://Balls/OverhealthBarrier.gd" id="1_s8t2x"]
+[ext_resource type="Script" uid="uid://dwigm6aau4fax" path="res://Balls/Components/scaler.gd" id="2_qy835"]
+[ext_resource type="LabelSettings" uid="uid://cup76ope8qaow" path="res://Fonts/OutlineFont.tres" id="3_46254"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_33qra"]
+load_path = "res://.godot/imported/Barrier.png-ed185bfe3a06c79552ac0b7b51268b93.ctex"
+
+[node name="Barrier" type="Node2D" unique_id=210310]
+top_level = true
+z_index = 1
+scale = Vector2(0.28, 0.28)
+script = ExtResource("1_s8t2x")
+
+[node name="Scaler" type="Node2D" parent="." unique_id=612144917]
+script = ExtResource("2_qy835")
+
+[node name="Bubble" type="Sprite2D" parent="Scaler" unique_id=1977079973]
+modulate = Color(1, 1, 1, 0.46666667)
+texture = SubResource("CompressedTexture2D_33qra")
+
+[node name="PointLight2D" type="PointLight2D" parent="Scaler/Bubble" unique_id=37505103]
+energy = 0.3
+texture = SubResource("CompressedTexture2D_33qra")
+
+[node name="HealthLabel" type="Label" parent="Scaler" unique_id=331720183]
+offset_left = -250.0
+offset_top = -128.57143
+offset_right = -128.0
+offset_bottom = -64.57143
+scale = Vector2(4, 4)
+text = "100"
+label_settings = ExtResource("3_46254")
+horizontal_alignment = 1
+vertical_alignment = 1

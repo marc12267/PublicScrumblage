@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjq58pchs2o1q"
+path="res://.godot/imported/beta raor.wav-b5a757a959aebb267bb50da62dbab25f.sample"
+
+[deps]
+
+source_file="res://Balls/Bosses/SuperSmacky/beta raor.wav"
+dest_files=["res://.godot/imported/beta raor.wav-b5a757a959aebb267bb50da62dbab25f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

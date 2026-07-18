@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://81djs7rc148g"]
+
+[ext_resource type="Texture2D" uid="uid://celf7m8renitp" path="res://GameStuff/Beach_Assets/Beach_Assets/Balllabscene(beachNight).png" id="1_af33a"]
+[ext_resource type="Script" uid="uid://bxfs5y2lbavma" path="res://GameStuff/generic_skin_hider.gd" id="2_ckb0e"]
+[ext_resource type="Texture2D" uid="uid://mbgkv7qth73n" path="res://GameStuff/Beach_Assets/Beach_Assets/Waves(Night).png" id="3_ckb0e"]
+[ext_resource type="Texture2D" uid="uid://8pvjkc3unpaa" path="res://GameStuff/Beach_Assets/Beach_Assets/Beach(Night)_Props.png" id="4_djhdx"]
+[ext_resource type="Texture2D" uid="uid://psc6oyujuyf7" path="res://GameStuff/Beach_Assets/Beach_Assets/The_Moon.png" id="4_fema4"]
+[ext_resource type="Texture2D" uid="uid://dgnwgsu5l5gft" path="res://Assets/square.png" id="6_djhdx"]
+
+[sub_resource type="Curve" id="Curve_71ae0"]
+_data = [Vector2(0, 0.21237242), 0.0, 0.118709154, 0, 0, Vector2(0.08888889, 0.21237242), 0.0, 0.0, 0, 0, Vector2(0.9904762, 0.88392854), 0.35156226, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_nfg4c"]
+offsets = PackedFloat32Array(0.6435986, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hsg0h"]
+blend_mode = 1
+
+[node name="SummerBackground" type="TextureRect" unique_id=1390674956]
+clip_children = 2
+light_mask = 32
+z_index = -5
+offset_left = 40.0
+offset_top = 109.92363
+offset_right = 1160.0
+offset_bottom = 812.92365
+texture = ExtResource("1_af33a")
+script = ExtResource("2_ckb0e")
+
+[node name="Waves" type="CPUParticles2D" parent="." unique_id=608350187]
+light_mask = 2
+position = Vector2(540.6471, -267.68832)
+rotation = -1.5707964
+scale = Vector2(2.006, 2.006)
+amount = 2
+texture = ExtResource("3_ckb0e")
+lifetime = 8.0
+local_coords = true
+gravity = Vector2(-10, 0)
+scale_amount_min = 1.82
+scale_amount_max = 1.82
+split_scale = true
+scale_curve_x = SubResource("Curve_71ae0")
+scale_curve_y = null
+color_ramp = SubResource("Gradient_nfg4c")
+
+[node name="WavesEffect" type="Node2D" parent="." unique_id=1818812613]
+show_behind_parent = true
+light_mask = 0
+visibility_layer = 2
+z_index = 1
+position = Vector2(543, 4.076355)
+rotation = -1.5707964
+scale = Vector2(2, 2)
+
+[node name="TheMoon" type="Sprite2D" parent="." unique_id=479257081]
+light_mask = 2
+z_index = 1
+material = SubResource("CanvasItemMaterial_hsg0h")
+position = Vector2(554, 208.07637)
+scale = Vector2(1.3385265, 1.3385265)
+texture = ExtResource("4_fema4")
+
+[node name="Beach(night)Props" type="Sprite2D" parent="." unique_id=1581225807]
+light_mask = 2
+z_index = 1
+position = Vector2(556, 367.0764)
+scale = Vector2(1.7459834, 1.7459834)
+texture = ExtResource("4_djhdx")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1191279761]
+position = Vector2(538.43, 601.1548)
+rotation = -3.1415925
+scale = Vector2(11.542655, -11.959179)
+color = Color(0.0064932355, 0.21384567, 0.32378516, 1)
+energy = 3.0
+blend_mode = 2
+texture = ExtResource("6_djhdx")
+
+[node name="StageBorder2" type="ColorRect" parent="." unique_id=841702899]
+visible = false
+light_mask = 0
+visibility_layer = 2
+z_index = 1
+layout_mode = 0
+offset_left = -276.0
+offset_top = -348.92365
+offset_right = 1348.0
+offset_bottom = 0.2286377
+color = Color(0.7817457, 0.88292295, 0.86553365, 1)

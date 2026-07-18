@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ce1u4ifh6f478"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_u7rqe"]
+[ext_resource type="AudioStream" uid="uid://ciggc0ebefxxa" path="res://Balls/Teams/swordnstone_teamname.wav" id="2_neaum"]
+[ext_resource type="PackedScene" uid="uid://k1xn4ny38p37" path="res://Balls/Fighters/Beta/ball_beta.tscn" id="3_u7rqe"]
+[ext_resource type="PackedScene" uid="uid://cu4laqyyr3nqr" path="res://Balls/Fighters/Hiro/ball_hiro.tscn" id="4_1frb0"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="5_neaum"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_u7rqe")
+team_name = "SWORD&STONE"
+team_audio = ExtResource("2_neaum")
+ball1 = NodePath("BetaBall")
+ball2 = NodePath("HiroBall")
+
+[node name="BetaBall" parent="." unique_id=1651906983 instance=ExtResource("3_u7rqe")]
+
+[node name="HiroBall" parent="." unique_id=1629520744 instance=ExtResource("4_1frb0")]
+
+[node name="TextureRect" parent="HiroBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1629520744, 750446237, 2081690940) index="0" unique_id=1997730014]
+offset_top = -451.0
+offset_bottom = 949.0
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("5_neaum")]
+position = Vector2(-308, 871)
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.23921569, 0.36078432, 0.20392157, 1)
+offset_top = -188.0
+offset_bottom = -2.0
+text = "\"Apologies if I was too harsh with my punching...\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.7882353, 0.18039216, 0.28235295, 1)
+offset_bottom = 193.0
+text = "\"No, Beta! You're supposed to pose after winning!\""
+
+[editable path="HiroBall"]
+[editable path="HiroBall/Visuals"]
+[editable path="HiroBall/StatsUI/BallStatDisplay"]
+[editable path="HiroBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="WinBubble"]

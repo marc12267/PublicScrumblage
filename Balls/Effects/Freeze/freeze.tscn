@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://5j3cne7kew74"]
+
+[ext_resource type="Script" uid="uid://bsfvrq5r73mml" path="res://Balls/Effects/Freeze/status_freeze.gd" id="1_giwkh"]
+[ext_resource type="Texture2D" uid="uid://byo4bc7i7lcwv" path="res://Balls/Effects/Freeze/icecube.png" id="2_5qbm0"]
+
+[node name="Freeze" type="Node" unique_id=1637184065]
+script = ExtResource("1_giwkh")
+have_icon = true
+icon_effect = "res://Balls/Effects/Freeze/icecube.png"
+
+[node name="Icecube" type="Node2D" parent="." unique_id=1197999766]
+
+[node name="Icecube" type="Sprite2D" parent="Icecube" unique_id=823686795]
+z_index = 1
+position = Vector2(-1, -6)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5qbm0")

@@ -1,0 +1,353 @@
+[gd_scene format=3 uid="uid://c310ngh8sk36s"]
+
+[ext_resource type="Texture2D" uid="uid://dk578adhassu0" path="res://Assets/Grid.png" id="1_4c57u"]
+[ext_resource type="Script" uid="uid://dykgun60u01lc" path="res://GameStuff/main.gd" id="1_efxa6"]
+[ext_resource type="Script" uid="uid://5btu2l4gh0i4" path="res://GameStuff/deleter.gd" id="1_kek77"]
+[ext_resource type="PackedScene" uid="uid://7u2bgsyl5c52" path="res://Balls/Fighters/Vee/ball_vee.tscn" id="2_0xn6e"]
+[ext_resource type="PackedScene" uid="uid://cu4laqyyr3nqr" path="res://Balls/Fighters/Hiro/ball_hiro.tscn" id="3_dnuga"]
+[ext_resource type="Script" uid="uid://cyrgalcbxrwvg" path="res://GameStuff/game_TIMER.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://ff260b1xf73s" path="res://GameStuff/damage_recorder.gd" id="4_0xn6e"]
+[ext_resource type="Script" uid="uid://b4yamxnewh71l" path="res://GameStuff/confetti_cannon.gd" id="4_074og"]
+[ext_resource type="Script" uid="uid://b8q822wn0j3s8" path="res://GameStuff/match_looper.gd" id="4_ejy2k"]
+[ext_resource type="PackedScene" uid="uid://npp6cmnmok3k" path="res://GameStuff/Confetti.tscn" id="5_cegan"]
+[ext_resource type="Script" uid="uid://b7rux7mmhxtbd" path="res://camera.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dg2dcbdi6lnbm" path="res://GameStuff/scoreboard.tscn" id="7_074og"]
+[ext_resource type="Script" uid="uid://cx7fioi0acc6y" path="res://GameStuff/map_center.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://btlo75r35b4an" path="res://GameStuff/arena.gd" id="10_dnuga"]
+[ext_resource type="PackedScene" uid="uid://ck71cia82gqol" path="res://GameStuff/summer_background.tscn" id="13_es2f0"]
+[ext_resource type="Script" uid="uid://p0qhuthurwbg" path="res://GameStuff/remote_transformer.gd" id="14_es2f0"]
+[ext_resource type="PackedScene" uid="uid://g0mkg3jdl6rv" path="res://GameStuff/VSSolo.tscn" id="15_82xsv"]
+[ext_resource type="PackedScene" uid="uid://nh2dnk2v467v" path="res://GameStuff/crit_effect.tscn" id="16_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://bd3xwpn1t7hb4" path="res://UI/winner.tscn" id="16_82xsv"]
+[ext_resource type="Texture2D" uid="uid://bs3xm074lp5db" path="res://Assets/testgraphic.png" id="17_074og"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="21_es2f0"]
+[ext_resource type="PackedScene" uid="uid://dlnql71mqkyge" path="res://GameStuff/logo.tscn" id="22_dnuga"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 84
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(1040, 2264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(13245.076, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(221, 2264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(2180, 241.99992)
+
+[sub_resource type="Animation" id="Animation_dnuga"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-402, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(184, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ejy2k"]
+resource_name = "zip"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-402, 0, 0, 0.13333334, 353.83334, 1552, -0.13333336, -325.6667, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(1147, 0, 0, 0.13333334, -160.50002, 1147, -0.13333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.6666667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhj3k"]
+_data = {
+&"RESET": SubResource("Animation_dnuga"),
+&"zip": SubResource("Animation_ejy2k")
+}
+
+[node name="Main1v1" type="Node2D" unique_id=2110299460 groups=["Arena"]]
+script = ExtResource("1_efxa6")
+ball1_res = ExtResource("2_0xn6e")
+ball2_res = ExtResource("3_dnuga")
+
+[node name="DamageRecorder" type="Node" parent="." unique_id=174541411]
+script = ExtResource("4_0xn6e")
+
+[node name="MatchLooper" type="Node" parent="." unique_id=779285934]
+script = ExtResource("4_ejy2k")
+
+[node name="ConfettiCannon" type="Node2D" parent="." unique_id=1244199286]
+z_index = 999
+position = Vector2(-139, 663)
+script = ExtResource("4_074og")
+
+[node name="1" parent="ConfettiCannon" unique_id=1065538475 instance=ExtResource("5_cegan")]
+position = Vector2(0, -168)
+
+[node name="2" parent="ConfettiCannon" unique_id=534315427 instance=ExtResource("5_cegan")]
+position = Vector2(-82, 153)
+
+[node name="3" parent="ConfettiCannon" unique_id=1722811756 instance=ExtResource("5_cegan")]
+position = Vector2(1629, -168)
+scale = Vector2(-1, 1)
+
+[node name="4" parent="ConfettiCannon" unique_id=1648515687 instance=ExtResource("5_cegan")]
+position = Vector2(1698, 153)
+scale = Vector2(-1, 1)
+
+[node name="Arena" type="Node2D" parent="." unique_id=1622911532]
+position = Vector2(650, 650)
+script = ExtResource("10_dnuga")
+
+[node name="Background" type="ColorRect" parent="Arena" unique_id=285512867]
+light_mask = 0
+z_index = -10
+offset_left = -1493.0
+offset_top = -1177.0
+offset_right = 1928.0
+offset_bottom = 1419.0
+color = Color(0.08340659, 0.15797052, 0.18096778, 1)
+
+[node name="Timer" type="Label" parent="Arena" unique_id=1077334379]
+offset_left = 380.0
+offset_top = -640.9236
+offset_right = 562.0
+offset_bottom = -505.92358
+text = "99"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_h2yge")
+
+[node name="Scoreboard" parent="Arena" unique_id=1664752174 instance=ExtResource("7_074og")]
+visible = false
+offset_left = -5.0
+offset_top = -6.0763702
+offset_right = 35.0
+offset_bottom = 33.92363
+
+[node name="ScoreRight" parent="Arena/Scoreboard" index="2" unique_id=45513820]
+text = "1"
+
+[node name="StageBorder2" type="ColorRect" parent="Arena" unique_id=170767445]
+light_mask = 0
+z_index = -5
+offset_left = -593.0
+offset_top = -618.0
+offset_right = 593.0
+offset_bottom = 204.0
+color = Color(0.7817457, 0.88292295, 0.86553365, 1)
+
+[node name="StageBackground" type="TextureRect" parent="Arena" unique_id=73240295]
+light_mask = 32
+z_index = -5
+offset_left = -560.0
+offset_top = -525.0
+offset_right = 560.0
+offset_bottom = 178.0
+texture = ExtResource("1_4c57u")
+
+[node name="SummerBackground" parent="Arena" unique_id=1390674956 instance=ExtResource("13_es2f0")]
+visible = false
+clip_children = 2
+offset_left = -560.0
+offset_top = -525.0
+offset_right = 560.0
+offset_bottom = 178.0
+
+[node name="BeachProps" parent="Arena/SummerBackground" index="0" unique_id=1704509834]
+visible = true
+
+[node name="Ciel" type="StaticBody2D" parent="Arena" unique_id=1021243580]
+position = Vector2(6.25, -1044.9236)
+rotation = -1.5707964
+collision_layer = 65536
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="Cieling" type="CollisionShape2D" parent="Arena/Ciel" unique_id=1953283369]
+shape = SubResource("RectangleShape2D_7dm0k")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena" unique_id=1294565509]
+position = Vector2(-600, -619.9236)
+rotation = -1.5707964
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=1248243036]
+position = Vector2(4900.076, -284.99982)
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="LeftWall2" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=1023303628]
+position = Vector2(11692.076, 549.0004)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="RightWayy" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=503166024]
+position = Vector2(4994.538, 1485.0001)
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Ground" type="StaticBody2D" parent="Arena" unique_id=54313255 groups=["Ground"]]
+position = Vector2(-600, -620.9236)
+rotation = -1.5707964
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="Ground" type="CollisionShape2D" parent="Arena/Ground" unique_id=510655395]
+visible = false
+position = Vector2(-1319, 606)
+shape = SubResource("RectangleShape2D_7dm0k")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="MapCenter" type="Marker2D" parent="Arena" unique_id=1951032771]
+position = Vector2(0, -169.92358)
+script = ExtResource("8_5vw27")
+
+[node name="Deleter" type="Area2D" parent="Arena" unique_id=2063575567]
+position = Vector2(-502, 749.07635)
+rotation = -1.5707964
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Deleter" unique_id=1037128193 groups=["DeleterBottom"]]
+position = Vector2(-232.92358, 564)
+shape = SubResource("RectangleShape2D_4c57u")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arena/Deleter" unique_id=578517917 groups=["DeleterTop"]]
+position = Vector2(1750.0764, 564)
+shape = SubResource("RectangleShape2D_4c57u")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Arena/Deleter" unique_id=142467797]
+position = Vector2(760, -472.99994)
+shape = SubResource("RectangleShape2D_efxa6")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Arena/Deleter" unique_id=596107679]
+position = Vector2(759.9999, 1508)
+shape = SubResource("RectangleShape2D_efxa6")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="BStatMarker" type="Marker2D" parent="Arena" unique_id=1146257228]
+unique_name_in_owner = true
+position = Vector2(-639, 280)
+script = ExtResource("14_es2f0")
+
+[node name="BStatMarker2" type="Marker2D" parent="Arena" unique_id=919126951]
+unique_name_in_owner = true
+position = Vector2(5, 280)
+script = ExtResource("14_es2f0")
+
+[node name="Spawnpos1" type="Marker2D" parent="." unique_id=1824530167]
+position = Vector2(325, 477)
+
+[node name="Spawnpos2" type="Marker2D" parent="." unique_id=1654661731]
+position = Vector2(984, 477)
+
+[node name="WinQuoteLeft" type="Marker2D" parent="." unique_id=914765847]
+position = Vector2(352, 576)
+
+[node name="WinQuoteRight" type="Marker2D" parent="." unique_id=655713137]
+position = Vector2(958, 576)
+
+[node name="VS" parent="." unique_id=1286987048 instance=ExtResource("15_82xsv")]
+visible = false
+
+[node name="Winner" parent="." unique_id=219818636 instance=ExtResource("16_82xsv")]
+offset_top = 697.0
+offset_bottom = 851.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=337822616]
+z_index = 12
+position = Vector2(650, 650)
+script = ExtResource("5_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=1784911086]
+
+[node name="SpecialMove" type="TextureRect" parent="Camera2D/CanvasLayer" unique_id=1165130685]
+visible = false
+offset_right = 1300.0
+offset_bottom = 1300.0
+texture = ExtResource("17_074og")
+expand_mode = 1
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1046662155]
+position = Vector2(912.668, 704.4554)
+
+[node name="CritEffect" parent="." unique_id=507308382 instance=ExtResource("16_2cqfq")]
+position = Vector2(508, -768)
+
+[node name="Logo" parent="." unique_id=203095243 instance=ExtResource("22_dnuga")]
+position = Vector2(668, 78)
+
+[node name="Label" type="Label" parent="." unique_id=1730893996]
+offset_left = 2077.0
+offset_top = -136.0
+offset_right = 2117.0
+offset_bottom = -113.0
+scale = Vector2(3, 3)
+text = "PUBLIC BUILD:
+HIRO
+01
+MANDALYN
+VEE
+BETA
+SOMNIA
+KATIE"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1376368175]
+libraries/ = SubResource("AnimationLibrary_uhj3k")
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=1199664714]
+modulate = Color(0, 0, 0, 0.91764706)
+z_index = 6
+position = Vector2(-402, 184)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("21_es2f0")
+
+[connection signal="area_entered" from="Arena/Deleter" to="Arena/Deleter" method="_on_area_entered"]
+[connection signal="body_entered" from="Arena/Deleter" to="Arena/Deleter" method="_on_body_entered"]
+
+[editable path="Arena/Scoreboard"]
+[editable path="Arena/SummerBackground"]
+[editable path="VS"]

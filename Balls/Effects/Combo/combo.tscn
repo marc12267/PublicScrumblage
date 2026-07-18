@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cx3yeifbxxyqj"]
+
+[ext_resource type="Script" uid="uid://dqktedtnfocny" path="res://Balls/Effects/Combo/status_combo.gd" id="1_rt2nc"]
+[ext_resource type="Texture2D" uid="uid://etfhb5wd4ltn" path="res://Balls/Effects/Combo/grey_gogeta_meter_1_1.png" id="3_rt2nc"]
+[ext_resource type="Texture2D" uid="uid://xk830hlfuvcm" path="res://Balls/Effects/Combo/gogeta_meter_1_1.png" id="4_jxud5"]
+[ext_resource type="Texture2D" uid="uid://dagtg0o8ifqik" path="res://Balls/Effects/Combo/grey_gogeta_meter_1_2.png" id="5_4akj8"]
+[ext_resource type="Texture2D" uid="uid://cva0u8x088qcr" path="res://Balls/Effects/Combo/gogeta_meter_1_2.png" id="6_ai0yq"]
+[ext_resource type="Texture2D" uid="uid://c684jkyt0qdg5" path="res://Balls/Effects/Combo/grey_gogeta_meter_1_3.png" id="7_ilrkn"]
+[ext_resource type="Texture2D" uid="uid://dhbgbc1kse1et" path="res://Balls/Effects/Combo/gogeta_meter_1_3.png" id="8_xae0d"]
+[ext_resource type="Texture2D" uid="uid://dp8ol5gki6p1u" path="res://Balls/Effects/Combo/grey_gogeta_meter_1_4.png" id="9_1705n"]
+[ext_resource type="Texture2D" uid="uid://loycri4dsspl" path="res://Balls/Effects/Combo/gogeta_meter_1_4.png" id="10_ah8ym"]
+[ext_resource type="Texture2D" uid="uid://3viotb23i278" path="res://Balls/Effects/Combo/grey_gogeta_meter_1_5.png" id="11_ue3v8"]
+[ext_resource type="Texture2D" uid="uid://dk12hi1lvpfyp" path="res://Balls/Effects/Combo/gogeta_meter_1_5.png" id="12_754gj"]
+
+[node name="Combo" type="Node" unique_id=71723277 node_paths=PackedStringArray("rank_root")]
+script = ExtResource("1_rt2nc")
+rank_root = NodePath("RankRoot")
+
+[node name="RankRoot" type="Node2D" parent="." unique_id=1844726549]
+
+[node name="Holder" type="Node2D" parent="RankRoot" unique_id=26666080]
+z_index = 5
+position = Vector2(-76, -78)
+
+[node name="RankS" type="TextureProgressBar" parent="RankRoot/Holder" unique_id=1079028166]
+visible = false
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 1154.0
+offset_bottom = 1158.0
+scale = Vector2(0.09, 0.09)
+fill_mode = 3
+texture_under = ExtResource("3_rt2nc")
+texture_progress = ExtResource("4_jxud5")
+
+[node name="RankA" type="TextureProgressBar" parent="RankRoot/Holder" unique_id=1652099373]
+visible = false
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 1154.0
+offset_bottom = 1158.0
+scale = Vector2(0.09, 0.09)
+fill_mode = 3
+texture_under = ExtResource("5_4akj8")
+texture_progress = ExtResource("6_ai0yq")
+
+[node name="RankB" type="TextureProgressBar" parent="RankRoot/Holder" unique_id=230946655]
+visible = false
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 1154.0
+offset_bottom = 1158.0
+scale = Vector2(0.09, 0.09)
+fill_mode = 3
+texture_under = ExtResource("7_ilrkn")
+texture_progress = ExtResource("8_xae0d")
+
+[node name="RankC" type="TextureProgressBar" parent="RankRoot/Holder" unique_id=1870008966]
+visible = false
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 1154.0
+offset_bottom = 1158.0
+scale = Vector2(0.09, 0.09)
+fill_mode = 3
+texture_under = ExtResource("9_1705n")
+texture_progress = ExtResource("10_ah8ym")
+
+[node name="RankD" type="TextureProgressBar" parent="RankRoot/Holder" unique_id=1486524216]
+visible = false
+offset_left = -46.0
+offset_top = -42.0
+offset_right = 1154.0
+offset_bottom = 1158.0
+scale = Vector2(0.09, 0.09)
+fill_mode = 3
+texture_under = ExtResource("11_ue3v8")
+texture_progress = ExtResource("12_754gj")

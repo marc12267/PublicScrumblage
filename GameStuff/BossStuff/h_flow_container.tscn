@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cj8l8somymfc8"]
+
+[ext_resource type="Script" uid="uid://c2r671bfrenr5" path="res://GameStuff/BossStuff/h_flow_container.gd" id="1_mu163"]
+
+[node name="WarningScroll" type="ScrollContainer" unique_id=1612366402]
+custom_minimum_size = Vector2(1500, 75)
+offset_right = 500.0
+offset_bottom = 75.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("1_mu163")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1163870817]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" unique_id=1179440614]
+custom_minimum_size = Vector2(795, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "! WARNING ! INTRUDER DETECTED ! WARNING "
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer" unique_id=236474283]
+custom_minimum_size = Vector2(795, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "! WARNING ! INTRUDER DETECTED ! WARNING"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer" unique_id=1273326257]
+custom_minimum_size = Vector2(795, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "! WARNING ! INTRUDER DETECTED"
+scroll_active = false
+autowrap_mode = 0

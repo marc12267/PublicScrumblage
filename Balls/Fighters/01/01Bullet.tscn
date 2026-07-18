@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://d3winivmbvfhm"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_v62of"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="2_hiem3"]
+[ext_resource type="Script" uid="uid://bce3kf2vdryh0" path="res://Balls/Fighters/01/Bullet01_script.gd" id="2_ok6m1"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_b48wt"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="3_gpmom"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="4_hovgp"]
+[ext_resource type="Texture2D" uid="uid://c25nsl7ahina6" path="res://Assets/326-3268104_clip-art-black-and-white-download-cannon-ball-clipart-circle.png" id="5_ok6m1"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="6_6wejk"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="7_d0mkl"]
+[ext_resource type="Script" uid="uid://dwigm6aau4fax" path="res://Balls/Components/scaler.gd" id="7_lscw7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2ti1"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75wk7"]
+radius = 31.016125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0mkl"]
+radius = 33.0
+
+[node name="01Bullet" type="RigidBody2D" unique_id=1936899489]
+z_index = -1
+collision_layer = 6
+physics_material_override = SubResource("PhysicsMaterial_d2ti1")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_v62of")
+groups = Array[String](["Projectile"])
+velocity = 1500.0
+bounce_speed_boost = 0.0
+ball_collide = false
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("2_hiem3")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321]
+scale = Vector2(0.3, 0.3)
+
+[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=984181658]
+hurt_switch = false
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_ok6m1")
+
+[node name="BulletScript" type="Node" parent="." unique_id=12117130]
+script = ExtResource("2_ok6m1")
+
+[node name="HitGain" type="Node" parent="BulletScript" unique_id=372844731]
+script = ExtResource("3_gpmom")
+multiplier = 1.625
+
+[node name="HitProcessor" type="Node" parent="." unique_id=1927716163 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_b48wt")
+ball = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1968843281]
+shape = SubResource("CircleShape2D_75wk7")
+
+[node name="Scaler" type="Node2D" parent="." unique_id=81419993 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_lscw7")
+ball = NodePath("..")
+
+[node name="BulletHitbox" parent="Scaler" unique_id=2019990350 node_paths=PackedStringArray("ball") instance=ExtResource("4_hovgp")]
+collision_layer = 2
+collision_mask = 64
+ball = NodePath("../..")
+
+[node name="FireballHitProjectile" type="Node" parent="Scaler/BulletHitbox" unique_id=758908638 node_paths=PackedStringArray("ball")]
+script = ExtResource("6_6wejk")
+ball = NodePath("../../..")
+self_knockback = 0.0
+crit_chance = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scaler/BulletHitbox" unique_id=806267003]
+shape = SubResource("CircleShape2D_d0mkl")
+debug_color = Color(0.9020316, 0.24375501, 0.4918024, 0.41960785)
+
+[node name="ClashBouncer" type="Node" parent="Scaler/BulletHitbox" unique_id=968759462 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_d0mkl")
+ball = NodePath("../../..")
+ignorable = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Scaler/BulletHitbox" to="Scaler/BulletHitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="Scaler/BulletHitbox" to="Scaler/BulletHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Scaler/BulletHitbox" to="Scaler/BulletHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]

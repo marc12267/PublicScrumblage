@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://s6yd7dxs6x4o"]
+
+[ext_resource type="Script" uid="uid://b5ilm8rs5xk8p" path="res://Particle FX/particle_script.gd" id="1_bk147"]
+[ext_resource type="Texture2D" uid="uid://ctu6yvqwn6cg7" path="res://Particle FX/TestFX.png" id="2_co0o3"]
+[ext_resource type="Script" uid="uid://nnc2xdnvvv3f" path="res://Particle FX/particle_emit_start.gd" id="3_2q1yn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8d61n"]
+
+[sub_resource type="CanvasItemMaterial" id="13"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_0xap8"]
+_data = [Vector2(0, 0.31096202), 0.0, 1.2460245, 0, 0, Vector2(1, 0), -3.1319928, 0.0, 0, 0]
+point_count = 2
+
+[node name="ParticleEffect" type="Node2D" unique_id=1684968850]
+z_index = 100
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_8d61n")
+script = ExtResource("1_bk147")
+lifetime = 0.3
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1033733125]
+z_index = -1
+z_as_relative = false
+material = SubResource("13")
+amount = 3
+texture = ExtResource("2_co0o3")
+lifetime = 0.3
+explosiveness = 0.6
+emission_shape = 2
+emission_sphere_radius = 35.0
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 900.0
+initial_velocity_max = 1200.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+scale_amount_max = 2.5
+scale_amount_curve = SubResource("Curve_0xap8")
+script = ExtResource("3_2q1yn")

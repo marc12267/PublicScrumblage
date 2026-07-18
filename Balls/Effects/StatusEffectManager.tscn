@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d4lea6cv1oqu0"]
+
+[ext_resource type="Script" uid="uid://cpgi301lppiul" path="res://Balls/Effects/status_effect_manager.gd" id="1_m3ovy"]
+
+[node name="StatusEffectManager" type="Node" unique_id=1251343151]
+script = ExtResource("1_m3ovy")

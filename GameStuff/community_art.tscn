@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://34p06ox54ahr"]
+
+[ext_resource type="Texture2D" uid="uid://cqqgriwqfqeli" path="res://Assets/ArtShowcase.png" id="1_4gywe"]
+
+[sub_resource type="SystemFont" id="SystemFont_ukoup"]
+font_names = PackedStringArray("Bradley Hand ITC")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_10ktq"]
+font = SubResource("SystemFont_ukoup")
+font_size = 80
+outline_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukoup"]
+font = SubResource("SystemFont_ukoup")
+font_size = 60
+outline_size = 5
+
+[node name="Control" type="Control" unique_id=562241288]
+light_mask = 32768
+z_index = 999
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=931481901]
+light_mask = 32768
+layout_mode = 0
+offset_left = 70.0
+offset_top = -131.0
+offset_right = 1282.0
+offset_bottom = -31.0
+scale = Vector2(1, 1.4)
+text = "COMMUNITY ART SHOWCASE!!!"
+label_settings = SubResource("LabelSettings_10ktq")
+
+[node name="ColorRect" type="ColorRect" parent="Label" unique_id=310163347]
+modulate = Color(1, 1, 1, 0.80784315)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -3.5714264
+offset_right = 136.0
+offset_bottom = -2.8571396
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="." unique_id=1309479628]
+light_mask = 32768
+layout_mode = 0
+offset_left = 70.0
+offset_top = 968.0
+offset_right = 1282.0
+offset_bottom = 1085.0
+text = "stilbie"
+label_settings = SubResource("LabelSettings_ukoup")
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Label2" unique_id=1173713481]
+modulate = Color(1, 1, 1, 0.80784315)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -1.0
+offset_right = 237.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CommunityArt" type="TextureRect" parent="." unique_id=1879221597]
+light_mask = 32768
+layout_mode = 0
+offset_left = 124.0
+offset_top = 22.0
+offset_right = 1179.0
+offset_bottom = 956.0
+texture = ExtResource("1_4gywe")
+expand_mode = 2
+stretch_mode = 5

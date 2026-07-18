@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bl64p5qlgd0w3"]
+
+[ext_resource type="Script" uid="uid://b5ilm8rs5xk8p" path="res://Particle FX/particle_script.gd" id="1_m0coe"]
+[ext_resource type="Texture2D" uid="uid://cufk4xl4pexoq" path="res://Assets/Triangle.png" id="2_m0coe"]
+[ext_resource type="Script" uid="uid://nnc2xdnvvv3f" path="res://Particle FX/particle_emit_start.gd" id="3_qrdal"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8d61n"]
+
+[sub_resource type="CanvasItemMaterial" id="13"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_haib1"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.087248325), 0.0, 0.0, 0, 0, Vector2(0.04918033, 1), 0.0, 0.0, 0, 0, Vector2(0.19672132, -1), 0.0, 0.0, 0, 0, Vector2(0.28961748, 0.6957494), 0.0, 0.0, 0, 0, Vector2(0.42622948, -0.43176734), 0.0, 0.0, 0, 0, Vector2(0.57923496, 0.33780754), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_0xap8"]
+_data = [Vector2(0, 0.11409402), 0.0, 0.76539254, 0, 0, Vector2(1, 0), -0.19616905, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qrdal"]
+offsets = PackedFloat32Array(0, 0.13666667, 0.28333333, 0.41, 0.56333333, 0.71, 0.83, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.32100013, 0.06299999, 0.45, 1, 1, 1, 1, 1, 0.4611112, 0.25634918, 0.56349206, 1, 0.9287385, 0.84425825, 0.95535713, 1, 0.5978458, 0.270463, 0.65310013, 1, 0.8651736, 0.57539254, 0.8691573, 1, 0.83455133, 0.3614382, 0.7871555, 1)
+
+[node name="ParticleEffect" type="Node2D" unique_id=1684968850]
+z_index = 100
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_8d61n")
+script = ExtResource("1_m0coe")
+lifetime = 0.6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1033733125]
+z_index = -1
+z_as_relative = false
+material = SubResource("13")
+texture = ExtResource("2_m0coe")
+lifetime = 0.8
+explosiveness = 0.79
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 600.0
+initial_velocity_max = 900.0
+angular_velocity_min = 600.0
+angular_velocity_max = 1080.0
+orbit_velocity_min = -3.0
+orbit_velocity_max = 3.0
+orbit_velocity_curve = SubResource("Curve_haib1")
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_0xap8")
+color_ramp = SubResource("Gradient_qrdal")
+script = ExtResource("3_qrdal")

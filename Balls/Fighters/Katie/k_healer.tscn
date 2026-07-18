@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://b40xdu7c05p2j"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_6pxrk"]
+[ext_resource type="Script" uid="uid://baluw324ij1ey" path="res://Balls/Fighters/Katie/healer_script.gd" id="2_hryrk"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="2_ja6us"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_72353"]
+[ext_resource type="Texture2D" uid="uid://6yccr38l4ef7" path="res://Balls/Fighters/Katie/turret3.png" id="5_odkee"]
+[ext_resource type="Texture2D" uid="uid://dspxbqj6uueaf" path="res://Balls/Fighters/Katie/OCBL_katiebeach_turretgreen.png" id="6_hryrk"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="7_u1eqa"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="7_vnr8g"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="9_tahpy"]
+[ext_resource type="Texture2D" uid="uid://dwdmgvgd74a2q" path="res://Assets/dotted-circle.png" id="9_vnr8g"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j2hm2"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tahpy"]
+radius = 236.03389
+
+[node name="KatieHealer" type="RigidBody2D" unique_id=753854148]
+collision_layer = 112
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_j2hm2")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_6pxrk")
+ball_scale = 0.75
+groups = Array[String](["Turret", "Robot", "Minion"])
+velocity = 0.0
+bounce_speed_boost = 0.0
+normalizer_speed_down = 50.0
+
+[node name="TurretScript" type="Node" parent="." unique_id=1181027193]
+script = ExtResource("2_hryrk")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=960353784 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_ja6us")
+ball = NodePath("..")
+hitstop_scale = 0.0
+knockback_scale = 0.0
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_72353")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=984181658]
+hurt_switch = false
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("5_odkee")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_hryrk")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+offset_top = -34.0
+offset_bottom = 35.0
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=417507002]
+shape = ExtResource("7_vnr8g")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1913695471 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("7_u1eqa")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 30.0
+
+[node name="HDrainer" type="Node" parent="HealthManager" unique_id=870878322]
+script = ExtResource("9_tahpy")
+drain_per_second = 1.5
+
+[node name="HealingZone" type="Area2D" parent="." unique_id=877113499]
+collision_layer = 0
+collision_mask = 96
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealingZone" unique_id=1311007642]
+shape = SubResource("CircleShape2D_tahpy")
+debug_color = Color(0.77180344, 0.3856515, 0.57674, 0.24313726)
+
+[node name="DottedLines" type="Sprite2D" parent="HealingZone" unique_id=524354069]
+modulate = Color(2.2140146e-06, 0.59673566, 0.4882775, 0.36078432)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("9_vnr8g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals"]

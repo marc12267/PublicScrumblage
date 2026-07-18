@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://wwpcodln5rok"]
+
+[ext_resource type="Script" uid="uid://cgi4hlbegoiom" path="res://Balls/Components/damage_record_displayer_ui.gd" id="1_4jpi1"]
+[ext_resource type="Texture2D" uid="uid://c5rc4gggsov13" path="res://Assets/SwordIcon.png" id="1_qlvtx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_etbhq"]
+font_size = 32
+
+[node name="DamageRecord" type="MarginContainer" unique_id=1667309096]
+offset_left = 83.0
+offset_top = 79.0
+offset_right = 191.0
+offset_bottom = 121.0
+theme_override_constants/margin_top = 10
+script = ExtResource("1_4jpi1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=915788207]
+layout_mode = 2
+color = Color(0, 0, 0, 0.84313726)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=164162995]
+modulate = Color(0.9297146, 0.9297147, 0.9297146, 1)
+custom_minimum_size = Vector2(108, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=310488741]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer" unique_id=1844056556]
+layout_mode = 2
+texture = ExtResource("1_qlvtx")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=1573214395]
+layout_mode = 2
+theme_override_constants/margin_top = -3
+theme_override_constants/margin_right = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer2" unique_id=1235952215]
+unique_name_in_owner = true
+light_mask = 32768
+layout_mode = 2
+text = "999"
+label_settings = SubResource("LabelSettings_etbhq")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

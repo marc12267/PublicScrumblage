@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ju4j1jgtic5a"]
+
+[ext_resource type="Script" uid="uid://dg8woi5iirmfs" path="res://GameStuff/star_point.gd" id="1_mubbm"]
+[ext_resource type="Texture2D" uid="uid://bpausigd8vnbt" path="res://Assets/Star.png" id="2_os6ll"]
+
+[node name="StarPoint" type="Control" unique_id=6911186]
+light_mask = 32768
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_mubbm")
+disable_rand_move = false
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1363719512]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 17.845573
+offset_bottom = 15.0
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_os6ll")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=390825113]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 17.845573
+offset_bottom = 16.0
+texture = ExtResource("2_os6ll")
+expand_mode = 1

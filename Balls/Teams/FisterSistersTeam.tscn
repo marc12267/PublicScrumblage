@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cf7m08hevwjj4"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_olqc5"]
+[ext_resource type="PackedScene" uid="uid://bbksgp84t2x71" path="res://Balls/Fighters/Mandalyn/ball_mandalyn.tscn" id="2_gpur3"]
+[ext_resource type="AudioStream" uid="uid://bxweu7xqay0gh" path="res://Balls/Teams/fistersisters_teamname.wav" id="2_t1w2y"]
+[ext_resource type="PackedScene" uid="uid://7u2bgsyl5c52" path="res://Balls/Fighters/Vee/ball_vee.tscn" id="3_f7so0"]
+[ext_resource type="Texture2D" uid="uid://cl8a1476kw64h" path="res://Balls/Fighters/Vee/vee2v2.png" id="5_fs1k4"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="6_vofc6"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_olqc5")
+team_name = "FISTER SISTERS"
+team_audio = ExtResource("2_t1w2y")
+ball1 = NodePath("VeeBall")
+ball2 = NodePath("MandalynBall")
+
+[node name="MandalynBall" parent="." unique_id=220243503 instance=ExtResource("2_gpur3")]
+position = Vector2(145, -737)
+
+[node name="TextureRect" parent="MandalynBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(220243503, 1981925345, 2081690940) index="0" unique_id=1997730014]
+offset_top = -485.0
+offset_bottom = 915.0
+
+[node name="WinBubble" parent="MandalynBall/StatsUI/BallStatDisplay/WinSpeech" parent_id_path=PackedInt32Array(220243503, 1981925345, 1137886210) index="0" unique_id=347726285]
+position = Vector2(321, 1185)
+
+[node name="VeeBall" parent="." unique_id=1403036725 instance=ExtResource("3_f7so0")]
+
+[node name="TextureRect" parent="VeeBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1403036725, 2045748137, 2081690940) index="0" unique_id=1997730014]
+offset_top = -451.0
+offset_bottom = 949.0
+texture = ExtResource("5_fs1k4")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("6_vofc6")]
+
+[editable path="MandalynBall"]
+[editable path="MandalynBall/Visuals"]
+[editable path="MandalynBall/StatsUI/BallStatDisplay"]
+[editable path="MandalynBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="MandalynBall/FistBall/FistBall/Visuals"]
+[editable path="VeeBall"]
+[editable path="VeeBall/Visuals"]
+[editable path="VeeBall/StatsUI/BallStatDisplay"]
+[editable path="VeeBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

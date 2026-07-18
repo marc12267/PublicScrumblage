@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dv83j5ao3ptmp"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_1xth8"]
+[ext_resource type="Script" uid="uid://qfsbqq5xcnmq" path="res://Balls/Fighters/Katie/cutter_script.gd" id="2_p1pah"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_20xh2"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_pt76i"]
+[ext_resource type="Texture2D" uid="uid://buevq0ewsnaep" path="res://Balls/Fighters/Katie/OCBL_katiebeach_turretorange.png" id="6_20xh2"]
+[ext_resource type="Texture2D" uid="uid://brllmuit7k8qc" path="res://Balls/Fighters/Katie/turret1.png" id="6_p1pah"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="7_boejm"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="8_t6tig"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="9_2hun6"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="10_boejm"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="10_pc2l7"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="11_2hun6"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="13_bo0qj"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="13_boejm"]
+[ext_resource type="Texture2D" uid="uid://bripe4hu0q6ps" path="res://Balls/Fighters/Katie/turretweapon1.png" id="13_vv4oh"]
+[ext_resource type="Texture2D" uid="uid://q343yhbo3ccj" path="res://Balls/Fighters/Katie/OCBL_katiebeach_turretorange_poolnoodle_1.png" id="14_2hun6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j2hm2"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt76i"]
+size = Vector2(200, 20)
+
+[node name="KatieCutter" type="RigidBody2D" unique_id=2124472312]
+collision_layer = 112
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_j2hm2")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_1xth8")
+ball_scale = 0.75
+groups = Array[String](["Turret", "Robot", "Minion"])
+velocity = 0.0
+bounce_speed_boost = 0.0
+normalizer_speed_down = 50.0
+
+[node name="TurretScript" type="Node" parent="." unique_id=40028709]
+script = ExtResource("2_p1pah")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=1540307419 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_20xh2")
+ball = NodePath("..")
+hitstop_scale = 0.0
+knockback_scale = 0.0
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_pt76i")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("6_p1pah")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_20xh2")
+})
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("6_p1pah")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_20xh2")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+offset_top = -34.0
+offset_bottom = 35.0
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1044906787]
+shape = ExtResource("7_boejm")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1351753698 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("10_pc2l7")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 30.0
+
+[node name="HDrainer" type="Node" parent="HealthManager" unique_id=563701839]
+script = ExtResource("9_2hun6")
+drain_per_second = 1.5
+
+[node name="Rotater" type="Node2D" parent="." unique_id=473800862 node_paths=PackedStringArray("ball")]
+script = ExtResource("8_t6tig")
+ball = NodePath("..")
+rotation_rate = 5.5
+bounce_spin_boost = 0.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=706607030 node_paths=PackedStringArray("ball")]
+script = ExtResource("10_boejm")
+ball = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder" unique_id=771278246 node_paths=PackedStringArray("ball") instance=ExtResource("11_2hun6")]
+collision_layer = 0
+collision_mask = 32
+ball = NodePath("../../..")
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=1005858534 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_bo0qj")
+ball = NodePath("../../../..")
+knockback = 50.0
+directional_strength = 0.481
+self_knockback = 0.0
+crit_chance = 0.0
+
+[node name="WeaponVisual2" type="Node2D" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=1375127761]
+position = Vector2(185, 0)
+rotation = -3.1415927
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponHitbox/WeaponVisual2" unique_id=575924371 node_paths=PackedStringArray("ball")]
+position = Vector2(-35.00003, 2.0000086)
+rotation = -0.018933592
+scale = Vector2(-0.9, 0.9)
+texture = ExtResource("13_vv4oh")
+script = ExtResource("13_boejm")
+ball = NodePath("../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("14_2hun6")
+})
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=120079735]
+position = Vector2(254, -0.50001085)
+rotation = 3.1415925
+shape = SubResource("RectangleShape2D_pt76i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]

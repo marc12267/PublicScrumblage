@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://yaeplcl5w6lr"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_4233v"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="2_i2v57"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_053ff"]
+[ext_resource type="Script" uid="uid://dnsi1efi3vn17" path="res://Balls/Bosses/Bmation/balt_minion2.gd" id="3_ogujs"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_6j52r"]
+[ext_resource type="Texture2D" uid="uid://ds5ko8bkrup2h" path="res://Balls/Bosses/Bmation/betaling.png" id="5_uioty"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="6_30gvp"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="14_408qf"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="15_5m5l6"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="16_nuh3w"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="17_ykfjp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[node name="BetaBall" type="RigidBody2D" unique_id=1651906983]
+collision_layer = 112
+collision_mask = 17
+mass = 0.7
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_4233v")
+ball_scale = 1.2
+groups = Array[String](["Minion"])
+velocity = 500.0
+normalizer_speed_down = 30.0
+
+[node name="ContactDamage" type="Node" parent="." unique_id=1988262465 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_i2v57")
+ball = NodePath("..")
+contact_damage = 2.0
+self_knockback = 100.0
+hitstop_scale = 0.0
+
+[node name="BetaScript" type="Node" parent="." unique_id=340361340]
+script = ExtResource("3_ogujs")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=137423556 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_053ff")
+ball = NodePath("..")
+hitstop_scale = 0.0
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_6j52r")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("5_uioty")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("5_uioty")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+rotation = 0.05353478
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2066642577]
+shape = ExtResource("6_30gvp")
+
+[node name="Aggressive" type="Node2D" parent="." unique_id=1242787689 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_408qf")
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=2047138599 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("15_5m5l6")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 20.0
+
+[node name="Node" type="Node" parent="HealthManager" unique_id=1476040646]
+script = ExtResource("16_nuh3w")
+drain_per_second = 2.4
+
+[node name="MeterManager" type="Node" parent="." unique_id=1002660597]
+script = ExtResource("17_ykfjp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals"]

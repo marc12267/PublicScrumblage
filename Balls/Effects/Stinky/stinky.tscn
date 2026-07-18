@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c8tr3bg5fqikj"]
+
+[ext_resource type="Script" uid="uid://caxd4islykvm6" path="res://Balls/Effects/Stinky/status_stinky.gd" id="1_ygarj"]
+[ext_resource type="PackedScene" uid="uid://buuawr8jpjeb8" path="res://Balls/Effects/Stinky/stinky_effect.tscn" id="2_no64f"]
+
+[node name="Stinky" type="Node" unique_id=1637184065]
+script = ExtResource("1_ygarj")
+have_icon = true
+icon_effect = "res://Balls/Bosses/BeanDog/poop.png"
+
+[node name="GPUParticles2D" parent="." unique_id=1987200136 instance=ExtResource("2_no64f")]

@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://df152gwirwy4o"]
+
+[ext_resource type="Script" uid="uid://dnf2s7wt6ommw" path="res://GameStuff/community_art_showcase.gd" id="1_al4g0"]
+[ext_resource type="Texture2D" uid="uid://bsk3iy4qipqxp" path="res://Assets/temp/exportbj.png" id="2_al4g0"]
+[ext_resource type="Texture2D" uid="uid://daw58hicgmrhf" path="res://Assets/Fetti.png" id="3_oesil"]
+
+[sub_resource type="SystemFont" id="SystemFont_ukoup"]
+font_names = PackedStringArray("Bradley Hand ITC")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_10ktq"]
+font = SubResource("SystemFont_ukoup")
+font_size = 80
+outline_size = 9
+
+[sub_resource type="LabelSettings" id="LabelSettings_ukoup"]
+font = SubResource("SystemFont_ukoup")
+font_size = 64
+outline_size = 5
+
+[sub_resource type="Gradient" id="Gradient_a2sv6"]
+offsets = PackedFloat32Array(0, 0.25449103, 0.5, 0.7754491, 1)
+colors = PackedColorArray(0.84759426, 0.09202937, 9.62615e-08, 1, 0.026952257, 0, 0.9379149, 1, 0.8028424, 0.002012828, 0.9697029, 1, 0.45681143, 0.73039854, 0, 1, 0.9, 0.69, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_24w15"]
+gradient = SubResource("Gradient_a2sv6")
+
+[sub_resource type="Curve" id="Curve_b3xwq"]
+_data = [Vector2(0, 0.15883672), 0.0, 0.0, 0, 0, Vector2(0.29500002, 0.22147655), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.2304252, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yhgym"]
+curve = SubResource("Curve_b3xwq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7imi3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 35.0
+initial_velocity_min = 400.0
+initial_velocity_max = 1200.0
+angular_velocity_min = -150.00002
+angular_velocity_max = 149.99998
+gravity = Vector3(0, 200, 0)
+scale_curve = SubResource("CurveTexture_yhgym")
+color_initial_ramp = SubResource("GradientTexture1D_24w15")
+
+[node name="Control" type="CanvasLayer" unique_id=853382217]
+layer = 5
+script = ExtResource("1_al4g0")
+active = false
+
+[node name="Control" type="Control" parent="." unique_id=1629927865]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -6.0
+offset_top = 193.0
+offset_right = 34.0
+offset_bottom = 233.0
+
+[node name="ColorRect3" type="ColorRect" parent="Control" unique_id=310163347]
+modulate = Color(1, 1, 1, 0.80784315)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -136.0
+offset_right = 1357.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Control/ColorRect3" unique_id=931481901]
+light_mask = 32768
+z_index = 1
+layout_mode = 0
+offset_left = 137.0
+offset_top = 16.0
+offset_right = 1349.0
+offset_bottom = 116.0
+scale = Vector2(1, 1.4)
+text = "ITEM RECOVERED!"
+label_settings = SubResource("LabelSettings_10ktq")
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1173713481]
+modulate = Color(1, 1, 1, 0.80784315)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 959.0
+offset_right = 1396.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="Control/ColorRect2" unique_id=1309479628]
+light_mask = 32768
+z_index = 1
+layout_mode = 0
+offset_left = 170.0
+offset_top = 5.0
+offset_right = 1382.0
+offset_bottom = 122.0
+text = "Arm of Abetamation"
+label_settings = SubResource("LabelSettings_ukoup")
+horizontal_alignment = 1
+
+[node name="CommunityArt" type="TextureRect" parent="Control" unique_id=1879221597]
+light_mask = 32768
+layout_mode = 0
+offset_left = 124.0
+offset_top = 22.0
+offset_right = 1179.0
+offset_bottom = 956.0
+texture = ExtResource("2_al4g0")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1364415174]
+modulate = Color(1, 1, 1, 0.62352943)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -305.0
+offset_top = -275.0
+offset_right = 1565.0
+offset_bottom = 1216.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=352944937]
+light_mask = 0
+z_index = 4096
+position = Vector2(650, -1)
+rotation = -3.1415925
+emitting = false
+amount = 35
+texture = ExtResource("3_oesil")
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+randomness = 0.3
+process_material = SubResource("ParticleProcessMaterial_7imi3")

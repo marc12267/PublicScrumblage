@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyawymqvetyyx"]
+
+[ext_resource type="Script" uid="uid://jcr5dt82bx8s" path="res://Balls/Moods/mood_silly.gd" id="1_eytbd"]
+
+[node name="Silly" type="Node2D"]
+script = ExtResource("1_eytbd")
+trigger_chance = 0.35

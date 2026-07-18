@@ -1,0 +1,313 @@
+[gd_scene format=3 uid="uid://7meckvgvv1kl"]
+
+[ext_resource type="Script" uid="uid://ump2riesa4lk" path="res://GameStuff/BossStuff/boss_stat_display.gd" id="1_06dbq"]
+[ext_resource type="Texture2D" uid="uid://c02icu7mfdkdx" path="res://Assets/FolderDescription.png" id="4_g6ybo"]
+[ext_resource type="Texture2D" uid="uid://fxv1r8rxxlgf" path="res://Assets/FolderBattle.png" id="5_xkxel"]
+[ext_resource type="Script" uid="uid://crcc7128ndwe7" path="res://UI/ui_healthbar_boss.gd" id="6_06dbq"]
+[ext_resource type="FontFile" uid="uid://cx73pa2hqwjkg" path="res://Assets/ua-cadet.ttf" id="6_gj8kt"]
+[ext_resource type="Texture2D" uid="uid://s0mky8uigg8h" path="res://GameStuff/BossStuff/bossbarmeter.png" id="6_jltqy"]
+[ext_resource type="Texture2D" uid="uid://rslgmbtxn6ow" path="res://GameStuff/BossStuff/bossbar.png" id="9_v2ws6"]
+[ext_resource type="PackedScene" uid="uid://6ouldejokie4" path="res://UI/plate_manager.tscn" id="10_tltsl"]
+[ext_resource type="Texture2D" uid="uid://dlbvkn6bn0xx2" path="res://Assets/jane.png" id="12_06dbq"]
+[ext_resource type="Script" uid="uid://cpnf3mthdow5k" path="res://Balls/status_displayer.gd" id="13_oswna"]
+[ext_resource type="Script" uid="uid://db6o5mlii3s5b" path="res://GameStuff/icon_skin_swapper.gd" id="13_v2ws6"]
+
+[sub_resource type="SystemFont" id="SystemFont_xnscd"]
+font_names = PackedStringArray("Calibri")
+font_italic = true
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_hh7eg"]
+line_spacing = -3.0
+font = SubResource("SystemFont_xnscd")
+font_size = 36
+font_color = Color(0, 0, 0, 0.6901961)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gj8kt"]
+font = ExtResource("6_gj8kt")
+font_size = 80
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+stacked_outline_count = 1
+
+[sub_resource type="Animation" id="Animation_jltqy"]
+resource_name = "HurtFlash"
+length = 0.2
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.53588694, 1),
+"update": 0,
+"values": [Color(0.7921569, 0, 0.29411766, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gj8kt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06dbq"]
+_data = {
+&"HurtFlash": SubResource("Animation_jltqy"),
+&"RESET": SubResource("Animation_gj8kt")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_jltqy"]
+font = ExtResource("6_gj8kt")
+font_size = 34
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BossDisplay" type="Control" unique_id=627380850 node_paths=PackedStringArray("box", "healthbar", "frailbar", "meterbar", "health_chaser", "status_displayer", "overhealth", "armor")]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_06dbq")
+box = NodePath("Box")
+healthbar = NodePath("Box/BattleBar/Healthbar/Healthbar")
+frailbar = NodePath("Box/BattleBar/Healthbar/Frail")
+meterbar = NodePath("Box/BattleBar/Meterbar")
+health_chaser = NodePath("Box/BattleBar/Healthbar/HealthChaser")
+status_displayer = NodePath("Box/DescriptionBox/StatusDisplayer")
+overhealth = NodePath("Box/BattleBar/Healthbar/Overhealth")
+armor = NodePath("Box/BattleBar/Healthbar/Armor")
+
+[node name="Box" type="Node2D" parent="." unique_id=655908497]
+
+[node name="DescriptionBox" type="Control" parent="Box" unique_id=624450934]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+offset_left = 199.0
+offset_top = -475.0
+offset_right = 239.0
+offset_bottom = -435.0
+
+[node name="FolderDescription" type="TextureRect" parent="Box/DescriptionBox" unique_id=579873522]
+modulate = Color(0.56078464, 0.63170546, 0.64421976, 1)
+light_mask = 0
+layout_mode = 0
+offset_top = 1.0
+offset_right = 772.0
+offset_bottom = 456.0
+texture = ExtResource("4_g6ybo")
+
+[node name="Description" type="RichTextLabel" parent="Box/DescriptionBox" unique_id=1737318353]
+light_mask = 0
+layout_mode = 0
+offset_left = 15.0
+offset_top = 23.0
+offset_right = 760.0
+offset_bottom = 427.0
+theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "Power descriptions and stuff yadd  
+asdnaljdjsajdajldlnalnsnl
+asdlasdandlnaslnlnalsndnlasklnd
+asbkdajkdjnasjnalsdk
+laklmsmkdmkl"
+
+[node name="Credit" type="Label" parent="Box/DescriptionBox/Description" unique_id=522021847]
+light_mask = 0
+layout_mode = 0
+offset_left = 177.0
+offset_top = 398.0
+offset_right = 745.0
+offset_bottom = 437.0
+label_settings = SubResource("LabelSettings_hh7eg")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StatusDisplayer" type="Control" parent="Box/DescriptionBox" unique_id=1807674758]
+light_mask = 0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = -19.0
+offset_right = 12.0
+offset_bottom = -19.0
+script = ExtResource("13_oswna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Box/DescriptionBox/StatusDisplayer" unique_id=1943492850]
+light_mask = 0
+layout_mode = 0
+offset_left = 242.0
+offset_top = 2.0
+offset_right = 753.0
+offset_bottom = 48.0
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="BattleBar" type="Control" parent="Box" unique_id=846234039]
+light_mask = 0
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 64.0
+offset_right = 57.0
+offset_bottom = 104.0
+
+[node name="BBBack" type="TextureRect" parent="Box/BattleBar" unique_id=170438548]
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 620.0
+offset_bottom = 110.0
+texture = ExtResource("5_xkxel")
+
+[node name="Meterbar" type="TextureProgressBar" parent="Box/BattleBar" unique_id=368834551]
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_left = -23.0
+offset_top = 72.0
+offset_right = 1254.0
+offset_bottom = 108.0
+texture_under = ExtResource("6_jltqy")
+texture_progress = ExtResource("6_jltqy")
+tint_under = Color(0.8293216, 0.9114435, 0.9115726, 1)
+tint_progress = Color(0.08548313, 0.81983453, 0.80986327, 1)
+
+[node name="Healthbar" type="Control" parent="Box/BattleBar" unique_id=634706039 node_paths=PackedStringArray("ball_stat_display")]
+light_mask = 0
+anchors_preset = 0
+offset_top = -87.0
+offset_right = 40.0
+offset_bottom = -47.0
+script = ExtResource("6_06dbq")
+ball_stat_display = NodePath("../../..")
+
+[node name="HealthChaser" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=656825114]
+light_mask = 0
+layout_mode = 0
+offset_left = -6.0
+offset_top = 11.0
+offset_right = 1452.0
+offset_bottom = 75.0
+step = 0.01
+value = 100.0
+texture_under = ExtResource("9_v2ws6")
+texture_progress = ExtResource("9_v2ws6")
+tint_under = Color(0.13870001, 0.18145, 0.19, 1)
+tint_progress = Color(0.76, 0.1368, 0.33414662, 1)
+
+[node name="Weapons" type="Node2D" parent="Box/BattleBar/Healthbar/HealthChaser" unique_id=766720150]
+light_mask = 0
+position = Vector2(5.0000005, 4.0000005)
+rotation = 0.13677461
+
+[node name="Frail" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=1096384234]
+light_mask = 0
+layout_mode = 0
+offset_left = -6.0
+offset_top = 11.0
+offset_right = 1127.0
+offset_bottom = 75.0
+value = 100.0
+texture_progress = ExtResource("9_v2ws6")
+tint_progress = Color(0.62630665, 0.33210567, 0.89301276, 1)
+
+[node name="Overhealth" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=138407658]
+light_mask = 0
+layout_mode = 0
+offset_left = -6.0
+offset_top = 11.0
+offset_right = 1127.0
+offset_bottom = 75.0
+value = 100.0
+texture_progress = ExtResource("9_v2ws6")
+tint_progress = Color(0, 0.69803923, 0.7254902, 1)
+
+[node name="Armor" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=192653395]
+light_mask = 0
+layout_mode = 0
+offset_left = -6.0
+offset_top = 11.0
+offset_right = 1127.0
+offset_bottom = 75.0
+value = 100.0
+texture_progress = ExtResource("9_v2ws6")
+tint_progress = Color(0.90658665, 0.4826057, 0.20829412, 1)
+
+[node name="Healthbar" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=1875357996]
+light_mask = 0
+layout_mode = 0
+offset_left = -6.0
+offset_top = 11.0
+offset_right = 1452.0
+offset_bottom = 89.0
+value = 100.0
+texture_progress = ExtResource("9_v2ws6")
+tint_progress = Color(0, 0.72, 0.54, 1)
+
+[node name="HealthThing" type="Node2D" parent="Box/BattleBar/Healthbar/Healthbar" unique_id=385263415]
+visible = false
+position = Vector2(1178, 2)
+skew = 0.7853982
+
+[node name="HealthLabel" type="Label" parent="Box/BattleBar/Healthbar/Healthbar/HealthThing" unique_id=1229604741]
+light_mask = 0
+offset_left = -53.999985
+offset_top = 1.66893e-05
+offset_right = 255.00002
+offset_bottom = 98.000015
+text = "500"
+label_settings = SubResource("LabelSettings_gj8kt")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Box/BattleBar/Healthbar/Healthbar/HealthThing" unique_id=1287886949]
+root_node = NodePath("../HealthLabel")
+libraries/ = SubResource("AnimationLibrary_06dbq")
+
+[node name="PlateManager" parent="Box/BattleBar/Healthbar" unique_id=1327555538 instance=ExtResource("10_tltsl")]
+visible = false
+light_mask = 0
+layout_mode = 0
+
+[node name="Name" type="Label" parent="Box/BattleBar" unique_id=1322474825]
+light_mask = 0
+layout_mode = 0
+offset_left = 73.0
+offset_top = -60.0
+offset_right = 688.0
+offset_bottom = -2.0
+scale = Vector2(1.85, 1.948)
+text = "Lorem Ipsum Name"
+label_settings = SubResource("LabelSettings_jltqy")
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Box/BattleBar" unique_id=735791092]
+light_mask = 0
+layout_mode = 0
+offset_left = -91.0
+offset_top = -99.0
+offset_right = 39.0
+offset_bottom = 31.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("12_06dbq")
+expand_mode = 1
+script = ExtResource("13_v2ws6")

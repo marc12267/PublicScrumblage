@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://bejudojdnd6ls"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_75fcu"]
+[ext_resource type="Script" uid="uid://cvo1kpl3toawq" path="res://Balls/Fighters/Somnia/somnia_script.gd" id="2_ak8ts"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_f45pk"]
+[ext_resource type="Script" uid="uid://1ipvihctelcs" path="res://Balls/Components/meter_autogain.gd" id="3_s1iut"]
+[ext_resource type="Script" uid="uid://bmjp1eltss0as" path="res://Balls/Components/after_imager.gd" id="4_l16cp"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_noe3p"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="5_daxh2"]
+[ext_resource type="Texture2D" uid="uid://4df4bhtylo6g" path="res://Balls/Fighters/Somnia/Somnia.png" id="5_wirdt"]
+[ext_resource type="Texture2D" uid="uid://no8p65msjr55" path="res://Balls/Fighters/Somnia/scrumblage_som1_summer.png" id="6_gqo1w"]
+[ext_resource type="Texture2D" uid="uid://dj8bl80cpbhaq" path="res://Balls/Fighters/Somnia/SomniaHurt.png" id="7_iodn5"]
+[ext_resource type="Texture2D" uid="uid://o4r1a8wwc33l" path="res://Balls/Fighters/Somnia/scrumblage_som2_summer.png" id="8_6xlfe"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="9_clyp3"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="9_daxh2"]
+[ext_resource type="Texture2D" uid="uid://cai0nl8j3bh8w" path="res://Balls/Fighters/Somnia/scrumblage_nightmare.png" id="10_1rinw"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="10_m2sp5"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="11_girf3"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="12_2fe56"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="13_tb0m5"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="14_thykl"]
+[ext_resource type="Texture2D" uid="uid://cmytjosqsbgtf" path="res://Balls/Fighters/Somnia/SomniaBat.png" id="14_wirdt"]
+[ext_resource type="Texture2D" uid="uid://brt0cm7h13sqk" path="res://Balls/Fighters/Somnia/VisionCone.png" id="15_ak8ts"]
+[ext_resource type="Script" uid="uid://bu8lf26jjbrdg" path="res://Balls/Moods/mood_aggressive.gd" id="17_gqo1w"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="17_t2b2r"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="18_jpg85"]
+[ext_resource type="Texture2D" uid="uid://bwuoo6ucdhu4k" path="res://Balls/Fighters/Somnia/scrumblage_bat_summer.png" id="18_s1iut"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="19_ym6lq"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="20_o4kts"]
+[ext_resource type="AudioStream" uid="uid://srwsiqvojdin" path="res://Balls/Fighters/Somnia/name_somnia.wav" id="20_w10pd"]
+[ext_resource type="Texture2D" uid="uid://cv1tixptmx0i" path="res://Balls/Fighters/Somnia/SomniaVs.png" id="21_67cli"]
+[ext_resource type="Texture2D" uid="uid://beq5yfh06af71" path="res://Assets/Folder.png" id="21_gqo1w"]
+[ext_resource type="Texture2D" uid="uid://vvt5uwkq46ik" path="res://Balls/Fighters/Somnia/VSART_somnia_summer.png" id="22_iodn5"]
+[ext_resource type="LabelSettings" uid="uid://ct36rcpeojxat" path="res://Fonts/Meter_bar_font.tres" id="22_noe3p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak8ts"]
+size = Vector2(120, 24)
+
+[node name="SomniaBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_75fcu")
+ball_scale = 1.1
+velocity = 550.0
+bounce_speed_boost = 400.0
+
+[node name="SomniaScript" type="Node" parent="." unique_id=802057626]
+script = ExtResource("2_ak8ts")
+
+[node name="Autogain" type="Node" parent="SomniaScript" unique_id=2024673706 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("3_s1iut")
+meter_manager = NodePath("../../MeterManager")
+gain_rate = 10.0
+
+[node name="AfterImager" type="Node" parent="SomniaScript" unique_id=1860450248 node_paths=PackedStringArray("ball", "visual")]
+script = ExtResource("4_l16cp")
+active = false
+ball = NodePath("../..")
+visual = NodePath("../../Visuals")
+delay = 0.04
+shrink_scale = 0.1
+duration = 1.0
+starting_a = 1.0
+
+[node name="GainHit" type="Node" parent="SomniaScript" unique_id=1914710767 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("5_daxh2")
+meter_manager = NodePath("../../MeterManager")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_f45pk")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_noe3p")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("5_wirdt")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_gqo1w")
+})
+
+[node name="Special" type="Sprite2D" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="1" unique_id=108004742]
+visible = false
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("10_1rinw")
+script = ExtResource("9_daxh2")
+locked_visual = true
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_gqo1w")
+})
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_iodn5")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("8_6xlfe")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="VisionRotater" type="Node2D" parent="." unique_id=34708902]
+
+[node name="PointLight2D" type="PointLight2D" parent="VisionRotater" unique_id=639722101]
+z_index = -1
+position = Vector2(992.49994, -5.666667)
+scale = Vector2(2.7730496, 3)
+color = Color(0.0653085, 0.18839464, 0.10315644, 1)
+energy = 0.6
+blend_mode = 1
+range_item_cull_mask = 32
+texture = ExtResource("15_ak8ts")
+
+[node name="Area2D" type="Area2D" parent="VisionRotater" unique_id=392973005]
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionRotater/Area2D" unique_id=359488784]
+position = Vector2(26.000004, 0)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(290.5, 86.66667, 290, -89, -10, 0)
+
+[node name="Rotater" type="Node2D" parent="." unique_id=466768462 node_paths=PackedStringArray("ball")]
+script = ExtResource("9_clyp3")
+ball = NodePath("..")
+normalizer_rate = 13.7
+bounce_spin_boost = 6.7
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1476451661 node_paths=PackedStringArray("ball")]
+position = Vector2(76, 0)
+script = ExtResource("10_m2sp5")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=811104591 node_paths=PackedStringArray("rotater")]
+script = ExtResource("11_girf3")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("12_2fe56")]
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=522708154 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_tb0m5")
+ball = NodePath("../../../../..")
+projectile_deflecter = true
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1344898340 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_thykl")
+ball = NodePath("../../../../..")
+knockback = 200.0
+crit_chance = 0.0
+crit_multiplier = 3.0
+dont_emit = true
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=823705917]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1734721494 node_paths=PackedStringArray("ball")]
+position = Vector2(88, -2.6459045)
+rotation = -2.3813183
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("14_wirdt")
+script = ExtResource("17_t2b2r")
+ball = NodePath("../../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("18_s1iut")
+})
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=822110230]
+position = Vector2(110, 0)
+shape = SubResource("RectangleShape2D_ak8ts")
+
+[node name="Aggressive" type="Node2D" parent="." unique_id=1873440633 node_paths=PackedStringArray("ball")]
+script = ExtResource("17_gqo1w")
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("18_jpg85")
+hitprocessor = NodePath("../HitProcessor")
+overhealth = null
+armor = null
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("19_ym6lq")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("20_o4kts")]
+offset_left = 246.86438
+offset_top = 833.7251
+offset_right = 286.86438
+offset_bottom = 873.7251
+
+[node name="Folder" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="0" unique_id=281327603]
+texture = ExtResource("21_gqo1w")
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "SOMNIA THE DREAM DEMON"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "Falling under her gaze puts you to sleep, setting you up for a critical strike from her nasty club.
+Her demon form is incorporeal."
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "KelvinDoesArt
+"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("5_wirdt")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_gqo1w")
+})
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_sound = ExtResource("20_w10pd")
+name_text = "Somnia"
+splasharts = {
+"Default": NodePath("TextureRect"),
+"Summer": NodePath("TextureRect2")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -485.0
+offset_top = -391.00003
+offset_right = 515.0
+offset_bottom = 1009.0
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("21_67cli")
+
+[node name="TextureRect2" type="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=1025069265]
+light_mask = 1024
+layout_mode = 0
+offset_left = -494.0
+offset_top = -391.0
+offset_right = 507.0526
+offset_bottom = 1057.4211
+scale = Vector2(0.95, 0.95)
+texture = ExtResource("22_iodn5")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.84106743, 0.78188777, 0.1368298, 1)
+grid_value = Vector2(0, -0.32413793)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_top = -47.0
+offset_bottom = -7.0
+grid_value = Vector2(0, -0.32413793)
+
+[node name="WinBubble" parent="StatsUI/BallStatDisplay/WinSpeech" parent_id_path=PackedInt32Array(750446237, 641855123) index="0" unique_id=347726285]
+position = Vector2(-142, 1078)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" index="1" unique_id=316822069]
+modulate = Color(0.47843137, 0.68235296, 1, 1)
+text = "“You’re not waking up
+from this!”"
+
+[node name="LV" type="Label" parent="StatsUI/BallStatDisplay" unique_id=1263340200]
+z_index = 3
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 238.13562
+offset_top = 95.2749
+offset_right = 452.13562
+offset_bottom = 164.2749
+text = "SLEEP: 1"
+label_settings = ExtResource("22_noe3p")
+vertical_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bgn5xccv5trxv"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_5dfej"]
+[ext_resource type="Script" uid="uid://md651a5glnbo" path="res://Balls/Fighters/Boomy/boomer_script.gd" id="2_kreor"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="4_tnggs"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="5_ge0c4"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="6_k1cnb"]
+[ext_resource type="Texture2D" uid="uid://ddk2l304kgnvb" path="res://Balls/Fighters/Boomy/Boomer.png" id="7_k40kb"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="12_ex280"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="14_padpl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[node name="BoomerBall" type="RigidBody2D" unique_id=1403036725]
+collision_layer = 112
+collision_mask = 17
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_5dfej")
+ball_scale = 0.85
+groups = Array[String](["Minion"])
+velocity = 260.0
+bounce_speed_boost = 240.0
+
+[node name="BoomerScript" type="Node" parent="." unique_id=815719418]
+script = ExtResource("2_kreor")
+
+[node name="ContactDamager" type="Node" parent="." unique_id=659901768 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_tnggs")
+ball = NodePath("..")
+knockback = 0.0
+self_knockback = 0.0
+
+[node name="HitProcessor" type="Node" parent="." unique_id=547083850 node_paths=PackedStringArray("ball")]
+script = ExtResource("5_ge0c4")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("6_k1cnb")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("7_k40kb")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_k40kb")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225421673]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=991021552 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("12_ex280")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 25.0
+
+[node name="Centered" type="Node2D" parent="." unique_id=288242969 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_padpl")
+ball = NodePath("..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals"]

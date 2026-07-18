@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://cd36jj20l11hn"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_1ypq2"]
+[ext_resource type="Script" uid="uid://7ts6wxvj62ry" path="res://Balls/Fighters/Katie/katie_script.gd" id="2_f665h"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_6bexx"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_f665h"]
+[ext_resource type="Texture2D" uid="uid://dbgt7xw1ew6bi" path="res://Balls/Fighters/Katie/katie2.png" id="6_f665h"]
+[ext_resource type="Texture2D" uid="uid://tyhxcrf7pkpa" path="res://Balls/Fighters/Katie/Katie.png" id="6_qaflo"]
+[ext_resource type="Texture2D" uid="uid://c1tc1ca820g6i" path="res://Balls/Fighters/Katie/OCBL_katiebeach_sippies-1.png" id="6_ynggr"]
+[ext_resource type="Texture2D" uid="uid://bcrpkb5reda0i" path="res://Balls/Fighters/Katie/OCBL_katiebeach_hurt.png" id="8_p2u0b"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="9_scuxh"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="10_7eidy"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="10_qaflo"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="11_d2pf8"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="12_7e6m6"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="13_uq4i4"]
+[ext_resource type="Texture2D" uid="uid://bc0ibwh6wmfjq" path="res://Balls/Fighters/Katie/katieweapon.png" id="14_t0m3m"]
+[ext_resource type="AudioStream" uid="uid://dxshh4ljluyk8" path="res://Balls/Fighters/Katie/name_katie.wav" id="17_qaflo"]
+[ext_resource type="Texture2D" uid="uid://dvac5qtrxbcor" path="res://Balls/Fighters/Katie/katieVs.png" id="17_t0m3m"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="18_fksql"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="19_74kkg"]
+[ext_resource type="Texture2D" uid="uid://0eh15dcrtube" path="res://Balls/Fighters/Katie/Beach_Katie_OBCL_2.1_like_for_real.png" id="19_w80qw"]
+[ext_resource type="Script" uid="uid://dlc2u42j6uahv" path="res://GameStuff/splashart_skin_hider.gd" id="20_v8gir"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="20_vndsj"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="23_ynggr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qaflo"]
+size = Vector2(91.25, 40)
+
+[node name="KatieBall" type="RigidBody2D" unique_id=16634689]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_1ypq2")
+velocity = 580.0
+bounce_speed_boost = 200.0
+
+[node name="KatieScript" type="Node" parent="." unique_id=121643000]
+script = ExtResource("2_f665h")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=1730980211 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_6bexx")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_f665h")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("6_qaflo")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_ynggr")
+})
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("6_f665h")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("8_p2u0b")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=227850594]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=978810625 node_paths=PackedStringArray("ball")]
+script = ExtResource("9_scuxh")
+ball = NodePath("..")
+rotation_rate = 6.5
+normalizer_rate = 10.0
+bounce_spin_boost = 4.5
+flipper_min = 6.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1578197751 node_paths=PackedStringArray("ball")]
+position = Vector2(86, 0)
+script = ExtResource("10_7eidy")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=850631198 node_paths=PackedStringArray("rotater")]
+script = ExtResource("10_qaflo")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=1890105924 node_paths=PackedStringArray("ball") instance=ExtResource("11_d2pf8")]
+position = Vector2(62.04001, 0)
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1115975267]
+position = Vector2(16.584991, 0)
+shape = SubResource("RectangleShape2D_qaflo")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1401720577 node_paths=PackedStringArray("ball")]
+script = ExtResource("12_7e6m6")
+ball = NodePath("../../../../..")
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=2077913699 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_uq4i4")
+ball = NodePath("../../../../..")
+damage = 3.0
+self_knockback = 164.0
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1582419570]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=387217753]
+position = Vector2(-20.00003, -5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_t0m3m")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=932616732 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("18_fksql")
+hitprocessor = NodePath("../HitProcessor")
+
+[node name="MeterManager" type="Node" parent="." unique_id=2108459450]
+script = ExtResource("19_74kkg")
+meter = 50
+
+[node name="StatsUI" type="Node" parent="." unique_id=497472768]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=250334219 instance=ExtResource("20_vndsj")]
+offset_left = -123.0
+offset_top = 101.0
+offset_right = -83.0
+offset_bottom = 141.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="1" unique_id=1921250255]
+text = "KATIE THE ENGINEER"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="3" unique_id=794553254]
+text = "Places down turrets to help her in combat.
+One shoots, the other heals, and the third smacks!"
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "Katieverse"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(250334219, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("6_qaflo")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_ynggr")
+})
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(250334219, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_sound = ExtResource("17_qaflo")
+name_text = "Katie"
+splasharts = {
+"Default": NodePath("TextureRect"),
+"Summer": NodePath("SummerRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -470.0
+offset_top = -361.0
+offset_right = 530.0
+offset_bottom = 1039.0
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("17_t0m3m")
+
+[node name="SummerRect" type="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=1628809918 node_paths=PackedStringArray("ball_stat_display")]
+light_mask = 1024
+layout_mode = 0
+offset_left = -542.0
+offset_top = -316.0
+offset_right = 406.18182
+offset_bottom = 1084.0
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("19_w80qw")
+expand_mode = 4
+stretch_mode = 4
+script = ExtResource("20_v8gir")
+ball_stat_display = NodePath("../../..")
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(250334219, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.55140865, 0.80886877, 0.31624147, 1)
+grid_value = Vector2(-0.33103448, -0.6827586)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(250334219, 1935891313) index="5" unique_id=2127130666]
+offset_left = -48.0
+offset_top = -99.0
+offset_right = -8.0
+offset_bottom = -59.0
+grid_value = Vector2(-0.33103448, -0.6827586)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(250334219, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.4862745, 0.9019608, 0.75686276, 1)
+text = "\"Would you like a tangerine?\""
+
+[node name="Centered" type="Node2D" parent="." unique_id=1185308695 node_paths=PackedStringArray("ball")]
+script = ExtResource("23_ynggr")
+ball = NodePath("..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bmxrpcaug7l1j"]
+
+[ext_resource type="Script" uid="uid://cqqsnso17dptr" path="res://Balls/Components/stat_controller.gd" id="1_uxx2d"]
+
+[node name="StatController" type="Node"]
+script = ExtResource("1_uxx2d")

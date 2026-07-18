@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ck4x8se5h5uyb"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_pgsd1"]
+[ext_resource type="AudioStream" uid="uid://btixcnligy0a2" path="res://Balls/Teams/papiro_teamname.wav" id="2_gkint"]
+[ext_resource type="PackedScene" uid="uid://cu4laqyyr3nqr" path="res://Balls/Fighters/Hiro/ball_hiro.tscn" id="4_gkint"]
+[ext_resource type="PackedScene" uid="uid://bgx4bvmpl1aei" path="res://Balls/Fighters/Paprika/ball_paprika.tscn" id="5_wacep"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="6_vwuqx"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_pgsd1")
+team_name = "PAPIRO"
+team_audio = ExtResource("2_gkint")
+ball1 = NodePath("HiroBall")
+ball2 = NodePath("PaprikaBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("6_vwuqx")]
+position = Vector2(324, -445)
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.7882353, 0.18039216, 0.28235295, 1)
+text = "\"It's hard not hitting your little... 'yous' with my sword!\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.6039216, 0.4627451, 0.7372549, 1)
+text = "\"It won't get easier
+anytime soon!\""
+
+[node name="HiroBall" parent="." unique_id=1629520744 instance=ExtResource("4_gkint")]
+
+[node name="PaprikaBall" parent="." unique_id=232331502 instance=ExtResource("5_wacep")]
+
+[node name="TextureRect" parent="PaprikaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(232331502, 1675542345, 2081690940) index="0" unique_id=1997730014]
+offset_top = -459.0
+offset_bottom = 941.0
+
+[node name="Chart" parent="PaprikaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(232331502, 1675542345, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.29655358, 0.5491345, 0.19376068, 1)
+
+[editable path="WinBubble"]
+[editable path="PaprikaBall"]
+[editable path="PaprikaBall/Visuals"]
+[editable path="PaprikaBall/StatsUI/BallStatDisplay"]
+[editable path="PaprikaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

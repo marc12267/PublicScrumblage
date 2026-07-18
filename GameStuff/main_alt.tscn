@@ -1,0 +1,289 @@
+[gd_scene format=3 uid="uid://bbtmaamuauau"]
+
+[ext_resource type="Script" uid="uid://dykgun60u01lc" path="res://GameStuff/main.gd" id="1_8glit"]
+[ext_resource type="PackedScene" uid="uid://k1xn4ny38p37" path="res://Balls/Fighters/Beta/ball_beta.tscn" id="2_8glit"]
+[ext_resource type="PackedScene" uid="uid://bo3ssenkwo76p" path="res://Balls/Bosses/Bmation/boss_bmation.tscn" id="3_xc2yy"]
+[ext_resource type="Texture2D" uid="uid://cxvt850wq3qyv" path="res://Assets/Cloud_Test.png" id="4_unhx3"]
+[ext_resource type="Texture2D" uid="uid://dfmiinp0lbiwd" path="res://Assets/Clouds1.png" id="5_cf8gj"]
+[ext_resource type="Texture2D" uid="uid://dw3evnrtpjjfi" path="res://Assets/CloudSun.png" id="6_ndysq"]
+[ext_resource type="Script" uid="uid://dcitm4q0u0fny" path="res://sun_follow.gd" id="7_1etv0"]
+[ext_resource type="Script" uid="uid://b4yamxnewh71l" path="res://GameStuff/confetti_cannon.gd" id="8_7aj07"]
+[ext_resource type="PackedScene" uid="uid://npp6cmnmok3k" path="res://GameStuff/Confetti.tscn" id="9_jojj5"]
+[ext_resource type="Script" uid="uid://c1uymxce1klyb" path="res://GameStuff/arena_shrinker.gd" id="10_n25tb"]
+[ext_resource type="Script" uid="uid://cyrgalcbxrwvg" path="res://GameStuff/game_TIMER.gd" id="11_0v11w"]
+[ext_resource type="PackedScene" uid="uid://dg2dcbdi6lnbm" path="res://GameStuff/scoreboard.tscn" id="12_7pxmd"]
+[ext_resource type="Texture2D" uid="uid://dk578adhassu0" path="res://Assets/Grid.png" id="13_ljx6k"]
+[ext_resource type="PackedScene" uid="uid://ck71cia82gqol" path="res://GameStuff/summer_background.tscn" id="14_56ckk"]
+[ext_resource type="Texture2D" uid="uid://btf4cipeq7wkb" path="res://Assets/GridCell.png" id="14_xc2yy"]
+[ext_resource type="Script" uid="uid://cx7fioi0acc6y" path="res://GameStuff/map_center.gd" id="15_nuopw"]
+[ext_resource type="Script" uid="uid://5btu2l4gh0i4" path="res://GameStuff/deleter.gd" id="16_tvlb8"]
+[ext_resource type="PackedScene" uid="uid://g0mkg3jdl6rv" path="res://GameStuff/VSSolo.tscn" id="17_gokmv"]
+[ext_resource type="PackedScene" uid="uid://bd3xwpn1t7hb4" path="res://UI/winner.tscn" id="18_cf7ax"]
+[ext_resource type="Script" uid="uid://b7rux7mmhxtbd" path="res://camera.gd" id="19_cdiqo"]
+[ext_resource type="Texture2D" uid="uid://bs3xm074lp5db" path="res://Assets/testgraphic.png" id="20_ojksb"]
+[ext_resource type="PackedScene" uid="uid://nh2dnk2v467v" path="res://GameStuff/crit_effect.tscn" id="21_uddon"]
+[ext_resource type="PackedScene" uid="uid://dlnql71mqkyge" path="res://GameStuff/logo.tscn" id="22_8ykvw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 84
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7dm0k"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(1040, 2264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(5913.076, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
+size = Vector2(221, 2264)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(2180, 241.99992)
+
+[node name="Main1v1" type="Node2D" unique_id=2110299460]
+script = ExtResource("1_8glit")
+ball1_res = ExtResource("2_8glit")
+ball2_res = ExtResource("3_xc2yy")
+
+[node name="Clouds" type="Node2D" parent="." unique_id=1220041842]
+z_index = -99
+
+[node name="TextureRect" type="TextureRect" parent="Clouds" unique_id=1237973511]
+offset_left = -425.0
+offset_top = -4204.0
+offset_right = 1015.0
+offset_bottom = -1644.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_unhx3")
+
+[node name="Parallax2D" type="Parallax2D" parent="Clouds" unique_id=188173232]
+scroll_scale = Vector2(0, 0.7)
+scroll_offset = Vector2(0, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Parallax2D" unique_id=287249208]
+position = Vector2(655, -1295)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_cf8gj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds" unique_id=777648473]
+position = Vector2(652, -2800)
+texture = ExtResource("6_ndysq")
+script = ExtResource("7_1etv0")
+
+[node name="Background" type="ColorRect" parent="." unique_id=285512867]
+light_mask = 0
+z_index = -10
+offset_left = -838.0
+offset_top = -528.0
+offset_right = 2583.0
+offset_bottom = 2068.0
+color = Color(0, 0, 0, 1)
+
+[node name="ConfettiCannon" type="Node2D" parent="." unique_id=1244199286]
+z_index = 999
+position = Vector2(-139, 663)
+script = ExtResource("8_7aj07")
+
+[node name="1" parent="ConfettiCannon" unique_id=1065538475 instance=ExtResource("9_jojj5")]
+position = Vector2(0, -168)
+
+[node name="2" parent="ConfettiCannon" unique_id=534315427 instance=ExtResource("9_jojj5")]
+position = Vector2(-82, 153)
+
+[node name="3" parent="ConfettiCannon" unique_id=1722811756 instance=ExtResource("9_jojj5")]
+position = Vector2(1629, -168)
+scale = Vector2(-1, 1)
+
+[node name="4" parent="ConfettiCannon" unique_id=1648515687 instance=ExtResource("9_jojj5")]
+position = Vector2(1698, 153)
+scale = Vector2(-1, 1)
+
+[node name="Arena" type="Node2D" parent="." unique_id=1622911532]
+position = Vector2(55, 14.07637)
+script = ExtResource("10_n25tb")
+
+[node name="Timer" type="Label" parent="Arena" unique_id=1077334379]
+visible = false
+offset_left = 980.0
+offset_top = -6.0
+offset_right = 1162.0
+offset_bottom = 129.0
+text = "99"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_0v11w")
+
+[node name="Scoreboard" parent="Arena" unique_id=1664752174 instance=ExtResource("12_7pxmd")]
+visible = false
+offset_left = -5.0
+offset_top = -6.0763702
+offset_right = 35.0
+offset_bottom = 33.92363
+
+[node name="ScoreRight" parent="Arena/Scoreboard" index="2" unique_id=45513820]
+text = "1"
+
+[node name="StageBorder2" type="ColorRect" parent="Arena" unique_id=170767445]
+light_mask = 0
+z_index = -5
+offset_left = 7.0
+offset_top = 16.92363
+offset_right = 1193.0
+offset_bottom = 838.92365
+color = Color(0, 0, 0, 1)
+
+[node name="StageBackground" type="TextureRect" parent="Arena" unique_id=73240295]
+light_mask = 32
+z_index = -5
+offset_left = 40.0
+offset_top = 109.92363
+offset_right = 1160.0
+offset_bottom = 812.92365
+texture = ExtResource("13_ljx6k")
+
+[node name="SummerBackground" parent="Arena" unique_id=1390674956 instance=ExtResource("14_56ckk")]
+clip_children = 2
+texture = ExtResource("14_xc2yy")
+
+[node name="BeachProps" parent="Arena/SummerBackground" index="0" unique_id=1704509834]
+visible = false
+
+[node name="WavesEffect" parent="Arena/SummerBackground" index="1" unique_id=1818812613]
+visible = false
+
+[node name="Ciel" type="StaticBody2D" parent="Arena" unique_id=1021243580]
+position = Vector2(606.25, -410)
+rotation = -1.5707964
+collision_layer = 65536
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="Cieling" type="CollisionShape2D" parent="Arena/Ciel" unique_id=1953283369]
+shape = SubResource("RectangleShape2D_7dm0k")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Arena" unique_id=1294565509]
+position = Vector2(0, 15)
+rotation = -1.5707964
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=1248243036]
+position = Vector2(1333.0764, -284.99997)
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="LeftWall2" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=1023303628]
+position = Vector2(4298.076, 549.0001)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="RightWayy" type="CollisionShape2D" parent="Arena/StaticBody2D" unique_id=503166024]
+position = Vector2(1328.5381, 1485)
+shape = SubResource("RectangleShape2D_ig7tw")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Ground" type="StaticBody2D" parent="Arena" unique_id=54313255 groups=["Ground"]]
+position = Vector2(0, 14)
+rotation = -1.5707964
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_7dm0k")
+
+[node name="Ground" type="CollisionShape2D" parent="Arena/Ground" unique_id=510655395]
+visible = false
+position = Vector2(-1319, 606)
+shape = SubResource("RectangleShape2D_7dm0k")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="MapCenter" type="Marker2D" parent="Arena" unique_id=1951032771]
+position = Vector2(600, 465)
+script = ExtResource("15_nuopw")
+
+[node name="Deleter" type="Area2D" parent="Arena" unique_id=2063575567]
+position = Vector2(98, 1384)
+rotation = -1.5707964
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("16_tvlb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Deleter" unique_id=1037128193 groups=["DeleterBottom"]]
+position = Vector2(-232.92358, 564)
+shape = SubResource("RectangleShape2D_4c57u")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Arena/Deleter" unique_id=578517917 groups=["DeleterTop"]]
+position = Vector2(1750.0764, 564)
+shape = SubResource("RectangleShape2D_4c57u")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Arena/Deleter" unique_id=142467797]
+position = Vector2(760, -472.99994)
+shape = SubResource("RectangleShape2D_efxa6")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Arena/Deleter" unique_id=596107679]
+position = Vector2(759.9999, 1508)
+shape = SubResource("RectangleShape2D_efxa6")
+debug_color = Color(0.9212087, 0.21967295, 0.441304, 0)
+
+[node name="BStatMarker" type="Marker2D" parent="." unique_id=263952029]
+position = Vector2(8, 876.07635)
+
+[node name="Spawnpos1" type="Marker2D" parent="." unique_id=1824530167]
+position = Vector2(325, 477)
+
+[node name="Spawnpos2" type="Marker2D" parent="." unique_id=1654661731]
+position = Vector2(984, 477)
+
+[node name="WinQuoteLeft" type="Marker2D" parent="." unique_id=914765847]
+position = Vector2(352, 576)
+
+[node name="WinQuoteRight" type="Marker2D" parent="." unique_id=655713137]
+position = Vector2(958, 576)
+
+[node name="VS" parent="." unique_id=1286987048 instance=ExtResource("17_gokmv")]
+
+[node name="CommunityArt" parent="VS" index="7" unique_id=1879221597]
+offset_right = 1055.0
+offset_bottom = 1004.0
+
+[node name="Winner" parent="." unique_id=219818636 instance=ExtResource("18_cf7ax")]
+offset_top = 717.0
+offset_bottom = 871.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=337822616]
+z_index = 12
+position = Vector2(650, 650)
+script = ExtResource("19_cdiqo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D" unique_id=1784911086]
+
+[node name="SpecialMove" type="TextureRect" parent="Camera2D/CanvasLayer" unique_id=1165130685]
+visible = false
+offset_right = 1300.0
+offset_bottom = 1300.0
+texture = ExtResource("20_ojksb")
+expand_mode = 1
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1046662155]
+position = Vector2(912.668, 704.4554)
+
+[node name="CritEffect" parent="." unique_id=507308382 instance=ExtResource("21_uddon")]
+position = Vector2(508, -768)
+
+[node name="Logo" parent="." unique_id=203095243 instance=ExtResource("22_8ykvw")]
+visible = false
+position = Vector2(668, 78)
+
+[connection signal="area_entered" from="Arena/Deleter" to="Arena/Deleter" method="_on_area_entered"]
+[connection signal="body_entered" from="Arena/Deleter" to="Arena/Deleter" method="_on_body_entered"]
+
+[editable path="Arena/Scoreboard"]
+[editable path="Arena/SummerBackground"]
+[editable path="VS"]

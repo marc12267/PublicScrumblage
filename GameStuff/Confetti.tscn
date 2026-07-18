@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://npp6cmnmok3k"]
+
+[ext_resource type="Texture2D" uid="uid://dgnwgsu5l5gft" path="res://Assets/square.png" id="1_ypucl"]
+
+[sub_resource type="Curve" id="Curve_rkbwn"]
+_data = [Vector2(0.003174603, 0.02928257), 0.0, 0.3910178, 0, 0, Vector2(0.57142854, 0.09272814), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.6303074, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_0lwyp"]
+offsets = PackedFloat32Array(0, 0.30319148, 0.7074468, 1)
+colors = PackedColorArray(0.8862462, 0, 0.34021217, 1, 0.84243304, 0.65233356, 0.007984314, 1, 0.22416726, 0.6438092, 0.88048077, 1, 0.014361831, 0.74330974, 0, 1)
+
+[node name="1" type="CPUParticles2D" unique_id=1065538475]
+z_index = 13
+emitting = false
+amount = 26
+texture = ExtResource("1_ypucl")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.88
+direction = Vector2(1, -1.7)
+spread = 30.0
+initial_velocity_min = 900.0
+initial_velocity_max = 1300.0
+angular_velocity_min = -200.18
+angular_velocity_max = 120.78
+angle_min = -82.4
+angle_max = 56.4
+scale_amount_curve = SubResource("Curve_rkbwn")
+color_initial_ramp = SubResource("Gradient_0lwyp")

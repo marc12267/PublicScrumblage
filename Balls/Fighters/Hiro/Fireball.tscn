@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://d331qnf2pl7b6"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_d2ti1"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="1_pe4xr"]
+[ext_resource type="Script" uid="uid://6rr6yeb14mw7" path="res://Balls/Fighters/Hiro/Fireball_script.gd" id="2_6em01"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="2_av7es"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="6_0n3pp"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="6_6em01"]
+[ext_resource type="Script" uid="uid://pa65lb3d0lpg" path="res://Balls/Components/team_color.gd" id="7_0n3pp"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="7_75wk7"]
+[ext_resource type="Script" uid="uid://dwigm6aau4fax" path="res://Balls/Components/scaler.gd" id="7_gebf5"]
+[ext_resource type="Texture2D" uid="uid://dk26hr7f38d0d" path="res://Balls/Fighters/Hiro/Oppacity_Circle.png" id="7_hmfmn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2ti1"]
+friction = 0.0
+
+[sub_resource type="Curve" id="Curve_hmfmn"]
+_data = [Vector2(0, 0.474339), 0.0, 1.153386, 0, 0, Vector2(0.22014926, 0.4237947), 0.75123286, 0.75123286, 0, 0, Vector2(0.30223882, 0.19129086), -0.3537783, -0.3537783, 0, 0, Vector2(1, 0), -0.010920389, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nhl54"]
+curve = SubResource("Curve_hmfmn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0n3pp"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 25.0
+initial_velocity_min = 450.0
+initial_velocity_max = 500.0
+angular_velocity_min = -10.000016
+angular_velocity_max = 9.999984
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -200.0
+linear_accel_max = -2.2351742e-06
+scale_min = 0.29999998
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_nhl54")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75wk7"]
+radius = 44.011364
+
+[sub_resource type="Curve" id="Curve_0n3pp"]
+_data = [Vector2(0, 0.35255563), 0.0, 0.0, 0, 0, Vector2(1, 0.36107463), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gebf5"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_mbg5y"]
+_data = [Vector2(0, 0.40366966), 0.0, 0.0, 0, 0, Vector2(1, 0.47182167), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6em01"]
+radius = 46.010868
+
+[node name="Fireball" type="RigidBody2D" unique_id=1457474136]
+collision_layer = 6
+physics_material_override = SubResource("PhysicsMaterial_d2ti1")
+gravity_scale = 0.0
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_d2ti1")
+groups = Array[String](["Projectile"])
+velocity = 820.0
+bounce_speed_boost = 0.0
+ball_collide = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1564694052]
+z_index = -1
+amount = 3
+texture = ExtResource("6_0n3pp")
+lifetime = 0.4
+explosiveness = 0.2
+randomness = 0.2
+visibility_rect = Rect2(-110, -220, 220, 300)
+process_material = SubResource("ParticleProcessMaterial_0n3pp")
+
+[node name="FireballScript" type="Node" parent="." unique_id=1793087243]
+script = ExtResource("2_6em01")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=996111440 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_av7es")
+ball = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=928203522]
+shape = SubResource("CircleShape2D_75wk7")
+
+[node name="Scaler" type="Node2D" parent="." unique_id=1038269586 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_gebf5")
+ball = NodePath("..")
+
+[node name="FireHitbox" parent="Scaler" unique_id=1327119416 node_paths=PackedStringArray("ball") instance=ExtResource("1_pe4xr")]
+collision_layer = 0
+collision_mask = 64
+ball = NodePath("../..")
+
+[node name="TeamColor" type="Sprite2D" parent="Scaler/FireHitbox" unique_id=1976479679 node_paths=PackedStringArray("ball")]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_0n3pp")
+script = ExtResource("7_0n3pp")
+ball = NodePath("../../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Scaler/FireHitbox" unique_id=1348324416]
+modulate = Color(1, 0.8236667, 0.53999996, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_hmfmn")
+
+[node name="WhiteCircle" type="CPUParticles2D" parent="Scaler/FireHitbox" unique_id=1684679614]
+scale = Vector2(0.4575717, 0.4575717)
+amount = 1
+texture = ExtResource("6_0n3pp")
+lifetime = 0.1
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_0n3pp")
+
+[node name="Fire" type="CPUParticles2D" parent="Scaler/FireHitbox" unique_id=2026152944]
+material = SubResource("CanvasItemMaterial_gebf5")
+amount = 1
+texture = ExtResource("6_0n3pp")
+lifetime = 0.1
+local_coords = true
+gravity = Vector2(0, 0)
+scale_amount_curve = SubResource("Curve_mbg5y")
+color = Color(1, 0.2166667, 0, 1)
+
+[node name="FireballHitProjectile" type="Node" parent="Scaler/FireHitbox" unique_id=1980972544 node_paths=PackedStringArray("ball")]
+script = ExtResource("6_6em01")
+ball = NodePath("../../..")
+damage = 1.0
+crit_chance = 0.0
+crit_multiplier = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scaler/FireHitbox" unique_id=188002948]
+shape = SubResource("CircleShape2D_6em01")
+debug_color = Color(0.9020316, 0.24375501, 0.4918024, 0.41960785)
+
+[node name="ClashBouncer" type="Node" parent="Scaler/FireHitbox" unique_id=1669915008 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_75wk7")
+ball = NodePath("../../..")
+ignorable = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Scaler/FireHitbox" to="Scaler/FireHitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="Scaler/FireHitbox" to="Scaler/FireHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Scaler/FireHitbox" to="Scaler/FireHitbox" method="_on_body_exited"]

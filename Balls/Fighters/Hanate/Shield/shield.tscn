@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://rlww518tm5ia"]
+
+[ext_resource type="Script" uid="uid://diy6euekmsdlw" path="res://Balls/ModdedFighters/SuperHanate/Shield/status_shield.gd" id="1_royc4"]
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="2_uyc3m"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_j7usi"]
+[ext_resource type="Script" uid="uid://djl47nu36ohpx" path="res://Balls/visual_ball.gd" id="4_ye4xq"]
+[ext_resource type="PackedScene" uid="uid://b3gp46qjxq4s8" path="res://Balls/health_label.tscn" id="5_785sy"]
+[ext_resource type="Script" uid="uid://b6hq2g2fbkipn" path="res://Balls/VisualNodeController.gd" id="6_la5rq"]
+[ext_resource type="Texture2D" uid="uid://cx6fnwt3flkyx" path="res://Assets/image (1).png" id="7_flca4"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="8_qc3sq"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="9_e3vd0"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="10_vjrxc"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="11_ncqyy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h34i3"]
+radius = 96.0833
+
+[node name="Shield" type="Node" unique_id=1637184065]
+script = ExtResource("1_royc4")
+
+[node name="BubbleCollision" type="RigidBody2D" parent="." unique_id=1629520744]
+collision_layer = 112
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("2_uyc3m")
+freeze_physics = true
+groups = Array[String](["AntiInteract", "AntiStatus"])
+bounce_speed_boost = 320.0
+wall_collide = false
+
+[node name="HitProcessor" type="Node" parent="BubbleCollision" unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_j7usi")
+ball = NodePath("..")
+crit_immune = true
+
+[node name="Visuals" type="Node2D" parent="BubbleCollision" unique_id=487229136 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_ye4xq")
+ball = NodePath("..")
+
+[node name="HealthLabel" parent="BubbleCollision/Visuals" unique_id=1931190732 instance=ExtResource("5_785sy")]
+offset_left = -43.0
+offset_top = -35.0
+offset_right = 43.0
+offset_bottom = 34.0
+text = "10"
+metadata/_edit_use_anchors_ = true
+
+[node name="Default" type="Node2D" parent="BubbleCollision/Visuals" unique_id=1044345217]
+script = ExtResource("6_la5rq")
+
+[node name="Default" type="Sprite2D" parent="BubbleCollision/Visuals/Default" unique_id=1194992405]
+visible = false
+modulate = Color(1, 0.27999997, 0.27999997, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_flca4")
+script = ExtResource("8_qc3sq")
+locked_visual = true
+
+[node name="Hurt" type="Node2D" parent="BubbleCollision/Visuals" unique_id=1837372093]
+visible = false
+script = ExtResource("6_la5rq")
+
+[node name="Hurt" type="Sprite2D" parent="BubbleCollision/Visuals/Hurt" unique_id=1642591049]
+visible = false
+modulate = Color(1, 0.27999997, 0.27999997, 1)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_flca4")
+script = ExtResource("8_qc3sq")
+locked_visual = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BubbleCollision" unique_id=562825957]
+build_mode = 1
+polygon = PackedVector2Array(0, -98, 21, -95, 44, -88, 62, -76, 76, -60, 87, -44, 94, -24, 98, 0, 94, 26, 85, 47, 70, 67, 52, 83, 31, 92, 9, 97, -17, 96, -42, 88, -64, 75, -78, 57, -89, 40, -96, 15, -96, -13, -89, -38, -78, -59, -62, -75, -41, -88, -20, -96)
+disabled = true
+
+[node name="WeaponHitbox" parent="BubbleCollision" unique_id=2102208531 instance=ExtResource("9_e3vd0")]
+collision_layer = 0
+collision_mask = 96
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleCollision/WeaponHitbox" unique_id=999420377]
+shape = SubResource("CircleShape2D_h34i3")
+
+[node name="ClashBouncer" type="Node" parent="BubbleCollision/WeaponHitbox" unique_id=1779984206 node_paths=PackedStringArray("ball")]
+script = ExtResource("10_vjrxc")
+ball = NodePath("../..")
+cleave = true
+ignore_clash = true
+projectile_deflecter = true
+
+[node name="HitboxDamager" type="Node" parent="BubbleCollision/WeaponHitbox" unique_id=671481705 node_paths=PackedStringArray("ball")]
+script = ExtResource("11_ncqyy")
+ball = NodePath("../..")
+damage = 0.0
+knockback = 0.0
+directional_strength = 0.0
+self_knockback = 0.0
+crit_chance = 0.0
+
+[connection signal="body_entered" from="BubbleCollision" to="BubbleCollision" method="_on_body_entered"]
+[connection signal="area_entered" from="BubbleCollision/WeaponHitbox" to="BubbleCollision/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="BubbleCollision/WeaponHitbox" to="BubbleCollision/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="BubbleCollision/WeaponHitbox" to="BubbleCollision/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="BubbleCollision/WeaponHitbox" to="BubbleCollision/WeaponHitbox" method="_on_body_exited"]

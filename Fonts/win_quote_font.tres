@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://c364speyalldk"]
+
+[resource]
+line_spacing = -3.0
+font_size = 36
+outline_size = 2

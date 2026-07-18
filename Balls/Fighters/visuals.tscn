@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://gfer2umhn1ir"]
+
+[ext_resource type="Script" uid="uid://djl47nu36ohpx" path="res://Balls/visual_ball.gd" id="1_y7y56"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="2_iedn4"]
+[ext_resource type="Script" uid="uid://pa65lb3d0lpg" path="res://Balls/Components/team_color.gd" id="3_kck4t"]
+[ext_resource type="Script" uid="uid://dxat6ohk7h87y" path="res://Balls/visual_player.gd" id="4_y7y56"]
+[ext_resource type="Script" uid="uid://b6hq2g2fbkipn" path="res://Balls/VisualNodeController.gd" id="5_7m2cm"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="7_iedn4"]
+[ext_resource type="PackedScene" uid="uid://b3gp46qjxq4s8" path="res://Balls/health_label.tscn" id="7_l4iio"]
+
+[sub_resource type="Animation" id="Animation_y7y56"]
+resource_name = "Default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Default:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurt:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iedn4"]
+resource_name = "Hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hurt:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Default:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 0.53588665, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.7919591, 0, 0.292265, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5268p"]
+resource_name = "HurtFlash"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 0.53588665, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.7919591, 0, 0.292265, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kck4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Default:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurt:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5268p"]
+_data = {
+&"Default": SubResource("Animation_y7y56"),
+&"Hurt": SubResource("Animation_iedn4"),
+&"HurtFlash": SubResource("Animation_5268p"),
+&"RESET": SubResource("Animation_kck4t")
+}
+
+[node name="Visuals" type="Node2D" unique_id=487229136]
+script = ExtResource("1_y7y56")
+
+[node name="TeamColor" type="Sprite2D" parent="." unique_id=1460291321 node_paths=PackedStringArray("visuals")]
+light_mask = 0
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("2_iedn4")
+script = ExtResource("3_kck4t")
+visuals = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=984181658 node_paths=PackedStringArray("visuals")]
+libraries/ = SubResource("AnimationLibrary_5268p")
+script = ExtResource("4_y7y56")
+visuals = NodePath("..")
+
+[node name="Default" type="Node2D" parent="." unique_id=809842482]
+script = ExtResource("5_7m2cm")
+
+[node name="Default" type="Sprite2D" parent="Default" unique_id=550018196]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_iedn4")
+script = ExtResource("7_iedn4")
+
+[node name="Hurt" type="Node2D" parent="." unique_id=81481545]
+visible = false
+script = ExtResource("5_7m2cm")
+
+[node name="Hurt" type="Sprite2D" parent="Hurt" unique_id=1323781346]
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_iedn4")
+script = ExtResource("7_iedn4")
+
+[node name="HealthLabel" parent="." unique_id=1931190732 instance=ExtResource("7_l4iio")]
+light_mask = 0
+offset_left = -43.0
+offset_top = 43.0
+offset_right = 43.0
+offset_bottom = 112.0
+metadata/_edit_use_anchors_ = true

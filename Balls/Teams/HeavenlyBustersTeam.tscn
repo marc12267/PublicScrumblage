@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dpj46fe1bkeww"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_sg606"]
+[ext_resource type="AudioStream" uid="uid://dcmp3foi07v6f" path="res://Balls/Teams/heavenlybusters_teamname.wav" id="2_ydcxa"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_ydcxa"]
+[ext_resource type="LabelSettings" uid="uid://c364speyalldk" path="res://Fonts/win_quote_font.tres" id="4_ydcxa"]
+[ext_resource type="Script" uid="uid://clkauouy8gul1" path="res://Balls/Components/colorswap.gd" id="5_ggo5r"]
+[ext_resource type="PackedScene" uid="uid://xr27binwvnvy" path="res://Balls/Fighters/Pootis/ball_pootis.tscn" id="6_5coh2"]
+[ext_resource type="PackedScene" uid="uid://7u2bgsyl5c52" path="res://Balls/Fighters/Vee/ball_vee.tscn" id="7_xnnmf"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_sg606")
+team_name = "Heavenyl Busters"
+team_audio = ExtResource("2_ydcxa")
+ball1 = NodePath("VeeBall")
+ball2 = NodePath("MrPootisBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_ydcxa")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.61, 0.3355, 0.54594994, 1)
+offset_top = -201.0
+offset_bottom = -17.0
+text = "\"Vee!\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.8, 0.15686275, 0.20784314, 1)
+offset_top = -88.0
+offset_bottom = 83.0
+text = "\"Pootis!\""
+
+[node name="Description3" type="Label" parent="WinBubble" unique_id=1979027435]
+offset_left = -276.0
+offset_top = 26.0
+offset_right = 277.0
+offset_bottom = 197.0
+text = "\"BUSTER!!\""
+label_settings = ExtResource("4_ydcxa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+script = ExtResource("5_ggo5r")
+color_a = Color(0.60784316, 0.33333334, 0.5411765, 1)
+color_b = Color(0.8, 0.15686275, 0.20784314, 1)
+
+[node name="VeeBall" parent="." unique_id=1403036725 instance=ExtResource("7_xnnmf")]
+
+[node name="MrPootisBall" parent="." unique_id=1651906983 instance=ExtResource("6_5coh2")]
+
+[editable path="WinBubble"]

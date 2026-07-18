@@ -1,0 +1,25 @@
+## Meter gained when ball takes damage
+
+extends Node
+@onready var behaviour_script:BehaviourScript=get_parent()
+
+## Disable/enable the behaviour
+@export var enabled:bool=true
+
+## Multiplier multipliers the damage taken as meter
+@export var multiplier:float =1.0
+@export var meter_manager:MeterManager
+signal gained
+func _ready():
+	EventManager._successfully_damaged_.connect(hit_process)
+
+func hit_process(data):
+	if !enabled:
+		return
+	var victim = data["VICTIM"]
+	var dmg = data["DAMAGE"]
+	if victim==behaviour_script.ball:
+		meter_manager.gain_meter(dmg*multiplier)
+	
+		gained.emit(meter_manager.meter)
+	

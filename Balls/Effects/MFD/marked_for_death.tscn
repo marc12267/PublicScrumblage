@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cp05quq74dhva"]
+
+[ext_resource type="Script" uid="uid://b2x5n8tlknxn2" path="res://Balls/Effects/MFD/marked_for_death.gd" id="1_312m0"]
+[ext_resource type="Script" uid="uid://dyan8qtqdkxmx" path="res://Balls/Effects/Orbiter.gd" id="3_2bddi"]
+
+[node name="MarkedForDeath" type="Node" unique_id=988817092]
+script = ExtResource("1_312m0")
+
+[node name="OrbitEffect" type="Node2D" parent="." unique_id=967261758]
+visible = false
+script = ExtResource("3_2bddi")
+orbit_radius = 100.0

@@ -1,0 +1,957 @@
+[gd_scene format=3 uid="uid://byf7ndmk3cq22"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_2s5jy"]
+[ext_resource type="Script" uid="uid://lk5k1jmaj4ot" path="res://Balls/Bosses/SuperSmacky/super_smacky_script.gd" id="2_dtg4n"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="3_me5qa"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_78bn1"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_b80cp"]
+[ext_resource type="Texture2D" uid="uid://dw0riwruy8k8t" path="res://Balls/ModdedFighters/Smacky/Smacky.png" id="6_1ov4v"]
+[ext_resource type="Texture2D" uid="uid://c2ebvqqyg4o1k" path="res://Balls/ModdedFighters/Smacky/Smacky2.png" id="7_3pdg7"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="8_ojrl1"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="9_0cdx8"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="10_2dgen"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="11_bdhx4"]
+[ext_resource type="Texture2D" uid="uid://cfopxrp13yp6o" path="res://Balls/ModdedFighters/Smacky/SmackyBat.png" id="12_jc3a8"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="13_bladq"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="14_4yq21"]
+[ext_resource type="PackedScene" uid="uid://vtu8ejttgl1p" path="res://Balls/Moods/mood_aggressive.tscn" id="15_rkuq3"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="16_wpcqr"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="17_815oc"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="18_jwwlf"]
+[ext_resource type="Texture2D" uid="uid://chilti8qx3lv4" path="res://Balls/ModdedFighters/Smacky/Smacky_VS.png" id="19_1b4i4"]
+[ext_resource type="PackedScene" uid="uid://7meckvgvv1kl" path="res://GameStuff/BossStuff/boss_stat_display.tscn" id="20_vmp87"]
+[ext_resource type="AudioStream" uid="uid://ceky2dm3vurcf" path="res://Balls/Bosses/SuperSmacky/BUBBLE POP SOUND EFFECT - FREE.mp3" id="21_vmp87"]
+[ext_resource type="AudioStream" uid="uid://u5pvobr0vx83" path="res://GameStuff/BossStuff/Sound/alert.wav" id="22_3hhxl"]
+[ext_resource type="Texture2D" uid="uid://domsuwodfy2i0" path="res://Balls/Bosses/Bmation/betafist.png" id="22_dyjvi"]
+[ext_resource type="Texture2D" uid="uid://cqqgriwqfqeli" path="res://Assets/ArtShowcase.png" id="23_egiom"]
+[ext_resource type="AudioStream" uid="uid://bjq58pchs2o1q" path="res://Balls/Bosses/SuperSmacky/beta raor.wav" id="24_parsy"]
+[ext_resource type="AudioStream" uid="uid://bcbj6otdaeu3k" path="res://Balls/Bosses/SuperSmacky/rumble.ogg" id="26_jboke"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="26_v11tm"]
+[ext_resource type="AudioStream" uid="uid://dtsse2pu0bars" path="res://Balls/Bosses/SuperSmacky/emerge.ogg" id="27_7x6vj"]
+[ext_resource type="Texture2D" uid="uid://c8cms8uigb443" path="res://Assets/Circular_Outline.png" id="28_7x6vj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cibg1"]
+size = Vector2(26, 106.01999)
+
+[sub_resource type="Animation" id="Animation_3hhxl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dyjvi"]
+resource_name = "spawn_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.01,
+"start_offset": 1.67,
+"stream": ExtResource("21_vmp87")
+}],
+"times": PackedFloat32Array(0.83333325)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_parsy"]
+_data = {
+&"RESET": SubResource("Animation_3hhxl"),
+&"spawn_animation": SubResource("Animation_dyjvi")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_iwxgo"]
+spacing_glyph = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33msg"]
+
+[sub_resource type="Animation" id="Animation_dtg4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss/BossBanner:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAND1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(261, 576)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAND2:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAND3:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("alert:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HAND2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(865, 622)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HAND3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(628, 628)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HAND1:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_vmp87"]
+resource_name = "banner_anim"
+length = 4.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss/BossBanner:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.2, 1.6, 4.1, 4.6000004),
+"transitions": PackedFloat32Array(1, 1, 0.125, 2, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 0.091744624), Vector2(1, 0.091744624), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HAND1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.6, 4.1000004, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 1, 1),
+"update": 0,
+"values": [Vector2(261, 576), Vector2(261, 576), Vector2(261, 283), Vector2(261, 283), Vector2(261, 576)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HAND2:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0, 1, -0.031666666, -0.166665, 0, 0, 1, -0.038888894, -0.16666502, 0, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 4.1000004, 4.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HAND3:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.038888894, -0.16666502, 0, 0, 1, -0.038888894, -0.16666502, 0, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6666667, 0.90000004, 4.1000004, 4.6)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SuperSmackyScript")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.90000004, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("22_3hhxl")
+}, {
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("22_3hhxl")
+}, {
+"end_offset": 0.30000007,
+"start_offset": 0.0,
+"stream": ExtResource("22_3hhxl")
+}],
+"times": PackedFloat32Array(0, 0.8333333, 1.7333333)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Roar")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_parsy")
+}],
+"times": PackedFloat32Array(1.0666667)
+}
+tracks/6/use_blend = true
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("alert:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.76666665, 1.1, 1.4666667, 2.05, 2.4166665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HAND2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.6, 4.1000004, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 2, 1),
+"update": 0,
+"values": [Vector2(865, 622), Vector2(865, 622), Vector2(865, 947), Vector2(865, 947), Vector2(865, 622)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HAND3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.7, 1.2, 1.6, 4.1000004, 4.6000004),
+"transitions": PackedFloat32Array(1, 0.125, 1, 2, 1),
+"update": 0,
+"values": [Vector2(628, 628), Vector2(628, 628), Vector2(628, 958), Vector2(628, 958), Vector2(628, 628)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HAND1:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.1, 2.5000002, 4.1000004, 4.6000004),
+"transitions": PackedFloat32Array(1, 1, 0.5, 1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(2, 1), Vector2(2, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hhxl"]
+_data = {
+&"RESET": SubResource("Animation_dtg4n"),
+&"banner_anim": SubResource("Animation_vmp87")
+}
+
+[sub_resource type="Animation" id="Animation_lmly3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silouhette:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1743)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BETASpawnAnimationAssets/ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Silouhette:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dust:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jboke"]
+resource_name = "spawn_animation"
+length = 7.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotater:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silouhette:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(0, -1743), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BETASpawnAnimationAssets/ColorRect:modulate")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.2333333, 3.9333334, 4.0666666),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5647059), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Silouhette:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dust:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SuperSmackyScript")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.3, 2.4666667, 3.0666666, 3.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [5.0],
+"method": &"camera_shake"
+}, {
+"args": [1.0],
+"method": &"camera_shake"
+}, {
+"args": [10.0],
+"method": &"camera_shake"
+}]
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BETASpawnAnimationAssets/BetaRoar")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_parsy")
+}],
+"times": PackedFloat32Array(3.8)
+}
+tracks/8/use_blend = true
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BETASpawnAnimationAssets/SFX")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.87,
+"start_offset": 0.0,
+"stream": ExtResource("26_jboke")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("27_7x6vj")
+}],
+"times": PackedFloat32Array(1.4333333, 3.8)
+}
+tracks/9/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x6vj"]
+_data = {
+&"RESET": SubResource("Animation_lmly3"),
+&"spawn_animation": SubResource("Animation_jboke")
+}
+
+[sub_resource type="Curve" id="Curve_7x6vj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5122951, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_c6rcy"]
+offsets = PackedFloat32Array(0, 0.61009175)
+colors = PackedColorArray(0.17641911, 0.17641908, 0.17641908, 1, 0.67, 0.67, 0.67, 0)
+
+[node name="SuperSmackyBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+mass = 1.5
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_2s5jy")
+ball_scale = 1.2
+velocity = 750.0
+bounce_speed_boost = 320.0
+
+[node name="SuperSmackyScript" type="Node" parent="." unique_id=802057626]
+script = ExtResource("2_dtg4n")
+
+[node name="GainHit" type="Node" parent="SuperSmackyScript" unique_id=473181438 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("3_me5qa")
+id = "Sword"
+multiplier = 7.5
+meter_manager = NodePath("../../MeterManager")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_78bn1")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_b80cp")]
+visible = false
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("6_1ov4v")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_3pdg7")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+modulate = Color(1, 1, 1, 0)
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=466768462 node_paths=PackedStringArray("ball")]
+visible = false
+script = ExtResource("8_ojrl1")
+ball = NodePath("..")
+rotation_rate = 4.5
+bounce_spin_boost = 4.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1476451661 node_paths=PackedStringArray("ball")]
+position = Vector2(76, 0)
+script = ExtResource("9_0cdx8")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=811104591 node_paths=PackedStringArray("rotater")]
+script = ExtResource("10_2dgen")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("11_bdhx4")]
+position = Vector2(51.04, 0)
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=823705917]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1734721494]
+position = Vector2(7.9999695, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("12_jc3a8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=822110230]
+position = Vector2(33.969994, -3.5012798e-07)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_cibg1")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=522708154 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_bladq")
+ball = NodePath("../../../../..")
+projectile_deflecter = true
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1344898340 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_4yq21")
+ball = NodePath("../../../../..")
+id = "Sword"
+
+[node name="Aggressive" parent="." unique_id=1873440633 node_paths=PackedStringArray("ball") instance=ExtResource("15_rkuq3")]
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("16_wpcqr")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 350.0
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("17_815oc")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("18_jwwlf")]
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 84.0
+offset_bottom = 183.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "SMACKY THE TEMPLATE"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "SMACKY SMACK SMALL.
+THEN SMACK BIG!
+USE SMACKY AS TEMPLATE FOR MELEE FIGHTERS!"
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "Template"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("6_1ov4v")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_text = "SMACKY"
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -547.0
+offset_right = 453.0
+texture = ExtResource("19_1b4i4")
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.0628623, 0.4927367, 0.79191005, 1)
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_left = -144.0
+offset_top = 141.0
+offset_right = -104.0
+offset_bottom = 181.0
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(750446237, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+text = "\"SMACKY\""
+
+[node name="BossDisplay" parent="StatsUI" unique_id=1893175426 node_paths=PackedStringArray("meterbar", "health_chaser") instance=ExtResource("20_vmp87")]
+offset_left = 164.0
+offset_top = -548.0
+offset_right = 204.0
+offset_bottom = -508.0
+meterbar = NodePath("BattleBar/Meterbar")
+health_chaser = NodePath("BattleBar/Healthbar/HealthChaser")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1994337545]
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="." unique_id=1410299144]
+
+[node name="SpawnAnimation" type="AnimationPlayer" parent="." unique_id=1252425506]
+libraries/ = SubResource("AnimationLibrary_parsy")
+
+[node name="BANNER" type="CanvasLayer" parent="." unique_id=926909232]
+layer = 2
+
+[node name="HAND1" type="Sprite2D" parent="BANNER" unique_id=1256366743]
+z_index = 17
+position = Vector2(261, 576)
+rotation = -3.1415925
+scale = Vector2(1, 1e-05)
+texture = ExtResource("22_dyjvi")
+
+[node name="HAND2" type="Sprite2D" parent="BANNER" unique_id=2039413269]
+z_index = 17
+position = Vector2(865, 622)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("22_dyjvi")
+
+[node name="HAND3" type="Sprite2D" parent="BANNER" unique_id=1926375189]
+z_index = 17
+position = Vector2(628, 628)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("22_dyjvi")
+
+[node name="Boss" type="Node2D" parent="BANNER" unique_id=1896926140]
+light_mask = 0
+z_index = 12
+position = Vector2(630, 498)
+scale = Vector2(1.5, 1.5)
+
+[node name="BossBanner" type="ColorRect" parent="BANNER/Boss" unique_id=819729864]
+light_mask = 0
+clip_contents = true
+custom_minimum_size = Vector2(1500, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -160.0
+offset_right = 750.0
+offset_bottom = 318.3333
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(0, 225)
+color = Color(1.92523e-07, 0, 0.6274538, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BANNER/Boss/BossBanner" unique_id=662125550]
+z_index = 4
+custom_minimum_size = Vector2(1500, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="BANNER/Boss/BossBanner" unique_id=1097314161]
+z_index = 4
+custom_minimum_size = Vector2(1500, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -49.666656
+offset_right = 1500.0
+offset_bottom = 0.3333435
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="SplashART" type="TextureRect" parent="BANNER/Boss/BossBanner" unique_id=397692493]
+light_mask = 1024
+layout_mode = 0
+offset_left = 252.33333
+offset_top = -225.33334
+offset_right = 1252.3334
+offset_bottom = 1174.6666
+texture = ExtResource("19_1b4i4")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="bossName" type="Label" parent="BANNER/Boss/BossBanner" unique_id=476567602]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -655.0
+offset_top = 96.16669
+offset_right = 655.0
+offset_bottom = 997.1666
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_iwxgo")
+text = "TEAMNAME"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="BANNER/Boss/BossBanner" unique_id=1745436202]
+z_index = -1
+material = SubResource("ShaderMaterial_33msg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_egiom")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="BannerAnimation" type="AnimationPlayer" parent="BANNER" unique_id=927870808]
+libraries/ = SubResource("AnimationLibrary_3hhxl")
+
+[node name="alert" type="ColorRect" parent="BANNER" unique_id=388675670]
+modulate = Color(1, 1, 1, 0)
+z_index = 500
+custom_minimum_size = Vector2(1210, 1350)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -625.0
+offset_top = -675.0
+offset_right = 585.0
+offset_bottom = 675.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.19000006, 0.100000024, 1)
+
+[node name="BETASpawnAnimationAssets" type="Node" parent="." unique_id=887690350]
+
+[node name="BETASpawnAnimation" type="AnimationPlayer" parent="BETASpawnAnimationAssets" unique_id=1195556400]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_7x6vj")
+
+[node name="BetaRoar" type="AudioStreamPlayer2D" parent="BETASpawnAnimationAssets" unique_id=1968666504]
+volume_db = 5.0
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="BETASpawnAnimationAssets" unique_id=853320709]
+
+[node name="ColorRect" type="ColorRect" parent="BETASpawnAnimationAssets" unique_id=1223272776]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -408.0
+offset_top = -464.0
+offset_right = -208.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0, 0, 1)
+
+[node name="Silouhette" type="Sprite2D" parent="." unique_id=1229387197]
+modulate = Color(0.020007145, 0.07632356, 0.023869928, 1)
+position = Vector2(0, -1743)
+scale = Vector2(2, 2)
+texture = ExtResource("26_v11tm")
+
+[node name="Dust" type="CPUParticles2D" parent="." unique_id=1487067149]
+emitting = false
+amount = 1
+texture = ExtResource("28_7x6vj")
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_min = 7.0
+scale_amount_max = 7.0
+scale_amount_curve = SubResource("Curve_7x6vj")
+color = Color(0.66245234, 0.66245234, 0.6624523, 1)
+color_ramp = SubResource("Gradient_c6rcy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="StatsUI/BossDisplay"]

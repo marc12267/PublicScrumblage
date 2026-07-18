@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dd4urna6skyxl"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_e7s2k"]
+[ext_resource type="Script" uid="uid://iiikbl3w87o3" path="res://Balls/Fighters/Hones/dragonLightning_script.gd" id="2_tslw4"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="3_f5g21"]
+[ext_resource type="Script" uid="uid://djl47nu36ohpx" path="res://Balls/visual_ball.gd" id="4_3h0af"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="5_dv75e"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="6_awwjl"]
+[ext_resource type="Texture2D" uid="uid://yi34dkv5a6y1" path="res://Balls/Fighters/Hones/dragon/lightningParticleB.png" id="7_awwjl"]
+[ext_resource type="Texture2D" uid="uid://de7rdpyb0mi5k" path="res://Balls/Fighters/Hones/dragon/dragonLightningTeam.png" id="9_3h0af"]
+[ext_resource type="Script" uid="uid://726n21da1nb6" path="res://Balls/Fighters/Hones/dragon_team_color.gd" id="9_awwjl"]
+[ext_resource type="Texture2D" uid="uid://i21q0ibp7esh" path="res://Balls/Fighters/Hones/Summer/hydra/frozenHydraTeam.png" id="11_dv75e"]
+[ext_resource type="Script" uid="uid://chi760q0gtbp7" path="res://Balls/Components/ball_movement_sync.gd" id="12_y77ks"]
+[ext_resource type="Script" uid="uid://b6hq2g2fbkipn" path="res://Balls/VisualNodeController.gd" id="13_dv75e"]
+[ext_resource type="Texture2D" uid="uid://7rbfgb8y6xla" path="res://Balls/Fighters/Hones/dragon/teamColor_0000.png" id="14_awwjl"]
+[ext_resource type="Texture2D" uid="uid://boyjs52nh2kq" path="res://Balls/Fighters/Hones/dragon/dragonLightning.png" id="15_dv75e"]
+[ext_resource type="Script" uid="uid://rdlgb8nvwryp" path="res://Balls/Fighters/Hones/dragon/dragonSprite.gd" id="16_awwjl"]
+[ext_resource type="Texture2D" uid="uid://cb5tge3ngwhka" path="res://Balls/Fighters/Hones/Summer/hydra/frozenHydra.png" id="17_awwjl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2ti1"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e7s2k"]
+radius = 65.0
+height = 446.0
+
+[sub_resource type="Curve" id="Curve_f5g21"]
+_data = [Vector2(0.041884813, 1), 0.0, 0.0, 0, 0, Vector2(0.57591623, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3h0af"]
+curve = SubResource("Curve_f5g21")
+
+[sub_resource type="Curve" id="Curve_3r0i2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ofrw1"]
+curve = SubResource("Curve_3r0i2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yj84o"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -270.0
+angle_max = 180.00002
+direction = Vector3(-1, 0, 0)
+spread = 50.0
+initial_velocity_min = 600.0
+initial_velocity_max = 700.0
+angular_velocity_min = -10.000016
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_ofrw1")
+alpha_curve = SubResource("CurveTexture_3h0af")
+
+[sub_resource type="Gradient" id="Gradient_awwjl"]
+colors = PackedColorArray(0.13202918, 0.6684591, 0.99999994, 1, 0, 0.8, 0.49333343, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dv75e"]
+radius = 53.009434
+
+[node name="HonesBullet" type="RigidBody2D" unique_id=738814232]
+z_index = -1
+collision_layer = 6
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_d2ti1")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_e7s2k")
+ball_scale = 0.8
+groups = Array[String](["Projectile", "AntiDeflect", "AntiBurn"])
+velocity = 1200.0
+bounce_speed_boost = 0.0
+ball_collide = false
+
+[node name="dragonScript" type="Node" parent="." unique_id=1538254061]
+script = ExtResource("2_tslw4")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=2121608133 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_f5g21")
+ball = NodePath("..")
+knockback_scale = 0.0
+
+[node name="Visuals" type="Node2D" parent="." unique_id=487229136 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_3h0af")
+ball = NodePath("..")
+
+[node name="BulletHitbox" parent="Visuals" unique_id=60467838 node_paths=PackedStringArray("ball") instance=ExtResource("5_dv75e")]
+collision_layer = 2
+collision_mask = 64
+ball = NodePath("../..")
+tick_wait = 0.5
+type = ["PROJECTILE"]
+
+[node name="HitboxDamager" type="Node" parent="Visuals/BulletHitbox" unique_id=815445151 node_paths=PackedStringArray("ball")]
+script = ExtResource("6_awwjl")
+ball = NodePath("../../..")
+id = "EDragContact"
+damage = 0.0
+knockback_logic = "VELOCITY_BASED"
+self_knockback = 0.0
+crit_chance = 0.0
+crit_multiplier = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/BulletHitbox" unique_id=1019237498]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_e7s2k")
+debug_color = Color(0.9020316, 0.24375501, 0.4918024, 0.41960785)
+
+[node name="lightningParticles" type="GPUParticles2D" parent="Visuals" unique_id=932505166]
+z_index = -1
+position = Vector2(10, -1)
+amount = 5
+texture = ExtResource("7_awwjl")
+process_material = SubResource("ParticleProcessMaterial_yj84o")
+
+[node name="afterImages" type="CPUParticles2D" parent="Visuals" unique_id=187936683]
+z_index = -2
+amount = 3
+texture = ExtResource("14_awwjl")
+local_coords = true
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(-900, 0)
+color_ramp = SubResource("Gradient_awwjl")
+
+[node name="TeamColor" type="Sprite2D" parent="Visuals" unique_id=189868978 node_paths=PackedStringArray("ball", "visuals")]
+texture = ExtResource("9_3h0af")
+hframes = 2
+vframes = 2
+script = ExtResource("9_awwjl")
+ball = NodePath("../..")
+visuals = NodePath("..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("11_dv75e")
+})
+
+[node name="BallMovementSync" type="Node" parent="Visuals" unique_id=1940698476 node_paths=PackedStringArray("ball")]
+script = ExtResource("12_y77ks")
+ball = NodePath("../..")
+min_speed = 0.0
+
+[node name="Default" type="Node2D" parent="Visuals" unique_id=1803251557]
+script = ExtResource("13_dv75e")
+
+[node name="Default" type="Sprite2D" parent="Visuals/Default" unique_id=416692358]
+texture = ExtResource("15_dv75e")
+hframes = 2
+vframes = 2
+script = ExtResource("16_awwjl")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("17_awwjl")
+})
+
+[node name="Hurt" type="Node2D" parent="Visuals" unique_id=19356701]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1941496462]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_dv75e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Visuals/BulletHitbox" to="Visuals/BulletHitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="Visuals/BulletHitbox" to="Visuals/BulletHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Visuals/BulletHitbox" to="Visuals/BulletHitbox" method="_on_body_exited"]

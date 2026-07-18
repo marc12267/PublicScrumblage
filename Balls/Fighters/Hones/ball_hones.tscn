@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://bakfim8mubf6q"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_w47kp"]
+[ext_resource type="Script" uid="uid://cm54bcae7oorc" path="res://Balls/Fighters/Hones/hones_script.gd" id="2_oayfs"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="3_xa4s0"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_7a6eb"]
+[ext_resource type="Script" uid="uid://fo53apxu04vr" path="res://Balls/Components/looper.gd" id="4_uuciw"]
+[ext_resource type="Script" uid="uid://1ipvihctelcs" path="res://Balls/Components/meter_autogain.gd" id="5_ohd4v"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_yd06c"]
+[ext_resource type="Script" uid="uid://bgv30d1yu7mox" path="res://Balls/Components/meter_GainHurt.gd" id="6_b0jw2"]
+[ext_resource type="Texture2D" uid="uid://c1qh30g111vkx" path="res://Balls/Fighters/Hones/honesMain.png" id="6_vbfjh"]
+[ext_resource type="Script" uid="uid://cldsxn406qy0k" path="res://Balls/hitstop_compatible_timer.gd" id="7_pvjew"]
+[ext_resource type="Texture2D" uid="uid://c773do1mkkixk" path="res://Balls/Fighters/Hones/honesHurt.png" id="7_w47kp"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="8_oayfs"]
+[ext_resource type="Texture2D" uid="uid://btgjevpmbtcj0" path="res://Balls/Fighters/Hones/grabbed.png" id="8_xa4s0"]
+[ext_resource type="Texture2D" uid="uid://rwv51nqxdlbl" path="res://Balls/Fighters/Hones/warp.png" id="9_7a6eb"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="9_uuciw"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="10_avei3"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="10_ohd4v"]
+[ext_resource type="Texture2D" uid="uid://c2e356gfbjycx" path="res://Balls/Fighters/Hones/Summer/honesMain.png" id="10_wkabw"]
+[ext_resource type="Texture2D" uid="uid://4cmfuxem6nhw" path="res://Balls/Fighters/Hones/warpHurt.png" id="10_yd06c"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="11_r4sxw"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="13_avei3"]
+[ext_resource type="Texture2D" uid="uid://bemi784pmetxc" path="res://Balls/Fighters/Hones/Summer/warp.png" id="13_fpcxd"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="14_b4ueg"]
+[ext_resource type="Texture2D" uid="uid://cs8q7rbjmmdkt" path="res://Balls/Fighters/Hones/Summer/honesHurt.png" id="15_7vquh"]
+[ext_resource type="Texture2D" uid="uid://b8ostahodb0ok" path="res://Balls/Fighters/Hones/honesDagger.png" id="15_xa4s0"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="16_wkabw"]
+[ext_resource type="Texture2D" uid="uid://7siy3ccopg1x" path="res://Balls/Fighters/Hones/Summer/warpHurt.png" id="17_eep6b"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="17_fpcxd"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="18_7vquh"]
+[ext_resource type="Texture2D" uid="uid://c3vs42omgwi4c" path="res://Balls/Fighters/Hones/honesVS.png" id="21_ialbp"]
+[ext_resource type="AudioStream" uid="uid://c16l0k1kxym0v" path="res://Balls/Fighters/Hones/name_hones.wav" id="23_ohd4v"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="23_xa4s0"]
+[ext_resource type="AudioStream" uid="uid://innqd1ii8mo0" path="res://Balls/Fighters/Hones/superCast.ogg" id="24_uuciw"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="25_mrokr"]
+[ext_resource type="AudioStream" uid="uid://b6sjb22mascmx" path="res://Balls/Fighters/Hones/superFire.ogg" id="25_ohd4v"]
+[ext_resource type="Texture2D" uid="uid://d17u4lel64h8o" path="res://Balls/Fighters/Hones/Summer/dagger.png" id="26_ialbp"]
+[ext_resource type="AudioStream" uid="uid://dfweo8f8ldke5" path="res://Balls/Fighters/Hones/shadow.ogg" id="26_r4sxw"]
+[ext_resource type="AudioStream" uid="uid://ce62snegxwr1t" path="res://Balls/Fighters/Hones/warp.ogg" id="27_b0jw2"]
+[ext_resource type="Script" uid="uid://bmjp1eltss0as" path="res://Balls/Components/after_imager.gd" id="27_iy4dt"]
+[ext_resource type="AudioStream" uid="uid://qijxngm7fvhk" path="res://Balls/Fighters/Hones/hello.ogg" id="28_avei3"]
+[ext_resource type="Texture2D" uid="uid://dh4kbfstsgsoy" path="res://Balls/Fighters/Hones/Summer/honesVS.png" id="28_b4ueg"]
+[ext_resource type="Texture2D" uid="uid://b1ubf8r7e2ahd" path="res://Balls/Fighters/Hones/honesSigil.png" id="31_r4sxw"]
+[ext_resource type="Texture2D" uid="uid://bf7kt88osm7jq" path="res://Balls/Fighters/Hones/uiToothNull.png" id="32_dre2v"]
+[ext_resource type="Script" uid="uid://b83i3i2arahr3" path="res://Balls/Fighters/Hones/icon_2.gd" id="32_yr6jh"]
+[ext_resource type="Texture2D" uid="uid://ddo4uiwafpk68" path="res://Balls/Fighters/Hones/uiTooth.png" id="33_s8hoh"]
+[ext_resource type="Texture2D" uid="uid://dv8od8d3quck1" path="res://Balls/Fighters/Hones/Summer/grabbed.png" id="33_ue4bw"]
+[ext_resource type="Texture2D" uid="uid://bnm03xrg1kcte" path="res://Balls/Fighters/Hones/uiToothGlow.png" id="35_dre2v"]
+[ext_resource type="Script" uid="uid://f6qsypubafkf" path="res://Balls/Fighters/Hones/progress_bar.gd" id="35_yr6jh"]
+[ext_resource type="Script" uid="uid://bem4an5qo5n8q" path="res://Balls/Fighters/Hones/generic_sound_swapper.gd" id="37_ialbp"]
+[ext_resource type="AudioStream" uid="uid://c2bn8qh1djhd1" path="res://Balls/Fighters/Hones/Summer/hydra/castSuper.ogg" id="38_n6g4x"]
+[ext_resource type="AudioStream" uid="uid://byga1a5mokihy" path="res://Balls/Fighters/Hones/Summer/hydra/superFire.wav" id="40_5b3wk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="Curve" id="Curve_s8hoh"]
+_data = [Vector2(1e-05, 0.7018348), 3.0805883, 3.0805883, 0, 0, Vector2(0.21428573, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_s8hoh"]
+colors = PackedColorArray(0.3328807, 0.33288068, 0.33288068, 1, 0, 0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cibg1"]
+size = Vector2(28, 107)
+
+[sub_resource type="Curve" id="Curve_yr6jh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ue4bw"]
+colors = PackedColorArray(1, 1, 1, 0.68235296, 1, 1, 1, 0)
+
+[node name="HonesBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_w47kp")
+bounce_speed_boost = 320.0
+
+[node name="HonesScript" type="Node" parent="." unique_id=802057626]
+unique_name_in_owner = true
+script = ExtResource("2_oayfs")
+
+[node name="GainHit" type="Node" parent="HonesScript" unique_id=473181438 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("3_xa4s0")
+id = "Sword"
+multiplier = 1.5
+meter_manager = NodePath("../../MeterManager")
+
+[node name="Looper" type="Node" parent="HonesScript" unique_id=1735943170]
+script = ExtResource("4_uuciw")
+delay_time = 1.75
+added_rand_time = 2.25
+
+[node name="MeterAutogain" type="Node" parent="HonesScript" unique_id=377896966 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("5_ohd4v")
+meter_manager = NodePath("../../MeterManager")
+
+[node name="GainHurt" type="Node" parent="HonesScript" unique_id=1512029264 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("6_b0jw2")
+meter_manager = NodePath("../../MeterManager")
+
+[node name="warpCheckTimer" type="Timer" parent="HonesScript" unique_id=696813216]
+unique_name_in_owner = true
+wait_time = 5.0
+script = ExtResource("7_pvjew")
+
+[node name="aggroTimer" type="Timer" parent="HonesScript" unique_id=1447468147]
+one_shot = true
+script = ExtResource("7_pvjew")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_7a6eb")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_yd06c")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("6_vbfjh")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("10_wkabw")
+})
+
+[node name="Warp" type="Sprite2D" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="1" unique_id=1967050423]
+visible = false
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("9_7a6eb")
+script = ExtResource("10_avei3")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("13_fpcxd")
+})
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_w47kp")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("15_7vquh")
+})
+
+[node name="defaultHurt" type="Sprite2D" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="1" unique_id=1791893298]
+visible = false
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_w47kp")
+script = ExtResource("10_avei3")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("15_7vquh")
+})
+
+[node name="WarpHurt" type="Sprite2D" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="2" unique_id=298225155]
+visible = false
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("10_yd06c")
+script = ExtResource("10_avei3")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("17_eep6b")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="Grabbed" type="Sprite2D" parent="Visuals" unique_id=718162958]
+visible = false
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_xa4s0")
+
+[node name="ShadowAfterImage" type="CPUParticles2D" parent="Visuals" unique_id=2010894021]
+z_index = -1
+emitting = false
+amount = 18
+texture = ExtResource("9_7a6eb")
+one_shot = true
+gravity = Vector2(0, 0)
+scale_amount_min = 0.5
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_s8hoh")
+color = Color(0.51, 1, 0.88566667, 0.81960785)
+color_ramp = SubResource("Gradient_s8hoh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Look" type="Node2D" parent="." unique_id=1745961522]
+
+[node name="Marker2D" type="Marker2D" parent="Look" unique_id=97148927]
+position = Vector2(112, 0)
+
+[node name="sigilA" type="Sprite2D" parent="Look/Marker2D" unique_id=1854851413]
+position = Vector2(-20, 0)
+scale = Vector2(1.5, 2)
+texture = ExtResource("31_r4sxw")
+
+[node name="sigilB" type="Sprite2D" parent="Look/Marker2D" unique_id=2114311914]
+position = Vector2(-4, 0)
+scale = Vector2(1.5, 3)
+texture = ExtResource("31_r4sxw")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=466768462 node_paths=PackedStringArray("ball")]
+script = ExtResource("8_oayfs")
+ball = NodePath("..")
+rotation_rate = 7.5
+bounce_spin_boost = 5.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1476451661 node_paths=PackedStringArray("ball")]
+position = Vector2(76, 0)
+script = ExtResource("9_uuciw")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=811104591 node_paths=PackedStringArray("rotater")]
+script = ExtResource("10_ohd4v")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("11_r4sxw")]
+position = Vector2(51.04, 0)
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=823705917]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1734721494 node_paths=PackedStringArray("ball")]
+position = Vector2(4.9600067, 2)
+rotation = 1.5707964
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("15_xa4s0")
+script = ExtResource("25_mrokr")
+ball = NodePath("../../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("26_ialbp")
+})
+
+[node name="Afterimager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1096600525 node_paths=PackedStringArray("ball", "visual")]
+script = ExtResource("27_iy4dt")
+active = false
+ball = NodePath("../../../../../..")
+visual = NodePath("../Weapon")
+copy_visiblity = false
+delay = 0.025
+shrink_scale = 1.0
+starting_a = 0.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=822110230]
+position = Vector2(20.459991, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_cibg1")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=522708154 node_paths=PackedStringArray("ball")]
+script = ExtResource("13_avei3")
+ball = NodePath("../../../../..")
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1344898340 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_b4ueg")
+ball = NodePath("../../../../..")
+id = "Sword"
+crit_chance = 0.0
+crit_multiplier = 1.5
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("16_wkabw")
+hitprocessor = NodePath("../HitProcessor")
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("17_fpcxd")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("18_7vquh")]
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 84.0
+offset_bottom = 183.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "HONES THE SKELETON"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "Warps to the enemy's backside with a temporary critboosted knife.
+Summons Dragon Lightning on full meter, triggering more warps on hit."
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("6_vbfjh")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("10_wkabw")
+})
+
+[node name="Icon2" type="TextureRect" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="4" unique_id=390593468]
+light_mask = 0
+layout_mode = 0
+offset_left = -24.0
+offset_top = -13.0
+offset_right = 106.0
+offset_bottom = 117.0
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("8_xa4s0")
+expand_mode = 1
+script = ExtResource("32_yr6jh")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("33_ue4bw")
+})
+
+[node name="ToothUI" type="Control" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="5" unique_id=549909424]
+anchors_preset = 0
+offset_left = 411.0
+offset_top = 14.0
+offset_right = 541.0
+offset_bottom = 144.0
+pivot_offset = Vector2(55, 55)
+
+[node name="ProgressBar" type="TextureProgressBar" parent="StatsUI/BallStatDisplay/Box/BattleBar/ToothUI" unique_id=973407458]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 31.0
+offset_right = 128.0
+offset_bottom = 191.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+fill_mode = 3
+texture_under = ExtResource("32_dre2v")
+texture_progress = ExtResource("33_s8hoh")
+script = ExtResource("35_yr6jh")
+
+[node name="ToothParticles" type="CPUParticles2D" parent="StatsUI/BallStatDisplay/Box/BattleBar/ToothUI" unique_id=531407689]
+unique_name_in_owner = true
+position = Vector2(77, 72)
+scale = Vector2(0.505, 0.5)
+emitting = false
+amount = 4
+texture = ExtResource("35_dre2v")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.6
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_yr6jh")
+color = Color(0, 1, 0.48333335, 0.98039216)
+color_ramp = SubResource("Gradient_ue4bw")
+
+[node name="ToothFull" type="Sprite2D" parent="StatsUI/BallStatDisplay/Box/BattleBar/ToothUI" unique_id=2122413931]
+unique_name_in_owner = true
+position = Vector2(78, 71)
+scale = Vector2(0.505, 0.5)
+texture = ExtResource("33_s8hoh")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_sound = ExtResource("23_ohd4v")
+name_text = "HONES"
+splasharts = {
+"Default": NodePath("TextureRect"),
+"Summer": NodePath("SummerRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -547.0
+offset_right = 453.0
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("21_ialbp")
+
+[node name="SummerRect" type="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=1479009336]
+light_mask = 1024
+layout_mode = 0
+offset_left = -547.0
+offset_top = -410.0
+offset_right = 453.0
+offset_bottom = 990.0
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("28_b4ueg")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.53250927, 0.11952002, 0.47010928, 1)
+grid_value = Vector2(0.6758621, 0.6689655)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_left = 98.0
+offset_top = 97.0
+offset_right = 138.0
+offset_bottom = 137.0
+grid_value = Vector2(0.6758621, 0.6689655)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(750446237, 347726285) index="1" unique_id=316822069]
+modulate = Color(0, 0.6, 0.44313726, 1)
+text = "\"Sorry pal, how about I make
+you somethin' later?\""
+
+[node name="Centered" type="Node2D" parent="." unique_id=2039483940 node_paths=PackedStringArray("ball")]
+script = ExtResource("23_xa4s0")
+ball = NodePath("..")
+
+[node name="SuperCast" type="AudioStreamPlayer2D" parent="." unique_id=270217070]
+stream = ExtResource("24_uuciw")
+script = ExtResource("37_ialbp")
+dict_sound = Dictionary[String, AudioStream]({
+"Summer": ExtResource("38_n6g4x")
+})
+
+[node name="SuperFire" type="AudioStreamPlayer2D" parent="." unique_id=2083929745]
+stream = ExtResource("25_ohd4v")
+script = ExtResource("37_ialbp")
+dict_sound = Dictionary[String, AudioStream]({
+"Summer": ExtResource("40_5b3wk")
+})
+
+[node name="BeginWarp" type="AudioStreamPlayer2D" parent="." unique_id=1262150667]
+stream = ExtResource("26_r4sxw")
+
+[node name="Warp" type="AudioStreamPlayer2D" parent="." unique_id=1192652589]
+stream = ExtResource("27_b0jw2")
+
+[node name="hello" type="AudioStreamPlayer2D" parent="." unique_id=351210560]
+stream = ExtResource("28_avei3")
+volume_db = -2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

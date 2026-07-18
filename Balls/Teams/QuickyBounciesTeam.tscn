@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://drd2ar0d1cbp8"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_dw2lj"]
+[ext_resource type="AudioStream" uid="uid://dt5ckh4ooc2es" path="res://Balls/Teams/quickbouncies_teamname.wav" id="2_dw2lj"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_bq8u2"]
+[ext_resource type="PackedScene" uid="uid://ywyejmpvdqiu" path="res://Balls/Fighters/Kordell/ball_kordell.tscn" id="4_dw2lj"]
+[ext_resource type="PackedScene" uid="uid://c1brlbs5mrdl0" path="res://Balls/Fighters/Hyla/ball_hyla.tscn" id="5_7elhh"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_dw2lj")
+team_name = "QUICKY BOUNCIES"
+team_audio = ExtResource("2_dw2lj")
+ball1 = NodePath("KordellBall")
+ball2 = NodePath("HylaBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_bq8u2")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.40784314, 0.9372549, 0.5529412, 1)
+text = "\"Boom chicka boom boom!\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.007843138, 0.38039216, 0.9098039, 1)
+text = "\"What she said!\""
+
+[node name="KordellBall" parent="." unique_id=319659747 instance=ExtResource("4_dw2lj")]
+
+[node name="HylaBall" parent="." unique_id=1403036725 instance=ExtResource("5_7elhh")]
+
+[editable path="WinBubble"]

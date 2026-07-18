@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://jkbyn2n7kynb"]
+
+[ext_resource type="Script" uid="uid://b5ilm8rs5xk8p" path="res://Particle FX/particle_script.gd" id="1_xc03a"]
+[ext_resource type="Texture2D" uid="uid://cabf3x2jn8ccw" path="res://Balls/Fighters/Hanate/Textures/StarStormTrail.png" id="2_w6gwv"]
+[ext_resource type="Script" uid="uid://nnc2xdnvvv3f" path="res://Particle FX/particle_emit_start.gd" id="3_lteqo"]
+[ext_resource type="Texture2D" uid="uid://ba0xi41vgpy0n" path="res://Balls/Fighters/Hanate/Textures/BeamShockwave.png" id="4_dgcqn"]
+[ext_resource type="Texture2D" uid="uid://cqohobepmj58x" path="res://Balls/Fighters/Hanate/Textures/HanateStar.png" id="5_hw7fn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8d61n"]
+
+[sub_resource type="Curve" id="Curve_cdsdk"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.23938224, 2), 2.2360544, 2.2360544, 0, 0, Vector2(1, 1.5), 3.958358e-07, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_3n3ai"]
+offsets = PackedFloat32Array(0, 0.2746781)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_uu6hm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1vptk"]
+offsets = PackedFloat32Array(0.5665236, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_cs2tr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.717433, 0.0, 0, 0]
+point_count = 2
+
+[node name="ParticleEffect" type="Node2D" unique_id=1684968850]
+z_index = 100
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_8d61n")
+script = ExtResource("1_xc03a")
+lifetime = 0.6
+
+[node name="Star3" type="CPUParticles2D" parent="." unique_id=1459188042]
+position = Vector2(0, 3)
+emitting = false
+amount = 1
+texture = ExtResource("2_w6gwv")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.46
+use_fixed_seed = true
+seed = 5
+local_coords = true
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4000.0
+initial_velocity_max = 4000.0
+angle_min = 180.0
+angle_max = 180.0
+scale_amount_min = 1.2
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_cdsdk")
+color = Color(1, 0.48235294, 0.8235294, 1)
+color_ramp = SubResource("Gradient_3n3ai")
+script = ExtResource("3_lteqo")
+
+[node name="Star" type="CPUParticles2D" parent="." unique_id=1580145270]
+position = Vector2(0, -4)
+emitting = false
+amount = 1
+texture = ExtResource("2_w6gwv")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.46
+use_fixed_seed = true
+seed = 5
+local_coords = true
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4000.0
+initial_velocity_max = 4000.0
+angle_min = 180.0
+angle_max = 180.0
+scale_amount_curve = SubResource("Curve_cdsdk")
+color_ramp = SubResource("Gradient_3n3ai")
+script = ExtResource("3_lteqo")
+
+[node name="Burst" type="CPUParticles2D" parent="." unique_id=1048613244]
+position = Vector2(0, -16)
+emitting = false
+amount = 1
+texture = ExtResource("4_dgcqn")
+lifetime = 0.2
+one_shot = true
+local_coords = true
+gravity = Vector2(0, 0)
+angle_min = 90.0
+angle_max = 90.0
+scale_amount_min = 0.8
+scale_amount_max = 0.8
+scale_amount_curve = SubResource("Curve_uu6hm")
+color_ramp = SubResource("Gradient_1vptk")
+script = ExtResource("3_lteqo")
+
+[node name="Bits" type="CPUParticles2D" parent="." unique_id=2081638493]
+position = Vector2(0, -21)
+emitting = false
+texture = ExtResource("5_hw7fn")
+lifetime = 0.6
+one_shot = true
+speed_scale = 1.94
+explosiveness = 0.93
+local_coords = true
+direction = Vector2(0, -1)
+spread = 35.73
+gravity = Vector2(0, 1400)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+angular_velocity_min = 400.0
+angular_velocity_max = 800.0
+scale_amount_min = 0.15
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_cs2tr")
+color = Color(1, 1, 1, 0.4117647)
+script = ExtResource("3_lteqo")

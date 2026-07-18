@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://vtu8ejttgl1p"]
+
+[ext_resource type="Script" uid="uid://bu8lf26jjbrdg" path="res://Balls/Moods/mood_aggressive.gd" id="1_uux6k"]
+
+[node name="Aggressive" type="Node2D" unique_id=2008961676]
+script = ExtResource("1_uux6k")

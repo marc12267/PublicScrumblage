@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://cakacyvyvp0t8"]
+
+[ext_resource type="Texture2D" uid="uid://bpausigd8vnbt" path="res://Assets/Star.png" id="1_77xy1"]
+[ext_resource type="Texture2D" uid="uid://bv8844c5el3gl" path="res://Assets/Chart.png" id="1_1234a"]
+[ext_resource type="Script" uid="uid://06qpkkwk81r" path="res://alignment_chart.gd" id="1_ncb5h"]
+[ext_resource type="Texture2D" uid="uid://us5tjinocfqw" path="res://Assets/Octogon.png" id="2_w73hh"]
+[ext_resource type="Script" uid="uid://dg8woi5iirmfs" path="res://GameStuff/star_point.gd" id="3_385y6"]
+[ext_resource type="Script" uid="uid://b15sryoh8yccy" path="res://alignment_chart_visual.gd" id="3_w73hh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v40yh"]
+line_spacing = -16.0
+font_size = 36
+outline_size = 4
+
+[node name="AlignmentChart" type="Control" unique_id=1935891313 node_paths=PackedStringArray("star_point")]
+light_mask = 32768
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ncb5h")
+star_point = NodePath("StarPoint")
+
+[node name="Chart" type="TextureRect" parent="." unique_id=858608945 node_paths=PackedStringArray("star_point")]
+modulate = Color(0.53333336, 0.53333336, 0.53333336, 1)
+light_mask = 32768
+z_index = 1
+layout_mode = 0
+offset_left = -145.0
+offset_top = -145.0
+offset_right = 145.0
+offset_bottom = 145.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_1234a")
+expand_mode = 1
+script = ExtResource("3_w73hh")
+star_point = NodePath("../StarPoint")
+
+[node name="Octogon" type="TextureRect" parent="Chart" unique_id=1976510263]
+self_modulate = Color(0.15, 0.15, 0.15, 0.7254902)
+light_mask = 32768
+z_index = -1
+layout_mode = 1
+offset_left = -53.0
+offset_top = -54.0
+offset_right = 347.0
+offset_bottom = 346.0
+texture = ExtResource("2_w73hh")
+expand_mode = 1
+
+[node name="STABILITY" type="Label" parent="." unique_id=1411069510]
+light_mask = 32768
+layout_mode = 0
+offset_left = -251.0
+offset_top = -117.0
+offset_right = -89.0
+offset_bottom = 245.0
+text = "S
+T
+A
+B
+L
+E"
+label_settings = SubResource("LabelSettings_v40yh")
+horizontal_alignment = 1
+
+[node name="CHAOS" type="Label" parent="." unique_id=831338025]
+light_mask = 32768
+layout_mode = 0
+offset_left = 92.0
+offset_top = -127.0
+offset_right = 254.0
+offset_bottom = 171.0
+text = "C
+H
+A
+O
+T
+I
+C"
+label_settings = SubResource("LabelSettings_v40yh")
+horizontal_alignment = 1
+
+[node name="Scaler" type="Label" parent="." unique_id=1396805152]
+light_mask = 32768
+layout_mode = 0
+offset_left = -79.0
+offset_top = -196.0
+offset_right = 83.0
+offset_bottom = -146.0
+text = "SCALING"
+label_settings = SubResource("LabelSettings_v40yh")
+horizontal_alignment = 1
+
+[node name="Executor" type="Label" parent="." unique_id=662815704]
+light_mask = 32768
+layout_mode = 0
+offset_left = -106.0
+offset_top = 148.0
+offset_right = 106.0
+offset_bottom = 198.0
+text = "EXECUTION"
+label_settings = SubResource("LabelSettings_v40yh")
+horizontal_alignment = 1
+
+[node name="StarPoint" type="Control" parent="." unique_id=2127130666]
+light_mask = 32768
+z_index = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_385y6")
+disable_rand_move = false
+
+[node name="TextureRect2" type="TextureRect" parent="StarPoint" unique_id=749406079]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 17.845573
+offset_bottom = 15.0
+scale = Vector2(1.5, 1.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_77xy1")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="StarPoint" unique_id=900444360]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 17.845573
+offset_bottom = 16.0
+texture = ExtResource("1_77xy1")
+expand_mode = 1

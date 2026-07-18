@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cqaytwgihnkae"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_j3xjd"]
+[ext_resource type="AudioStream" uid="uid://uherh4t5214m" path="res://Balls/Teams/feedinggrounds_teamname.wav" id="2_8wvgw"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_3tyhn"]
+[ext_resource type="PackedScene" uid="uid://c3f1lqvg68hqr" path="res://Balls/Fighters/Axom/ball_axom.tscn" id="4_8wvgw"]
+[ext_resource type="PackedScene" uid="uid://bgx4bvmpl1aei" path="res://Balls/Fighters/Paprika/ball_paprika.tscn" id="5_mrj0v"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_j3xjd")
+team_name = "FEEDING GROUNDS"
+team_audio = ExtResource("2_8wvgw")
+ball1 = NodePath("PaprikaBall")
+ball2 = NodePath("AxomBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_3tyhn")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.6039216, 0.4627451, 0.7372549, 1)
+text = "\"Good work glubby!  Have some fish flakes.\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.7137255, 0.44705883, 0.35686275, 1)
+text = "\"OM NOM NOM-\""
+
+[node name="PaprikaBall" parent="." unique_id=232331502 instance=ExtResource("5_mrj0v")]
+
+[node name="TextureRect" parent="PaprikaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(232331502, 1675542345, 2081690940) index="0" unique_id=1997730014]
+offset_left = -468.0
+offset_top = -494.0
+offset_right = 532.0
+offset_bottom = 906.0
+
+[node name="AxomBall" parent="." unique_id=1629520744 instance=ExtResource("4_8wvgw")]
+
+[editable path="WinBubble"]
+[editable path="PaprikaBall"]
+[editable path="PaprikaBall/Visuals"]
+[editable path="PaprikaBall/StatsUI/BallStatDisplay"]
+[editable path="PaprikaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

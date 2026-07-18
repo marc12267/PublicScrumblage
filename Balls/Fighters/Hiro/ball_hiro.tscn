@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://cu4laqyyr3nqr"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_gtbaa"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="2_46b07"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="2_fsfqs"]
+[ext_resource type="Script" uid="uid://k3hs5ikesbwu" path="res://Balls/Fighters/Hiro/hiro_script.gd" id="2_nbph8"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="2_o2byl"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="3_sedt1"]
+[ext_resource type="Script" uid="uid://fo53apxu04vr" path="res://Balls/Components/looper.gd" id="3_wbdh0"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="4_8tmth"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_qfl7y"]
+[ext_resource type="Script" uid="uid://bgv30d1yu7mox" path="res://Balls/Components/meter_GainHurt.gd" id="5_g66e7"]
+[ext_resource type="Texture2D" uid="uid://cw0tg30wrvs36" path="res://Balls/Fighters/Hiro/Hiro_Clack1.png" id="8_wbdh0"]
+[ext_resource type="Texture2D" uid="uid://bmepasabiyrn3" path="res://Balls/Fighters/Hiro/Hiro_Clack2.png" id="9_2rf8x"]
+[ext_resource type="Texture2D" uid="uid://c01o2gpm56ck6" path="res://Balls/Fighters/Hiro/Hiro_Clack_Summer1.png" id="9_skaat"]
+[ext_resource type="Script" uid="uid://7rdo5jcvynat" path="res://Balls/Components/weapon_flipper.gd" id="11_8tmth"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="11_ab7o1"]
+[ext_resource type="Texture2D" uid="uid://csvh8kju06jgf" path="res://Balls/Fighters/Hiro/Hiro_Clack_Summer2.png" id="11_jbhet"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="11_wbdh0"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="12_ukl1q"]
+[ext_resource type="Texture2D" uid="uid://vorlqay01uib" path="res://Balls/Fighters/Hiro/Hiro_ClackSword.png" id="15_wbdh0"]
+[ext_resource type="Texture2D" uid="uid://bkdfbtjspssit" path="res://Balls/Fighters/Hiro/Hiro_ClackSwordAlt.png" id="16_8tmth"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="17_4k2pq"]
+[ext_resource type="Texture2D" uid="uid://cl1ibjlljxp7j" path="res://Balls/Fighters/Hiro/Hiro_ClackSummer_Sword1.png" id="18_74xjd"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="18_qfl7y"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="18_wbdh0"]
+[ext_resource type="Texture2D" uid="uid://cu8wwn1jsxtxn" path="res://Balls/Fighters/Hiro/Hiro_ClackSummer_Sword2.png" id="19_skaat"]
+[ext_resource type="LabelSettings" uid="uid://cup76ope8qaow" path="res://Fonts/OutlineFont.tres" id="21_8tmth"]
+[ext_resource type="AudioStream" uid="uid://btkuheiskvgvm" path="res://Balls/Fighters/Hiro/name_hiro.wav" id="21_g66e7"]
+[ext_resource type="Texture2D" uid="uid://cff4o5iarppwj" path="res://Balls/Fighters/Hiro/Hiro_ClackSummer_SwordAlt.png" id="21_jbhet"]
+[ext_resource type="Texture2D" uid="uid://bq72duerxqck7" path="res://Balls/Fighters/Hiro/Hiro_ClackVSArt.png" id="22_g66e7"]
+[ext_resource type="Script" uid="uid://bu8lf26jjbrdg" path="res://Balls/Moods/mood_aggressive.gd" id="24_kjal8"]
+[ext_resource type="Texture2D" uid="uid://dttqmq1865i83" path="res://Balls/Fighters/Hiro/Hiro_Clack_SummerVSArt.png" id="32_qq6yu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2kti"]
+radius = 23.0
+height = 84.08002
+
+[node name="HiroBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_gtbaa")
+bounce_speed_boost = 320.0
+
+[node name="HiroScript" type="Node" parent="." unique_id=802057626]
+script = ExtResource("2_nbph8")
+
+[node name="Looper" type="Node" parent="HiroScript" unique_id=812301769]
+script = ExtResource("3_wbdh0")
+delay_time = 7.0
+
+[node name="GainHit" type="Node" parent="HiroScript" unique_id=473181438 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("4_8tmth")
+id = "Sword"
+multiplier = 4.5
+meter_manager = NodePath("../../MeterManager")
+
+[node name="GainHurt" type="Node" parent="HiroScript" unique_id=682627410 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("5_g66e7")
+meter_manager = NodePath("../../MeterManager")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_fsfqs")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_qfl7y")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("8_wbdh0")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("9_skaat")
+})
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("9_2rf8x")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("11_jbhet")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=466768462 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_46b07")
+ball = NodePath("..")
+rotation_rate = 4.5
+bounce_spin_boost = 4.0
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=1476451661 node_paths=PackedStringArray("ball")]
+position = Vector2(76, 0)
+script = ExtResource("11_wbdh0")
+ball = NodePath("../..")
+
+[node name="WeaponFlipper" type="Node2D" parent="Rotater/WeaponHolder" unique_id=811104591 node_paths=PackedStringArray("rotater")]
+script = ExtResource("11_8tmth")
+rotater = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("2_o2byl")]
+position = Vector2(51.04, 0)
+collision_mask = 32
+ball = NodePath("../../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=822110230]
+position = Vector2(21, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_s2kti")
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=522708154 node_paths=PackedStringArray("ball")]
+script = ExtResource("11_ab7o1")
+ball = NodePath("../../../../..")
+
+[node name="HitboxDamager" type="Node" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=1344898340 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_sedt1")
+ball = NodePath("../../../../..")
+id = "Sword"
+damage = 3.0
+crit_chance = 0.05
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" unique_id=823705917]
+position = Vector2(-1, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1734721494 node_paths=PackedStringArray("ball")]
+position = Vector2(-4.0000153, 0)
+rotation = 1.5707964
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("15_wbdh0")
+script = ExtResource("17_4k2pq")
+ball = NodePath("../../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("18_74xjd")
+})
+
+[node name="WeaponMid" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1324163788 node_paths=PackedStringArray("ball")]
+visible = false
+position = Vector2(-4.0000153, 0)
+rotation = 1.5707964
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("15_wbdh0")
+script = ExtResource("17_4k2pq")
+ball = NodePath("../../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("19_skaat")
+})
+
+[node name="WeaponMax" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox/WeaponVisual" unique_id=1379706026 node_paths=PackedStringArray("ball")]
+visible = false
+position = Vector2(-6.422023, -2.7896704e-07)
+rotation = 1.5707964
+scale = Vector2(0.065, 0.061018366)
+texture = ExtResource("16_8tmth")
+script = ExtResource("17_4k2pq")
+ball = NodePath("../../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("21_jbhet")
+})
+
+[node name="Aggressive" type="Node2D" parent="." unique_id=1873440633 node_paths=PackedStringArray("ball")]
+script = ExtResource("24_kjal8")
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("18_wbdh0")
+hitprocessor = NodePath("../HitProcessor")
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("12_ukl1q")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("18_qfl7y")]
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 84.0
+offset_bottom = 183.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "HIRO THE HIRO"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "Levels-up from fighting.
+Reaching LV.3 unlocks his MASTER SWORD!"
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/Box/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "StarDustJarr"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("8_wbdh0")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("9_skaat")
+})
+
+[node name="LV" type="Label" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="4" unique_id=775494507]
+unique_name_in_owner = true
+light_mask = 0
+z_index = 3
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -33.0
+offset_top = -25.0
+offset_right = 67.0
+offset_bottom = 44.0
+text = "LV:1"
+label_settings = ExtResource("21_8tmth")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_sound = ExtResource("21_g66e7")
+name_text = "Hiro"
+splasharts = {
+"Default": NodePath("TextureRect"),
+"Summer": NodePath("TextureRect2")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -607.0
+offset_right = 393.0
+texture = ExtResource("22_g66e7")
+
+[node name="TextureRect2" type="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=2119474949]
+light_mask = 1024
+layout_mode = 0
+offset_left = -607.0
+offset_top = -410.0
+offset_right = 393.0
+offset_bottom = 990.0
+texture = ExtResource("32_qq6yu")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.4734795, 0.8283057, 0.355465, 1)
+grid_value = Vector2(-0.6689655, -0.64827585)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_left = -97.0
+offset_top = -94.0
+offset_right = -57.0
+offset_bottom = -54.0
+grid_value = Vector2(-0.6689655, -0.64827585)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(750446237, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.7882353, 0.18039216, 0.28235295, 1)
+text = "\"Really nice of you to keep running into my slashes!\""
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://csci2dfu7cv2n"]
+
+[ext_resource type="Script" uid="uid://bmjp1eltss0as" path="res://Balls/Components/after_imager.gd" id="1_qgvpt"]
+
+[node name="AfterImagerSB" type="Node" unique_id=1340659784]
+script = ExtResource("1_qgvpt")
+delay = 0.04
+shrink_scale = 0.7
+duration = 0.25
+starting_a = 0.4

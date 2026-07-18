@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://ddp3sdnq2iw3q"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_64oe1"]
+[ext_resource type="Script" uid="uid://lxca0go2hx2p" path="res://Balls/Fighters/Boomy/boomy_script.gd" id="2_82sm5"]
+[ext_resource type="Script" uid="uid://bgv30d1yu7mox" path="res://Balls/Components/meter_GainHurt.gd" id="3_vtg21"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="4_riout"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="5_4a0sd"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="6_m4e6n"]
+[ext_resource type="Texture2D" uid="uid://c8b6278ha54rk" path="res://Balls/Fighters/Boomy/Boomy.png" id="7_r65ny"]
+[ext_resource type="AudioStream" uid="uid://uaurm1u72wjl" path="res://Balls/Fighters/Boomy/name_boomy.wav" id="11_avpnt"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="12_6f4mu"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="13_cwy4h"]
+[ext_resource type="Texture2D" uid="uid://dk2gy0cyjp17v" path="res://Balls/Fighters/Boomy/Boomy_vs.png" id="13_p7g0q"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="14_3f4me"]
+[ext_resource type="Script" uid="uid://jcr5dt82bx8s" path="res://Balls/Moods/mood_silly.gd" id="14_82sm5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[node name="BoomyBall" type="RigidBody2D" unique_id=1403036725]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_64oe1")
+bounce_speed_boost = 360.0
+
+[node name="BoomyScript" type="Node" parent="." unique_id=815719418]
+script = ExtResource("2_82sm5")
+
+[node name="GainHurt" type="Node" parent="BoomyScript" unique_id=863537190 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("3_vtg21")
+multiplier = 10.0
+meter_manager = NodePath("../../MeterManager")
+
+[node name="ContactDamager" type="Node" parent="." unique_id=659901768 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_riout")
+ball = NodePath("..")
+contact_damage = 3.0
+knockback = 35.0
+self_knockback = 25.0
+
+[node name="HitProcessor" type="Node" parent="." unique_id=547083850 node_paths=PackedStringArray("ball")]
+script = ExtResource("5_4a0sd")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("6_m4e6n")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("7_r65ny")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_r65ny")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225421673]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=991021552 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("12_6f4mu")
+hitprocessor = NodePath("../HitProcessor")
+
+[node name="MeterManager" type="Node" parent="." unique_id=2056518451]
+script = ExtResource("13_cwy4h")
+
+[node name="StatsUI" type="Node" parent="." unique_id=2135162914]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=2045748137 instance=ExtResource("14_3f4me")]
+offset_left = -123.0
+offset_top = 126.0
+offset_right = -83.0
+offset_bottom = 166.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(2045748137, 624450934) index="1" unique_id=1921250255]
+text = "BOOMY THE BOOM"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(2045748137, 624450934) index="3" unique_id=794553254]
+offset_bottom = 362.0
+text = "BOOMY SUMMONS BOOMERS!
+BOOMERS BOOM WHEN BOOMY
+ATTACKS!
+USE BOOMY AS TEMPLATE FOR
+SUMMONERS!"
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "Template"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(2045748137, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("7_r65ny")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(2045748137, 2023632038) index="0" unique_id=2081690940]
+name_sound = ExtResource("11_avpnt")
+name_text = "BOOMY"
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -482.0
+offset_top = -433.0
+offset_right = 518.0
+offset_bottom = 967.0
+texture = ExtResource("13_p7g0q")
+always_flag = true
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(2045748137, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.72348416, 0.13950461, 0.740535, 1)
+grid_value = Vector2(0.3448276, 0.3586207)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(2045748137, 1935891313) index="5" unique_id=2127130666]
+offset_left = 50.0
+offset_top = 52.0
+offset_right = 90.0
+offset_bottom = 92.0
+grid_value = Vector2(0.3448276, 0.3586207)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(2045748137, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.67238164, 0.40557417, 0.6060395, 1)
+text = "\"BOOM BOOM BOOM!!!\""
+
+[node name="Silly" type="Node2D" parent="." unique_id=288242969 node_paths=PackedStringArray("ball")]
+script = ExtResource("14_82sm5")
+ball = NodePath("..")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

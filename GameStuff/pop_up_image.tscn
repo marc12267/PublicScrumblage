@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bysxgnn8rbabg"]
+
+[ext_resource type="Script" uid="uid://cyo7eypbvc0mf" path="res://GameStuff/pop_up_image.gd" id="1_gdh1c"]
+[ext_resource type="Texture2D" uid="uid://ba5h82jbk1nmx" path="res://Assets/Angry.png" id="2_gdh1c"]
+
+[node name="Node2D" type="Node2D" unique_id=80247183 node_paths=PackedStringArray("emote_node")]
+process_mode = 3
+light_mask = 0
+script = ExtResource("1_gdh1c")
+emote_node = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=1393988022]
+light_mask = 0
+z_index = 5
+custom_minimum_size = Vector2(50, 50)
+offset_left = -63.0
+offset_top = -58.0
+offset_right = 59.0
+offset_bottom = 64.0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("2_gdh1c")
+expand_mode = 2
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true

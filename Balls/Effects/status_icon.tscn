@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c75tekt7pawnr"]
+
+[ext_resource type="Texture2D" uid="uid://el7iy61xlke7" path="res://Assets/Shield.png" id="1_7a6rp"]
+[ext_resource type="Script" uid="uid://bkwfllc48vjx0" path="res://Balls/Effects/status_icon.gd" id="2_7a6rp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7a6rp"]
+font_size = 36
+stacked_outline_count = 1
+stacked_outline_0/size = 10
+
+[node name="StatusIcon" type="TextureRect" unique_id=1330638537]
+light_mask = 32768
+custom_minimum_size = Vector2(62.386982, 46)
+custom_maximum_size = Vector2(62.386982, 46)
+offset_right = 62.386982
+offset_bottom = 46.0
+texture = ExtResource("1_7a6rp")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_7a6rp")
+
+[node name="NumVal" type="Label" parent="." unique_id=1900042399]
+light_mask = 32768
+layout_mode = 0
+offset_left = -13.0
+offset_top = -3.0
+offset_right = 77.0
+offset_bottom = 47.0
+text = "?"
+label_settings = SubResource("LabelSettings_7a6rp")
+horizontal_alignment = 1

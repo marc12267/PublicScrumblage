@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c7gjn2ww2vxfo"]
+
+[ext_resource type="Script" uid="uid://dmh55pi3dy2uy" path="res://Balls/Effects/Electrocute/status_instashock.gd" id="1_h82vn"]
+[ext_resource type="PackedScene" uid="uid://6aa35bhrg15f" path="res://Balls/Effects/Electrocute/ElectroParticle.tscn" id="2_d6cyo"]
+
+[node name="Instashock" type="Node" unique_id=1455675050 node_paths=PackedStringArray("gpu_particles_2d")]
+script = ExtResource("1_h82vn")
+gpu_particles_2d = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" parent="." unique_id=879643417 instance=ExtResource("2_d6cyo")]

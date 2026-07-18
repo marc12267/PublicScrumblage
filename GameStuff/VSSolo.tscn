@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://g0mkg3jdl6rv"]
+
+[ext_resource type="Texture2D" uid="uid://ctv1h2ph2jvwf" path="res://Assets/VS.png" id="1_n15j0"]
+[ext_resource type="Script" uid="uid://d3iu3bhlkx5eo" path="res://GameStuff/vs_solo.gd" id="1_nlqay"]
+[ext_resource type="Texture2D" uid="uid://k334v1qbwp1e" path="res://Assets/flame_loop.png" id="2_abl6m"]
+[ext_resource type="Script" uid="uid://1a6x7ykem1by" path="res://GameStuff/flame_vs_looper.gd" id="3_nlqay"]
+[ext_resource type="Script" uid="uid://h60xb3efa2v5" path="res://GameStuff/noiselight.gd" id="4_f0g2r"]
+[ext_resource type="LabelSettings" uid="uid://lbv7hjxy3002" path="res://VSName.tres" id="5_3rh7a"]
+[ext_resource type="Texture2D" uid="uid://ppe2ljws0l8n" path="res://Assets/VS_2.png" id="6_5ppat"]
+[ext_resource type="PackedScene" uid="uid://ytksf4py1d38" path="res://GameStuff/credit_scroller.tscn" id="6_abl6m"]
+[ext_resource type="PackedScene" uid="uid://df152gwirwy4o" path="res://GameStuff/community_art_showcase.tscn" id="10_10ktq"]
+[ext_resource type="PackedScene" uid="uid://bd3xwpn1t7hb4" path="res://UI/winner.tscn" id="11_10ktq"]
+
+[sub_resource type="Gradient" id="Gradient_vivmo"]
+colors = PackedColorArray(0.5322423, 0.5322424, 0.5322422, 1, 0.7919991, 0.79199916, 0.7919991, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2cqfq"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2cqfq"]
+noise = SubResource("FastNoiseLite_2cqfq")
+color_ramp = SubResource("Gradient_vivmo")
+
+[sub_resource type="Gradient" id="Gradient_2cqfq"]
+offsets = PackedFloat32Array(0, 0.5164609, 0.8168724, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.20048258, 0.20048258, 0.20048258, 1, 0.54115224, 0.54115224, 0.54115224, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yaehf"]
+gradient = SubResource("Gradient_2cqfq")
+fill_from = Vector2(0.45982906, 0)
+fill_to = Vector2(0.47350428, 1)
+
+[node name="VS" type="CanvasLayer" unique_id=969193781]
+script = ExtResource("1_nlqay")
+
+[node name="VsSpawn1" type="Marker2D" parent="." unique_id=186208671]
+light_mask = 0
+position = Vector2(360, 395)
+
+[node name="VsSpawn2" type="Marker2D" parent="." unique_id=50966787]
+light_mask = 0
+position = Vector2(972, 395)
+
+[node name="Left" type="Node2D" parent="." unique_id=1009873069]
+light_mask = 0
+position = Vector2(0, 182)
+
+[node name="FlameLeft" type="ColorRect" parent="Left" unique_id=1563876614]
+clip_children = 1
+light_mask = 0
+offset_left = -239.0
+offset_top = -543.0
+offset_right = 840.0
+offset_bottom = 1281.0
+rotation = 0.18041053
+
+[node name="VS" type="Sprite2D" parent="Left/FlameLeft" unique_id=565668873]
+light_mask = 0
+z_index = 2
+position = Vector2(1027.4558, 851.45917)
+rotation = -0.18041053
+texture = ExtResource("1_n15j0")
+
+[node name="Flame" type="Sprite2D" parent="Left/FlameLeft" unique_id=2144612302]
+modulate = Color(1, 0, 0, 1)
+light_mask = 0
+position = Vector2(1073.1218, 826.74713)
+rotation = -0.18041053
+scale = Vector2(3, 3.6810813)
+texture = ExtResource("2_abl6m")
+hframes = 4
+vframes = 5
+script = ExtResource("3_nlqay")
+
+[node name="NoiseLight" type="PointLight2D" parent="Left/FlameLeft" unique_id=1225008428]
+light_mask = 0
+position = Vector2(627.2278, 864.5926)
+scale = Vector2(1.7599533, 3.2155328)
+color = Color(0.85, 0.663, 0.70351666, 1)
+energy = 2.0
+blend_mode = 2
+range_item_cull_mask = 1024
+texture = SubResource("NoiseTexture2D_2cqfq")
+script = ExtResource("4_f0g2r")
+
+[node name="PointLight2D" type="PointLight2D" parent="Left/FlameLeft" unique_id=969246468]
+light_mask = 0
+position = Vector2(631.8462, 1036.3718)
+scale = Vector2(13.9654875, 27.533302)
+color = Color(0.9999997, 0.16648796, 0.23776194, 1)
+range_item_cull_mask = 1024
+texture = SubResource("GradientTexture2D_yaehf")
+
+[node name="SplashName" type="Label" parent="Left" unique_id=79025752]
+light_mask = 0
+offset_left = 26.0
+offset_top = -191.0
+offset_right = 77.0
+offset_bottom = 710.0
+label_settings = ExtResource("5_3rh7a")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="ACMarker" type="Marker2D" parent="Left" unique_id=620890681]
+light_mask = 0
+z_index = 1
+position = Vector2(278, 903)
+
+[node name="Right" type="Node2D" parent="." unique_id=1646486292]
+light_mask = 0
+position = Vector2(0, 182)
+
+[node name="FlameRight" type="ColorRect" parent="Right" unique_id=1265638543]
+clip_children = 1
+light_mask = 0
+offset_left = 856.99994
+offset_top = -542.99994
+offset_right = 1936.0
+offset_bottom = 1281.0
+rotation = 0.18041053
+
+[node name="Flame" type="Sprite2D" parent="Right/FlameRight" unique_id=1918085606]
+modulate = Color(0, 0.5666666, 1, 1)
+light_mask = 0
+position = Vector2(-5.0904236, 1023.4062)
+rotation = -0.18041053
+scale = Vector2(3, 3.6810818)
+texture = ExtResource("2_abl6m")
+hframes = 4
+vframes = 5
+script = ExtResource("3_nlqay")
+
+[node name="NoiseLight" type="PointLight2D" parent="Right/FlameRight" unique_id=834763343]
+light_mask = 0
+position = Vector2(450.78113, 911.0063)
+scale = Vector2(1.7599533, 3.215533)
+color = Color(0.74, 0.805, 1, 1)
+energy = 2.0
+blend_mode = 2
+range_item_cull_mask = 1024
+texture = SubResource("NoiseTexture2D_2cqfq")
+script = ExtResource("4_f0g2r")
+
+[node name="PointLight2D" type="PointLight2D" parent="Right/FlameRight" unique_id=646174107]
+light_mask = 0
+position = Vector2(446.54553, 1083.6045)
+scale = Vector2(13.965487, 27.533304)
+color = Color(0.004681678, 0.50590795, 0.7754403, 1)
+range_item_cull_mask = 1024
+texture = SubResource("GradientTexture2D_yaehf")
+
+[node name="VS" type="Sprite2D" parent="Right/FlameRight" unique_id=525221650]
+light_mask = 0
+z_index = 2
+position = Vector2(36.799335, 1032.1487)
+rotation = -0.18041053
+texture = ExtResource("6_5ppat")
+
+[node name="ACMarker" type="Marker2D" parent="Right" unique_id=538589727]
+light_mask = 0
+z_index = 1
+position = Vector2(1021, 903)
+
+[node name="SplashName" type="Label" parent="Right" unique_id=1953755512]
+light_mask = 0
+offset_left = 1231.0
+offset_top = -190.0
+offset_right = 1271.0
+offset_bottom = 711.0
+label_settings = ExtResource("5_3rh7a")
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1477690077]
+volume_db = 12.0
+
+[node name="CreditScroller" parent="." unique_id=894832924 instance=ExtResource("6_abl6m")]
+light_mask = 0
+offset_left = -77.0
+offset_top = 69.0
+offset_right = 1373.0
+offset_bottom = 182.0
+
+[node name="CommunityArt" parent="." unique_id=1879221597 instance=ExtResource("10_10ktq")]
+
+[node name="Winner" parent="." unique_id=219818636 instance=ExtResource("11_10ktq")]
+offset_left = -175.99986
+offset_top = 749.0
+offset_right = 1345.0001
+offset_bottom = 903.0
+scale = Vector2(1.05, 1.05)

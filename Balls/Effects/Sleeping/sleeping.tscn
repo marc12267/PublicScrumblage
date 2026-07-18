@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bg5vgivout0k"]
+
+[ext_resource type="Script" uid="uid://da5y6yyy8knt6" path="res://Balls/Effects/Sleeping/status_sleeping.gd" id="1_1jwck"]
+[ext_resource type="Texture2D" uid="uid://d01wsomxpelkd" path="res://Balls/Effects/Sleeping/Z.png" id="2_1jwck"]
+
+[sub_resource type="Gradient" id="Gradient_1jwck"]
+offsets = PackedFloat32Array(0.17962962, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2mako"]
+gradient = SubResource("Gradient_1jwck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kqel2"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 450.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 200, 0)
+linear_accel_min = -250.0
+linear_accel_max = -2.2351742e-06
+scale_min = 0.14999999
+scale_max = 0.19999999
+color_ramp = SubResource("GradientTexture1D_2mako")
+
+[node name="Sleeping" type="Node" unique_id=1998345100 node_paths=PackedStringArray("gpu_particles_2d")]
+script = ExtResource("1_1jwck")
+gpu_particles_2d = NodePath("GPUParticles2D")
+have_icon = true
+icon_effect = "res://Balls/Effects/Sleeping/Sleep.png"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=505507254]
+amount = 4
+texture = ExtResource("2_1jwck")
+lifetime = 0.8
+randomness = 0.1
+visibility_rect = Rect2(-110, -320, 220, 400)
+process_material = SubResource("ParticleProcessMaterial_kqel2")

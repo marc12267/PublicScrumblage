@@ -1,0 +1,365 @@
+[gd_scene format=3 uid="uid://cy2eniqmvljtd"]
+
+[ext_resource type="Script" uid="uid://cflklnmh6xyd" path="res://Balls/player_stat_display.gd" id="1_ylipr"]
+[ext_resource type="Texture2D" uid="uid://ccl75mln754qd" path="res://Assets/mbar.png" id="2_8j3cl"]
+[ext_resource type="Script" uid="uid://bmbbojhcu1ned" path="res://Balls/bstat_box.gd" id="2_etbhq"]
+[ext_resource type="Texture2D" uid="uid://bfmt6rfvrdbms" path="res://Assets/hbar.png" id="3_4hbh5"]
+[ext_resource type="LabelSettings" uid="uid://dvxsnsrij2vqt" path="res://Fonts/FolderFont.tres" id="3_jklxh"]
+[ext_resource type="Texture2D" uid="uid://dlbvkn6bn0xx2" path="res://Assets/jane.png" id="4_jklxh"]
+[ext_resource type="Texture2D" uid="uid://fxv1r8rxxlgf" path="res://Assets/FolderBattle.png" id="6_t2r4s"]
+[ext_resource type="Script" uid="uid://bxxpfuddxn8uk" path="res://UI/ui_healthbar.gd" id="7_nmyaw"]
+[ext_resource type="Texture2D" uid="uid://dwp6m8dg2vcgn" path="res://Assets/Folder2.png" id="7_t2r4s"]
+[ext_resource type="Texture2D" uid="uid://c02icu7mfdkdx" path="res://Assets/FolderDescription.png" id="8_xnscd"]
+[ext_resource type="Script" uid="uid://ius8p7a0fle7" path="res://GameStuff/splashart.gd" id="9_v81r7"]
+[ext_resource type="PackedScene" uid="uid://6ouldejokie4" path="res://UI/plate_manager.tscn" id="10_0hkb3"]
+[ext_resource type="Script" uid="uid://cpnf3mthdow5k" path="res://Balls/status_displayer.gd" id="10_ocmt4"]
+[ext_resource type="PackedScene" uid="uid://cakacyvyvp0t8" path="res://AlignmentChart.tscn" id="11_xnscd"]
+[ext_resource type="Script" uid="uid://db6o5mlii3s5b" path="res://GameStuff/icon_skin_swapper.gd" id="12_0hkb3"]
+[ext_resource type="PackedScene" uid="uid://c25x7u31xmpjq" path="res://Balls/xtra_lives.tscn" id="12_dgdbg"]
+[ext_resource type="AudioStream" uid="uid://e32lcme03dmb" path="res://Balls/Fighters/Smacky/name_smacky.wav" id="12_ocmt4"]
+[ext_resource type="Script" uid="uid://baaeiblk6bf7x" path="res://Balls/win_bubble.gd" id="13_8w5aq"]
+[ext_resource type="Texture2D" uid="uid://dfpqng34pkdfm" path="res://Assets/VsTemplate.png" id="13_ocmt4"]
+[ext_resource type="PackedScene" uid="uid://wwpcodln5rok" path="res://Balls/Components/damage_record_displayer.tscn" id="14_dgdbg"]
+[ext_resource type="Texture2D" uid="uid://bca07kxx51fsg" path="res://Assets/TextBox.png" id="14_fos7q"]
+[ext_resource type="LabelSettings" uid="uid://c364speyalldk" path="res://Fonts/win_quote_font.tres" id="15_ocmt4"]
+
+[sub_resource type="SystemFont" id="SystemFont_nmyaw"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fvh37"]
+font = SubResource("SystemFont_nmyaw")
+font_size = 34
+font_color = Color(0.90588236, 0.9529412, 0.9529412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2r4s"]
+line_spacing = -3.0
+font_size = 34
+font_color = Color(0.90639853, 0.9514076, 0.9512939, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_xnscd"]
+font_names = PackedStringArray("Calibri")
+font_italic = true
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_hh7eg"]
+line_spacing = -3.0
+font = SubResource("SystemFont_xnscd")
+font_size = 34
+font_color = Color(0.9025, 0.95, 0.95, 0.6901961)
+
+[node name="BallStatDisplay" type="Control" unique_id=750446237 node_paths=PackedStringArray("box", "healthbar", "frailbar", "meterbar", "health_chaser", "status_displayer", "overhealth", "armor")]
+process_mode = 1
+light_mask = 32768
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_top = 311.0
+offset_right = 40.0
+offset_bottom = 351.0
+script = ExtResource("1_ylipr")
+box = NodePath("Box")
+healthbar = NodePath("Box/BattleBar/Healthbar/Healthbar")
+frailbar = NodePath("Box/BattleBar/Healthbar/Frail")
+meterbar = NodePath("Box/BattleBar/Meterbar")
+health_chaser = NodePath("Box/BattleBar/Healthbar/HealthChaser")
+status_displayer = NodePath("Box/BattleBar/StatusDisplayer")
+overhealth = NodePath("Box/BattleBar/Healthbar/Overhealth")
+armor = NodePath("Box/BattleBar/Healthbar/Armor")
+
+[node name="Box" type="Node2D" parent="." unique_id=709431705]
+script = ExtResource("2_etbhq")
+
+[node name="DescriptionBox" type="Control" parent="Box" unique_id=624450934]
+light_mask = 32768
+layout_mode = 3
+anchors_preset = 0
+offset_top = -55.0
+offset_right = 40.0
+offset_bottom = -15.0
+
+[node name="Folder" type="TextureRect" parent="Box/DescriptionBox" unique_id=281327603]
+modulate = Color(0.56078464, 0.63170546, 0.64421976, 1)
+light_mask = 32768
+layout_mode = 0
+offset_right = 636.0
+offset_bottom = 56.0
+texture = ExtResource("7_t2r4s")
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="Box/DescriptionBox" unique_id=1921250255]
+light_mask = 32768
+layout_mode = 0
+offset_left = 14.0
+offset_top = -1.0
+offset_right = 629.0
+offset_bottom = 57.0
+scale = Vector2(0.95, 1)
+text = "Lorem Ipsum Name"
+label_settings = SubResource("LabelSettings_fvh37")
+vertical_alignment = 1
+
+[node name="FolderDescription" type="TextureRect" parent="Box/DescriptionBox" unique_id=579873522]
+modulate = Color(0.56078464, 0.63170546, 0.64421976, 1)
+light_mask = 32768
+layout_mode = 0
+offset_top = 55.0
+offset_right = 636.0
+offset_bottom = 415.0
+texture = ExtResource("8_xnscd")
+stretch_mode = 2
+
+[node name="Description" type="Label" parent="Box/DescriptionBox" unique_id=794553254]
+light_mask = 32768
+layout_mode = 0
+offset_left = 15.0
+offset_top = 183.0
+offset_right = 627.0
+offset_bottom = 406.0
+text = "Power descriptions and stuff yadd  
+asdnaljdjsajdajldlnalnsnl
+asdlasdandlnaslnlnalsndnlasklnd
+asbkdajkdjnasjnalsdk
+laklmsmkdmkl"
+label_settings = SubResource("LabelSettings_t2r4s")
+autowrap_mode = 3
+
+[node name="Credit" type="Label" parent="Box/DescriptionBox/Description" unique_id=522021847]
+light_mask = 32768
+layout_mode = 0
+offset_left = 45.0
+offset_top = 190.0
+offset_right = 613.0
+offset_bottom = 229.0
+text = "@IDTAGPERSON"
+label_settings = SubResource("LabelSettings_hh7eg")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BattleBar" type="Control" parent="Box" unique_id=846234039]
+light_mask = 32768
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 49.0
+
+[node name="BBBack" type="TextureRect" parent="Box/BattleBar" unique_id=170438548]
+light_mask = 32768
+layout_mode = 0
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 620.0
+offset_bottom = 110.0
+texture = ExtResource("6_t2r4s")
+
+[node name="Meterbar" type="TextureProgressBar" parent="Box/BattleBar" unique_id=368834551]
+light_mask = 32768
+layout_mode = 0
+offset_left = 192.0
+offset_top = 50.0
+offset_right = 546.0
+offset_bottom = 86.0
+texture_under = ExtResource("2_8j3cl")
+texture_progress = ExtResource("2_8j3cl")
+tint_under = Color(0.8293216, 0.9114435, 0.9115726, 1)
+tint_progress = Color(0.08548313, 0.81983453, 0.80986327, 1)
+
+[node name="Healthbar" type="Control" parent="Box/BattleBar" unique_id=634706039 node_paths=PackedStringArray("ball_stat_display")]
+light_mask = 32768
+anchors_preset = 0
+offset_top = -5.0
+offset_right = 40.0
+offset_bottom = 35.0
+script = ExtResource("7_nmyaw")
+ball_stat_display = NodePath("../../..")
+
+[node name="HealthChaser" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=656825114]
+light_mask = 32768
+layout_mode = 0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 97.0
+step = 0.01
+value = 100.0
+texture_under = ExtResource("3_4hbh5")
+texture_progress = ExtResource("3_4hbh5")
+tint_under = Color(0.13870001, 0.18145, 0.19, 1)
+tint_progress = Color(0.76, 0.1368, 0.33414662, 1)
+
+[node name="Weapons" type="Node2D" parent="Box/BattleBar/Healthbar/HealthChaser" unique_id=766720150]
+light_mask = 32768
+position = Vector2(5.0000005, 4.0000005)
+rotation = 0.13677461
+
+[node name="Frail" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=1096384234]
+light_mask = 32768
+layout_mode = 0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 97.0
+texture_progress = ExtResource("3_4hbh5")
+tint_progress = Color(0.62630665, 0.33210567, 0.89301276, 1)
+
+[node name="Overhealth" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=138407658]
+light_mask = 32768
+layout_mode = 0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 97.0
+value = 100.0
+texture_progress = ExtResource("3_4hbh5")
+tint_progress = Color(0, 0.69803923, 0.7254902, 1)
+
+[node name="Armor" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=192653395]
+light_mask = 32768
+layout_mode = 0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 97.0
+texture_progress = ExtResource("3_4hbh5")
+tint_progress = Color(0.90658665, 0.4826057, 0.20829412, 1)
+
+[node name="Healthbar" type="TextureProgressBar" parent="Box/BattleBar/Healthbar" unique_id=1875357996]
+light_mask = 32768
+layout_mode = 0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 564.0
+offset_bottom = 97.0
+value = 100.0
+texture_progress = ExtResource("3_4hbh5")
+tint_progress = Color(0, 0.72, 0.54, 1)
+
+[node name="HealthLabel" type="Label" parent="Box/BattleBar/Healthbar/Healthbar" unique_id=1229604741]
+light_mask = 32768
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 72.0
+text = "100"
+label_settings = ExtResource("3_jklxh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlateManager" parent="Box/BattleBar/Healthbar" unique_id=1327555538 instance=ExtResource("10_0hkb3")]
+visible = false
+light_mask = 32768
+layout_mode = 0
+
+[node name="Icon" type="TextureRect" parent="Box/BattleBar" unique_id=1728433949]
+light_mask = 32768
+layout_mode = 0
+offset_left = -24.0
+offset_top = -13.0
+offset_right = 106.0
+offset_bottom = 117.0
+pivot_offset = Vector2(55, 55)
+texture = ExtResource("4_jklxh")
+expand_mode = 1
+script = ExtResource("12_0hkb3")
+
+[node name="XtraLives" parent="Box/BattleBar" unique_id=230147484 node_paths=PackedStringArray("stat_controller") instance=ExtResource("12_dgdbg")]
+light_mask = 0
+position = Vector2(-17, 97)
+stat_controller = NodePath("../../..")
+
+[node name="StatusDisplayer" type="Control" parent="Box/BattleBar" unique_id=1807674758]
+light_mask = 32768
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 76.0
+offset_right = 176.0
+offset_bottom = 76.0
+script = ExtResource("10_ocmt4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Box/BattleBar/StatusDisplayer" unique_id=1943492850]
+light_mask = 32768
+layout_mode = 0
+offset_left = -81.0
+offset_top = 2.0
+offset_right = 430.0
+offset_bottom = 48.0
+theme_override_constants/separation = 6
+
+[node name="DamageRecord" parent="Box/BattleBar/StatusDisplayer/HBoxContainer" unique_id=1667309096 node_paths=PackedStringArray("bstat") instance=ExtResource("14_dgdbg")]
+z_index = 1
+layout_mode = 2
+bstat = NodePath("../../../../..")
+
+[node name="VsSplash" type="Node" parent="." unique_id=2023632038]
+
+[node name="SPLASHART" type="Control" parent="VsSplash" unique_id=2081690940 node_paths=PackedStringArray("ball_stat_display", "splasharts")]
+light_mask = 32768
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1303.0
+offset_top = -57.0
+offset_right = 1303.0
+offset_bottom = -57.0
+script = ExtResource("9_v81r7")
+ball_stat_display = NodePath("../..")
+name_sound = ExtResource("12_ocmt4")
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" type="TextureRect" parent="VsSplash/SPLASHART" unique_id=1997730014]
+light_mask = 33792
+layout_mode = 0
+offset_left = -566.0
+offset_top = -410.0
+offset_right = 514.0
+offset_bottom = 990.0
+texture = ExtResource("13_ocmt4")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="AlignmentChart" parent="VsSplash/SPLASHART" unique_id=1935891313 instance=ExtResource("11_xnscd")]
+layout_mode = 0
+offset_left = -477.0
+offset_top = 240.0
+offset_right = -437.0
+offset_bottom = 280.0
+
+[node name="TextureRect2" parent="VsSplash/SPLASHART/AlignmentChart/StarPoint" parent_id_path=PackedInt32Array(1935891313, 2127130666) index="0" unique_id=749406079]
+light_mask = 0
+
+[node name="TextureRect" parent="VsSplash/SPLASHART/AlignmentChart/StarPoint" parent_id_path=PackedInt32Array(1935891313, 2127130666) index="1" unique_id=900444360]
+light_mask = 0
+
+[node name="WinSpeech" type="CanvasLayer" parent="." unique_id=641855123]
+layer = 3
+
+[node name="WinBubble" type="Node2D" parent="WinSpeech" unique_id=347726285]
+light_mask = 32768
+z_index = 15
+position = Vector2(310, 981)
+script = ExtResource("13_8w5aq")
+
+[node name="Box" type="Sprite2D" parent="WinSpeech/WinBubble" unique_id=32681626]
+modulate = Color(0, 0, 0, 0.8627451)
+light_mask = 32768
+scale = Vector2(1.353, 1.4)
+texture = ExtResource("14_fos7q")
+
+[node name="Description" type="Label" parent="WinSpeech/WinBubble" unique_id=316822069]
+light_mask = 32768
+offset_left = -271.0
+offset_top = -99.0
+offset_right = 278.0
+offset_bottom = 103.0
+text = "HIHIHI"
+label_settings = ExtResource("15_ocmt4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[editable path="VsSplash/SPLASHART/AlignmentChart"]

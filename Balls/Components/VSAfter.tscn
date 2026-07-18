@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bswgwnt11dnq2"]
+
+[sub_resource type="Gradient" id="Gradient_0jg5e"]
+offsets = PackedFloat32Array(0, 0.5877193, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.26608187, 1, 1, 1, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=561303567]
+show_behind_parent = true
+lifetime = 0.7
+preprocess = 1.0
+local_coords = true
+draw_order = 1
+gravity = Vector2(0, -980)
+color_ramp = SubResource("Gradient_0jg5e")

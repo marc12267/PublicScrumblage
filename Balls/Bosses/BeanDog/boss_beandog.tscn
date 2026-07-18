@@ -1,0 +1,446 @@
+[gd_scene format=3 uid="uid://btndl1t8n4pg8"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_1yent"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="2_87b73"]
+[ext_resource type="Script" uid="uid://cl24y5eviwur4" path="res://Balls/Bosses/BeanDog/beandog_script.gd" id="2_srw73"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_not81"]
+[ext_resource type="Script" uid="uid://fo53apxu04vr" path="res://Balls/Components/looper.gd" id="4_srw73"]
+[ext_resource type="Script" uid="uid://bmjp1eltss0as" path="res://Balls/Components/after_imager.gd" id="5_f6g6t"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_iexhj"]
+[ext_resource type="Texture2D" uid="uid://dh7s7y8eavidf" path="res://Balls/Bosses/BeanDog/main.png" id="6_cup65"]
+[ext_resource type="Texture2D" uid="uid://dxfkm2fgkjhmb" path="res://Balls/Bosses/BeanDog/main_hurt.png" id="7_rwurl"]
+[ext_resource type="Texture2D" uid="uid://dp6q4yhnqs5fb" path="res://Balls/Bosses/BeanDog/main_zoomy.png" id="8_rwurl"]
+[ext_resource type="Script" uid="uid://bpiss2q1461pk" path="res://GameStuff/visuals_skin_swapper.gd" id="9_f6g6t"]
+[ext_resource type="Texture2D" uid="uid://bno5osg0a1c07" path="res://Balls/Bosses/BeanDog/main_ears.png" id="9_srw73"]
+[ext_resource type="Texture2D" uid="uid://qwrn7qkiwcuc" path="res://Balls/Bosses/BeanDog/sprout.png" id="10_cup65"]
+[ext_resource type="PackedScene" uid="uid://vtu8ejttgl1p" path="res://Balls/Moods/mood_aggressive.tscn" id="15_xnjpd"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="16_8l5lx"]
+[ext_resource type="AudioStream" uid="uid://17q6o7k61xma" path="res://Balls/Bosses/BeanDog/highbark.wav" id="16_judkb"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="17_8evcy"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="18_vqxx3"]
+[ext_resource type="Texture2D" uid="uid://doe71ns72ff3r" path="res://Balls/Bosses/BeanDog/vsartbean.png" id="19_uquux"]
+[ext_resource type="PackedScene" uid="uid://7meckvgvv1kl" path="res://GameStuff/BossStuff/boss_stat_display.tscn" id="20_3x4kq"]
+[ext_resource type="AudioStream" uid="uid://c7v608ufa7hh0" path="res://Balls/Bosses/BeanDog/BUBBLE POP SOUND EFFECT - FREE.mp3" id="21_2coyj"]
+[ext_resource type="AudioStream" uid="uid://66trha4lp7ug" path="res://Balls/Bosses/BeanDog/I just made some beanshiiiiit.mp3" id="21_56bcb"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="28_2u8xq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="Animation" id="Animation_3hhxl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dyjvi"]
+resource_name = "spawn_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.01,
+"start_offset": 1.67,
+"stream": ExtResource("21_2coyj")
+}],
+"times": PackedFloat32Array(0.83333325)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_parsy"]
+_data = {
+&"RESET": SubResource("Animation_3hhxl"),
+&"spawn_animation": SubResource("Animation_dyjvi")
+}
+
+[sub_resource type="Animation" id="Animation_lmly3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Default/Zoomy:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_jboke"]
+resource_name = "spawn_animation"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.5666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpawnAnimationAssets/Roar")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_judkb")
+}],
+"times": PackedFloat32Array(7.5333333)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Default/Zoomy:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.3666663, 8.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(2, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-1200, 0, 0, 1.1, 7.2615967, 0, -3.266667, 20.335163, 0, 0, 0, -0.23333335, 0, 0.105555534, 0, 0, -0.23333335, 0, 0, 0, 0, -0.23333335, 0, 0.105555534, 0, 0, -0.23333335, 0, 0, 0),
+"times": PackedFloat32Array(0, 5.9333334, 7.3333335, 7.5000005, 7.5666666, 7.833333)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visuals:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.333333, 7.4, 7.5, 7.566666, 7.7, 7.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -70.0, 0.0, 0.0, -100.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7x6vj"]
+_data = {
+&"RESET": SubResource("Animation_lmly3"),
+&"spawn_animation": SubResource("Animation_jboke")
+}
+
+[node name="BeandogBall" type="RigidBody2D" unique_id=1629520744]
+collision_layer = 112
+collision_mask = 17
+mass = 0.8
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_1yent")
+ball_scale = 0.8
+velocity = 750.0
+bounce_speed_boost = 400.0
+normalizer_speed_up = 100.0
+
+[node name="ContactDamager" type="Node" parent="." unique_id=1875248267 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_87b73")
+ball = NodePath("..")
+contact_damage = 2.0
+self_knockback = 300.0
+crit_multiplier = 1.0
+hurt_sfx = "res://Balls/Bosses/BeanDog/singlehighbark.wav"
+dont_emit = true
+
+[node name="BeandogScript" type="Node" parent="." unique_id=802057626]
+script = ExtResource("2_srw73")
+
+[node name="Looper" type="Node" parent="BeandogScript" unique_id=2090727341]
+script = ExtResource("4_srw73")
+delay_time = 7.0
+
+[node name="AfterImager" type="Node" parent="BeandogScript" unique_id=1140859082 node_paths=PackedStringArray("ball", "visual")]
+script = ExtResource("5_f6g6t")
+active = false
+ball = NodePath("../..")
+visual = NodePath("../../Visuals")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=863726566 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_not81")
+ball = NodePath("..")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_iexhj")]
+visible = false
+rotation = 12.566
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("6_cup65")
+
+[node name="Zoomy" type="Sprite2D" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="1" unique_id=1673688285]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("8_rwurl")
+script = ExtResource("9_f6g6t")
+
+[node name="Poopy" type="Sprite2D" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="2" unique_id=1601057899]
+visible = false
+position = Vector2(0.21546958, -1.1920929e-07)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_rwurl")
+script = ExtResource("9_f6g6t")
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("7_rwurl")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+modulate = Color(1, 1, 1, 0)
+health_component = NodePath("../../HealthManager")
+
+[node name="Ears" type="Sprite2D" parent="Visuals" unique_id=1749549733]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("9_srw73")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals/Ears" unique_id=872237896]
+position = Vector2(-9.090909, -78.181816)
+texture = ExtResource("10_cup65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=988549373]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Aggressive" parent="." unique_id=1873440633 node_paths=PackedStringArray("ball") instance=ExtResource("15_xnjpd")]
+ball = NodePath("..")
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1954897956 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("16_8l5lx")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 250.0
+
+[node name="MeterManager" type="Node" parent="." unique_id=315959434]
+script = ExtResource("17_8evcy")
+
+[node name="StatsUI" type="Node" parent="." unique_id=137483384]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=750446237 instance=ExtResource("18_vqxx3")]
+offset_left = 44.0
+offset_top = 143.0
+offset_right = 84.0
+offset_bottom = 183.0
+
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+text = "SMACKY THE TEMPLATE"
+
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+text = "SMACKY SMACK SMALL.
+THEN SMACK BIG!
+USE SMACKY AS TEMPLATE FOR MELEE FIGHTERS!"
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("6_cup65")
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(750446237, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+name_text = "SMACKY"
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -175.0
+offset_top = -107.0
+offset_right = 331.0
+offset_bottom = 893.0
+texture = ExtResource("19_uquux")
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.06251755, 0.49231514, 0.7922764, 1)
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(750446237, 1935891313) index="5" unique_id=2127130666]
+offset_left = -144.0
+offset_top = 141.0
+offset_right = -104.0
+offset_bottom = 181.0
+grid_value = Vector2(-0.99310344, 0.9724138)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(750446237, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 1)
+text = "\"Arf arf arf!\""
+
+[node name="BossDisplay" parent="StatsUI" unique_id=1893175426 instance=ExtResource("20_3x4kq")]
+offset_left = 164.0
+offset_top = -548.0
+offset_right = 204.0
+offset_bottom = -508.0
+custom_music_override = ExtResource("21_56bcb")
+custom_music_override_ender = "res://Balls/Bosses/BeanDog/kicked a beandog and celebrated.mp3"
+
+[node name="Description" parent="StatsUI/BossDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1893175426, 624450934) index="1" unique_id=1737318353]
+text = "[b]TOILET TIME![/b]
+Poops on the ground, slowing and damaging enemies who tread on it.
+[b]ZOOMIES[/b]
+After pooping they gain a speed boost + dodge chance.
+[b]FIERCE TACKLE[/b]
+Crits stinky targets for big damage."
+vertical_alignment = 1
+
+[node name="Description2" type="RichTextLabel" parent="StatsUI/BossDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1893175426, 624450934) index="2" unique_id=1701922276]
+visible = false
+light_mask = 0
+layout_mode = 0
+offset_left = 15.0
+offset_top = 23.0
+offset_right = 760.0
+offset_bottom = 427.0
+theme_override_font_sizes/normal_font_size = 34
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 30
+bbcode_enabled = true
+text = "[b]CANINEROUS GROWTH[/b] 
+Their Teeth Size expands in size.
+[b]BARKING RAMPAGE[/b] 
+They gain a damage resistance up to 65% before chasing their own tail, rampaging.
+[b]DEEP ROCK DIGTOSIS[/b] 
+As fighters body's fall into disrepair, they bury the remains"
+
+[node name="Name" parent="StatsUI/BossDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1893175426, 846234039) index="3" unique_id=1322474825]
+text = "BEANDOG!"
+
+[node name="Icon" parent="StatsUI/BossDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1893175426, 846234039) index="4" unique_id=735791092]
+texture = ExtResource("6_cup65")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1994337545]
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="." unique_id=1410299144]
+
+[node name="SpawnAnimation" type="AnimationPlayer" parent="." unique_id=1252425506]
+libraries/ = SubResource("AnimationLibrary_parsy")
+
+[node name="SpawnAnimationAssets" type="Node" parent="." unique_id=887690350]
+
+[node name="SpawnAnimation" type="AnimationPlayer" parent="SpawnAnimationAssets" unique_id=1195556400]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_7x6vj")
+
+[node name="Roar" type="AudioStreamPlayer2D" parent="SpawnAnimationAssets" unique_id=1968666504]
+volume_db = 5.0
+
+[node name="Silouhette" type="Sprite2D" parent="." unique_id=1229387197]
+visible = false
+modulate = Color(0.020007145, 0.07632356, 0.023869928, 1)
+scale = Vector2(2, 2)
+texture = ExtResource("28_2u8xq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="StatsUI/BossDisplay"]

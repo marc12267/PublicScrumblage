@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dla70arcnnrat"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_w1d6t"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_2kdpx"]
+[ext_resource type="LabelSettings" uid="uid://c364speyalldk" path="res://Fonts/win_quote_font.tres" id="4_ga6e7"]
+[ext_resource type="PackedScene" uid="uid://04trgdyixemq" path="res://Balls/Fighters/01/ball_01.tscn" id="4_w1d6t"]
+[ext_resource type="AudioStream" uid="uid://dktitawaxulsn" path="res://Balls/Teams/severedwires_teamname.wav" id="5_2kdpx"]
+[ext_resource type="PackedScene" uid="uid://du0d0vqft0wc7" path="res://Balls/Fighters/HC8/ball_hc8.tscn" id="5_ga6e7"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_w1d6t")
+team_name = "SEVERED WIRES"
+team_audio = ExtResource("5_2kdpx")
+ball1 = NodePath("01Ball")
+ball2 = NodePath("HC8Ball")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_2kdpx")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.53, 0.53, 0.53, 1)
+offset_top = -204.0
+offset_bottom = -20.0
+text = "\"Your laser's energy output is impressive.\""
+
+[node name="Description3" type="Label" parent="WinBubble" unique_id=265689359]
+modulate = Color(0.53, 0.53, 0.53, 1)
+offset_left = -281.0
+offset_top = 12.0
+offset_right = 279.0
+offset_bottom = 196.0
+text = "\"I must surpass it. Shoot me.\""
+label_settings = ExtResource("4_ga6e7")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description2" parent="WinBubble" index="3" unique_id=1836100401]
+modulate = Color(0.4307, 0.59, 0.48910996, 1)
+offset_top = -88.0
+offset_bottom = 83.0
+text = "\"Thanks, it hurts to do.\""
+
+[node name="01Ball" parent="." unique_id=1588355393 instance=ExtResource("4_w1d6t")]
+
+[node name="TextureRect" parent="01Ball/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1588355393, 1663641561, 2081690940) index="0" unique_id=1997730014]
+offset_top = -475.0
+offset_bottom = 925.0
+
+[node name="Chart" parent="01Ball/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(1588355393, 1663641561, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.08045116, 0.6392074, 1, 1)
+
+[node name="HC8Ball" parent="." unique_id=1629520744 instance=ExtResource("5_ga6e7")]
+
+[node name="HealthLabel" parent="HC8Ball/Visuals" parent_id_path=PackedInt32Array(1629520744, 487229136) index="4" unique_id=1931190732]
+offset_top = 42.0
+offset_bottom = 111.0
+
+[node name="TextureRect" parent="HC8Ball/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1629520744, 750446237, 2081690940) index="0" unique_id=1997730014]
+offset_top = -330.0
+offset_bottom = 1070.0
+
+[editable path="WinBubble"]
+[editable path="01Ball"]
+[editable path="01Ball/Visuals"]
+[editable path="01Ball/StatsUI/BallStatDisplay"]
+[editable path="01Ball/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="HC8Ball"]
+[editable path="HC8Ball/Visuals"]
+[editable path="HC8Ball/StatsUI/BallStatDisplay"]
+[editable path="HC8Ball/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

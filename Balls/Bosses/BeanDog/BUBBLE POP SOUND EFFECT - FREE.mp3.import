@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7v608ufa7hh0"
+path="res://.godot/imported/BUBBLE POP SOUND EFFECT - FREE.mp3-f64dd4abd1d1f9f9b3eea813c023ded0.mp3str"
+
+[deps]
+
+source_file="res://Balls/Bosses/BeanDog/BUBBLE POP SOUND EFFECT - FREE.mp3"
+dest_files=["res://.godot/imported/BUBBLE POP SOUND EFFECT - FREE.mp3-f64dd4abd1d1f9f9b3eea813c023ded0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

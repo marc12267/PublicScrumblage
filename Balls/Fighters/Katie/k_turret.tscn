@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://cogdjw4dthvjl"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_61b6k"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="2_1efcj"]
+[ext_resource type="Script" uid="uid://ct54qjce6n45q" path="res://Balls/Fighters/Katie/turret_script.gd" id="2_yuftw"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="4_407as"]
+[ext_resource type="Texture2D" uid="uid://duswltiwx6nrr" path="res://Balls/Fighters/Katie/turret2.png" id="5_kbvqn"]
+[ext_resource type="Texture2D" uid="uid://dvuk31nh4j0rm" path="res://Balls/Fighters/Katie/OCBL_katiebeach_turretblue.png" id="6_j2hm2"]
+[ext_resource type="Texture2D" uid="uid://c7431s7th0av1" path="res://Balls/Fighters/Katie/turretweapon2.png" id="7_j2hm2"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="7_xb6xl"]
+[ext_resource type="Shape2D" uid="uid://bju74o3xxed5w" path="res://Balls/Ball_Collision.tres" id="7_yuftw"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="10_yuftw"]
+[ext_resource type="Texture2D" uid="uid://coiquq8frg6q7" path="res://Balls/Fighters/Katie/OCBL_katiebeach_turretblue_gun_4-1.png" id="11_hm4ys"]
+[ext_resource type="Script" uid="uid://drjecgqnutt2p" path="res://Balls/Components/health_drainer.gd" id="13_y3hdu"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="14_g8lmv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j2hm2"]
+friction = 0.0
+
+[node name="KatieTurret" type="RigidBody2D" unique_id=2006505664]
+collision_layer = 112
+mass = 12.0
+physics_material_override = SubResource("PhysicsMaterial_j2hm2")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_61b6k")
+ball_scale = 0.75
+groups = Array[String](["Turret", "Robot", "Minion"])
+velocity = 0.0
+bounce_speed_boost = 0.0
+normalizer_speed_down = 100.0
+
+[node name="TurretScript" type="Node" parent="." unique_id=1252769792]
+script = ExtResource("2_yuftw")
+
+[node name="HitProcessor" type="Node" parent="." unique_id=984206705 node_paths=PackedStringArray("ball")]
+script = ExtResource("2_1efcj")
+ball = NodePath("..")
+hitstop_scale = 0.0
+knockback_scale = 0.0
+
+[node name="Visuals2" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("4_407as")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals2" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+ball = NodePath("../..")
+
+[node name="AnimationPlayer" parent="Visuals2" index="1" unique_id=984181658]
+hurt_switch = false
+
+[node name="Default" parent="Visuals2/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("5_kbvqn")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("6_j2hm2")
+})
+
+[node name="HealthLabel" parent="Visuals2" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+offset_top = -34.0
+offset_bottom = 35.0
+health_component = NodePath("../../HealthManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=32999246]
+shape = ExtResource("7_yuftw")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=1064591816 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_xb6xl")
+ball = NodePath("..")
+rotation_rate = 4.5
+bounce_spin_boost = 0.0
+aiming = true
+aim_speed = 0.04
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater" unique_id=804581582]
+position = Vector2(126.04, 0)
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponVisual" unique_id=1779449690 node_paths=PackedStringArray("ball")]
+position = Vector2(-1.5258789e-05, 15)
+rotation = 0.036546156
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("7_j2hm2")
+script = ExtResource("10_yuftw")
+ball = NodePath("../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("11_hm4ys")
+})
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=612188754 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("14_g8lmv")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 30.0
+
+[node name="HDrainer" type="Node" parent="HealthManager" unique_id=1528396249]
+script = ExtResource("13_y3hdu")
+drain_per_second = 1.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Visuals2"]

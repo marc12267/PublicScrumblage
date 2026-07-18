@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dhryw5oxa6qrc"]
+
+[ext_resource type="Script" uid="uid://cuuokpqeq81wg" path="res://GameStuff/pop_up_effect.gd" id="1_8o1mx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jany0"]
+font_size = 50
+stacked_outline_count = 2
+stacked_outline_0/size = 3
+stacked_outline_0/color = Color(1, 1, 1, 1)
+stacked_outline_1/size = 6
+
+[node name="Node2D" type="Node2D" unique_id=982151814]
+process_mode = 3
+script = ExtResource("1_8o1mx")
+
+[node name="Label" type="Label" parent="." unique_id=1158800306]
+light_mask = 0
+z_index = 6
+offset_left = -40.0
+offset_top = -35.0
+offset_right = 40.0
+offset_bottom = 35.0
+text = "?"
+label_settings = SubResource("LabelSettings_jany0")
+horizontal_alignment = 1
+vertical_alignment = 1

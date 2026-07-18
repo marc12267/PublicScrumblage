@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ceekcsd6ce1cv"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_8ke65"]
+[ext_resource type="AudioStream" uid="uid://cr4tp55ge6l0k" path="res://Balls/Teams/hongthong_teamname.wav" id="2_wxum5"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_jvek3"]
+[ext_resource type="PackedScene" uid="uid://cy7jciygke7j0" path="res://Balls/Fighters/Hong/ball_hong.tscn" id="3_wxum5"]
+[ext_resource type="PackedScene" uid="uid://bjvxlu2n7cbvi" path="res://Balls/Fighters/Thong/ball_thong.tscn" id="4_jvek3"]
+[ext_resource type="LabelSettings" uid="uid://c364speyalldk" path="res://Fonts/win_quote_font.tres" id="6_g0pu5"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_8ke65")
+team_name = "HONG THONG"
+team_audio = ExtResource("2_wxum5")
+ball1 = NodePath("HongBall")
+ball2 = NodePath("ThongBall")
+
+[node name="HongBall" parent="." unique_id=1629520744 instance=ExtResource("3_wxum5")]
+
+[node name="ThongBall" parent="." unique_id=1376789563 instance=ExtResource("4_jvek3")]
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_jvek3")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.5921569, 0.8901961, 0.9647059, 1)
+offset_top = -196.0
+offset_bottom = -12.0
+text = "\"Wooow, love how big your sword is! ❤️\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.88235295, 0.12941177, 0.22352941, 1)
+offset_top = -95.0
+offset_bottom = 76.0
+text = "\"Dude im so hard right now.\""
+
+[node name="Description3" type="Label" parent="WinBubble" unique_id=809280707]
+modulate = Color(0.5921569, 0.8901961, 0.9647059, 1)
+offset_left = -283.0
+offset_top = -25.0
+offset_right = 277.0
+offset_bottom = 159.0
+text = "\"What?\""
+label_settings = ExtResource("6_g0pu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description4" type="Label" parent="WinBubble" unique_id=2068778869]
+modulate = Color(0.88235295, 0.12941177, 0.22352941, 1)
+offset_left = -276.0
+offset_top = 55.0
+offset_right = 277.0
+offset_bottom = 226.0
+text = "\"What?\""
+label_settings = ExtResource("6_g0pu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[editable path="WinBubble"]

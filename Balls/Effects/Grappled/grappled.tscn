@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c6vixbcvy7xek"]
+
+[ext_resource type="Script" uid="uid://briahohnjyvsq" path="res://Balls/Effects/Grappled/status_grappled.gd" id="1_ge5xt"]
+
+[node name="Grappled" type="Node" unique_id=1998345100]
+script = ExtResource("1_ge5xt")

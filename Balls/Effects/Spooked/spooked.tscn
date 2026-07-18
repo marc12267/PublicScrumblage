@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cm26wbajrgkhh"]
+
+[ext_resource type="Script" uid="uid://cps33bla0tyt4" path="res://Balls/Effects/Spooked/status_spooked.gd" id="1_6wenb"]
+[ext_resource type="Texture2D" uid="uid://bui5vyc34koau" path="res://Balls/Effects/Spooked/0771.png" id="2_jyfr2"]
+
+[node name="Spooked" type="Node" unique_id=1998345100]
+script = ExtResource("1_6wenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=951388100]
+z_index = 1
+texture = ExtResource("2_jyfr2")

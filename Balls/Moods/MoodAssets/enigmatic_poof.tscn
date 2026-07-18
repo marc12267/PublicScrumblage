@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ccfrlj2n7rxu1"]
+
+[ext_resource type="Texture2D" uid="uid://us5tjinocfqw" path="res://Assets/Octogon.png" id="1_x7nh0"]
+
+[sub_resource type="Curve" id="Curve_k35yj"]
+_data = [Vector2(0, 0.2920962), 0.0, 0.0, 0, 0, Vector2(0.42176867, 0.62886596), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ylqc7"]
+curve = SubResource("Curve_k35yj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8k1vq"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 350.0
+orbit_velocity_min = 0.7500001
+orbit_velocity_max = 0.7500001
+gravity = Vector3(0, 98, 0)
+radial_accel_min = 99.99999
+radial_accel_max = 99.99999
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_ylqc7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1784250043]
+emitting = false
+amount = 10
+texture = ExtResource("1_x7nh0")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_8k1vq")

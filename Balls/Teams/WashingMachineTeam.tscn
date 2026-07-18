@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bmrnwefuhn57c"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_yqd8r"]
+[ext_resource type="AudioStream" uid="uid://bd8gx2v6g6ape" path="res://Balls/Teams/washingmachine_teamname.wav" id="2_yqd8r"]
+[ext_resource type="PackedScene" uid="uid://cnry6umasfeh5" path="res://Balls/Fighters/Phil/ball_phil.tscn" id="4_gqujg"]
+[ext_resource type="LabelSettings" uid="uid://c364speyalldk" path="res://Fonts/win_quote_font.tres" id="4_yqd8r"]
+[ext_resource type="PackedScene" uid="uid://cd36jj20l11hn" path="res://Balls/Fighters/Katie/ball_katie.tscn" id="5_yqd8r"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="6_syftm"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_yqd8r")
+team_name = "WASHING MACHINE"
+team_audio = ExtResource("2_yqd8r")
+ball1 = NodePath("KatieBall")
+ball2 = NodePath("PhilBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("6_syftm")]
+position = Vector2(436, -431)
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.4862745, 0.9019608, 0.75686276, 1)
+offset_top = -218.0
+offset_bottom = -34.0
+text = "\"Would you like a tangerine?\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.6, 0.19607843, 0.8117647, 1)
+offset_top = -76.0
+offset_bottom = 95.0
+text = "\"I'll take the tangerine!
+As long as you take my fashion advice once this is over!\""
+
+[node name="Description3" type="Label" parent="WinBubble" unique_id=194779021]
+modulate = Color(0.43889996, 0.18900001, 0.63, 1)
+offset_left = -276.0
+offset_top = 29.0
+offset_right = 277.0
+offset_bottom = 200.0
+text = "
+\"PLEASE don't listen to him...\""
+label_settings = ExtResource("4_yqd8r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="KatieBall" parent="." unique_id=16634689 instance=ExtResource("5_yqd8r")]
+
+[node name="PhilBall" parent="." unique_id=1403036725 instance=ExtResource("4_gqujg")]
+position = Vector2(-849, -392)
+
+[node name="SPLASHART" parent="PhilBall/StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(1403036725, 2045748137, 2023632038) index="0" unique_id=2081690940]
+offset_left = 1460.0
+offset_top = -757.0
+offset_right = 1460.0
+offset_bottom = -757.0
+
+[node name="TextureRect" parent="PhilBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_left = -411.00006
+offset_top = -398.0
+offset_right = 588.99994
+offset_bottom = 1002.0
+
+[editable path="WinBubble"]
+[editable path="PhilBall"]
+[editable path="PhilBall/Visuals"]
+[editable path="PhilBall/StatsUI/BallStatDisplay"]
+[editable path="PhilBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

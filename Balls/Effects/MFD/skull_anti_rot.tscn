@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c6khk7cr40ix2"]
+
+[ext_resource type="Texture2D" uid="uid://d10evj0hnwyde" path="res://Balls/Effects/MFD/MFD.png" id="1_5nmlw"]
+[ext_resource type="Script" uid="uid://dnr5sjumah302" path="res://Balls/Effects/AntiRotateOrbiter.gd" id="2_kys3n"]
+
+[node name="AntiRotSkull" type="Sprite2D" unique_id=56172094 node_paths=PackedStringArray("anti_rotate_target")]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_5nmlw")
+script = ExtResource("2_kys3n")
+anti_rotate_target = NodePath(".")

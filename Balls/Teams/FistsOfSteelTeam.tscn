@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cbh7xdadponn1"]
+
+[ext_resource type="Script" uid="uid://bme4n5wgf684l" path="res://Balls/team.gd" id="1_0yc16"]
+[ext_resource type="AudioStream" uid="uid://bv4c8l41s8hpd" path="res://Balls/Teams/fistsofsteel_teamname.wav" id="2_0yc16"]
+[ext_resource type="PackedScene" uid="uid://bg42ux7vs0uyj" path="res://Balls/Components/win_bubble_team.tscn" id="3_vcfvw"]
+[ext_resource type="PackedScene" uid="uid://k1xn4ny38p37" path="res://Balls/Fighters/Beta/ball_beta.tscn" id="4_0yc16"]
+[ext_resource type="PackedScene" uid="uid://doy2a3aleawho" path="res://Balls/Fighters/T7/ball_t7.tscn" id="5_vyebp"]
+
+[node name="TeamBase" type="Node" unique_id=2062444987 node_paths=PackedStringArray("ball1", "ball2")]
+script = ExtResource("1_0yc16")
+team_name = "FISTS OF STEEL"
+team_audio = ExtResource("2_0yc16")
+ball1 = NodePath("T7Ball")
+ball2 = NodePath("BetaBall")
+
+[node name="WinBubble" parent="." unique_id=892689569 instance=ExtResource("3_vcfvw")]
+
+[node name="Description" parent="WinBubble" index="1" unique_id=346799990]
+modulate = Color(0.45882353, 1, 0.6, 1)
+text = "\"Dude, how did you get so huge?\""
+
+[node name="Description2" parent="WinBubble" index="2" unique_id=1836100401]
+modulate = Color(0.38209, 0.57, 0.3249, 1)
+text = "\"I learned that to beat a bear, is to become bigger than them.\""
+
+[node name="T7Ball" parent="." unique_id=1629520744 instance=ExtResource("5_vyebp")]
+
+[node name="BetaBall" parent="." unique_id=1651906983 instance=ExtResource("4_0yc16")]
+
+[node name="TextureRect" parent="BetaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART" parent_id_path=PackedInt32Array(1651906983, 444730092, 2081690940) index="0" unique_id=1997730014]
+offset_top = -320.0
+offset_bottom = 1080.0
+
+[editable path="WinBubble"]
+[editable path="BetaBall"]
+[editable path="BetaBall/StatsUI/BallStatDisplay"]
+[editable path="BetaBall/StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bwnr8ejgo40y1"]
+
+[ext_resource type="Script" uid="uid://bjyytikd6bmia" path="res://Balls/Effects/Shatter/status_shatter.gd" id="1_7ti4q"]
+
+[node name="Shatter" type="Node" unique_id=564137416]
+script = ExtResource("1_7ti4q")
+have_icon = true
+icon_effect = "res://Balls/Effects/Shatter/Shatter.png"
+have_bstat_effect = true
+bstat_callable = "purple_bar"

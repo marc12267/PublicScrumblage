@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bybb80o833yda"
+path="res://.godot/imported/kicked a beandog and celebrated.mp3-7b4df1606e823d12fc8e9a8f9d4c1d87.mp3str"
+
+[deps]
+
+source_file="res://Balls/Bosses/BeanDog/kicked a beandog and celebrated.mp3"
+dest_files=["res://.godot/imported/kicked a beandog and celebrated.mp3-7b4df1606e823d12fc8e9a8f9d4c1d87.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

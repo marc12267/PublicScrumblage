@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bxcky5aigg02k"]
+
+[ext_resource type="Script" uid="uid://dqy4cw1wjakpk" path="res://Balls/revive_system.gd" id="1_u5vsd"]
+[ext_resource type="Texture2D" uid="uid://bymr2g8pp06gs" path="res://Assets/BrokenHeart.png" id="2_co23o"]
+[ext_resource type="Texture2D" uid="uid://b6gquwruicxs0" path="res://Assets/Heart.png" id="3_8esrs"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="3_x8oa3"]
+[ext_resource type="Texture2D" uid="uid://dwdmgvgd74a2q" path="res://Assets/dotted-circle.png" id="4_0ym70"]
+
+[node name="Revive" type="Node2D" unique_id=1768614551]
+process_mode = 1
+script = ExtResource("1_u5vsd")
+
+[node name="BrokenHeart" type="Sprite2D" parent="." unique_id=2070719727]
+light_mask = 0
+z_index = 9
+position = Vector2(0, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_co23o")
+
+[node name="Heart" type="Sprite2D" parent="." unique_id=229527318]
+visible = false
+light_mask = 0
+z_index = 9
+position = Vector2(0, 5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_8esrs")
+
+[node name="CD" type="TextureProgressBar" parent="." unique_id=22211088]
+modulate = Color(0.07, 0.07, 0.07, 0.5372549)
+light_mask = 0
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.3, 2.3)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.5
+value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("3_x8oa3")
+tint_under = Color(0.35006392, 0.35006395, 0.35006392, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=279136724]
+light_mask = 0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("4_0ym70")

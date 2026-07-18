@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bn6yllnl04cm2"]
+
+[ext_resource type="Script" uid="uid://c3k86jan4kj3b" path="res://Balls/Fighters/Katie/scrap_powerup.gd" id="1_mruym"]
+[ext_resource type="Texture2D" uid="uid://bsgv40uibqnmi" path="res://Assets/pile_of_junk_large.d0437ef0f573c0122a0c81cdca93d094ab024015.png" id="2_iiewm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbenj"]
+radius = 52.639515
+
+[node name="Powerup" type="Node2D" unique_id=1834687164]
+script = ExtResource("1_mruym")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1238395580]
+scale = Vector2(1.35, 1.35)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=397583212]
+shape = SubResource("CircleShape2D_qbenj")
+
+[node name="Default" type="Sprite2D" parent="Area2D/CollisionShape2D" unique_id=1920174131]
+modulate = Color(0, 0.6862745, 0.7490196, 0.69803923)
+z_index = -1
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_iiewm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

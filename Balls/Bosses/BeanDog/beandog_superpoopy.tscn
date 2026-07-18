@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://crd0s4rdwbf0v"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_1noqk"]
+[ext_resource type="Script" uid="uid://b5q5n6n8dbrqa" path="res://Balls/Bosses/BeanDog/poopy_script.gd" id="2_isjmt"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="3_gbrqy"]
+[ext_resource type="Texture2D" uid="uid://bxa63s0ut6he8" path="res://Balls/Bosses/BeanDog/superpoop.png" id="4_1noqk"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="5_3njgm"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="6_dotck"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="7_s4vjp"]
+[ext_resource type="Texture2D" uid="uid://1r4vuqliqkf8" path="res://Balls/Bosses/BeanDog/sparkle.png" id="8_isjmt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d2ti1"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6em01"]
+radius = 63.126858
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75wk7"]
+radius = 57.14018
+
+[sub_resource type="Gradient" id="Gradient_rfroa"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.49261993)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wfcws"]
+gradient = SubResource("Gradient_rfroa")
+
+[sub_resource type="Curve" id="Curve_mliow"]
+_data = [Vector2(0, 0.8119422), 0.0, 0.0, 0, 0, Vector2(0.56000006, 1), 0.16835609, 0.16835609, 0, 0, Vector2(1, 0), -0.5881938, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rb1t3"]
+curve = SubResource("Curve_mliow")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gbrqy"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 64.0
+angle_min = -14.9999895
+angle_max = 15.0000105
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, -50, 0)
+scale_min = 0.5
+scale_max = 0.65
+scale_curve = SubResource("CurveTexture_rb1t3")
+color_ramp = SubResource("GradientTexture1D_wfcws")
+
+[node name="Poopy" type="RigidBody2D" unique_id=264007177]
+z_index = -1
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_d2ti1")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_1noqk")
+groups = Array[String](["Projectile", "Trap", "AntiDeflect"])
+velocity = 0.0
+bounce_speed_boost = 0.0
+normalizer_speed_up = 100.0
+normalizer_speed_down = 50.0
+bounce_sfx = ""
+ball_collide = false
+
+[node name="PoopyScript" type="Node" parent="." unique_id=48364605]
+script = ExtResource("2_isjmt")
+superpoop = true
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("3_gbrqy")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+position = Vector2(0, 1.1920929e-07)
+scale = Vector2(0.4, 0.4)
+ball = NodePath("../..")
+
+[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=984181658]
+hurt_switch = false
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+position = Vector2(0, -7)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_1noqk")
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732]
+visible = false
+
+[node name="hitbox" parent="." unique_id=1540937296 node_paths=PackedStringArray("ball") instance=ExtResource("5_3njgm")]
+collision_layer = 0
+collision_mask = 64
+ball = NodePath("..")
+active = false
+tick_wait = 0.07
+anti_dodge = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=2119502925]
+shape = SubResource("CircleShape2D_6em01")
+debug_color = Color(0.9020316, 0.24375501, 0.4918024, 0.41960785)
+
+[node name="ClashBouncer" type="Node" parent="hitbox" unique_id=1789776777 node_paths=PackedStringArray("ball")]
+script = ExtResource("6_dotck")
+ball = NodePath("../..")
+ignore_clash = true
+ignorable = true
+
+[node name="HitboxDamager" type="Node" parent="hitbox" unique_id=388852475 node_paths=PackedStringArray("ball")]
+script = ExtResource("7_s4vjp")
+ball = NodePath("../..")
+damage = 1.0
+knockback = 0.0
+self_knockback = 0.0
+crit_chance = 0.0
+hitstop_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=535348625]
+shape = SubResource("CircleShape2D_75wk7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1987200136]
+z_index = 1
+amount = 4
+texture = ExtResource("8_isjmt")
+process_material = SubResource("ParticleProcessMaterial_gbrqy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="hitbox" to="hitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="hitbox" to="hitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]

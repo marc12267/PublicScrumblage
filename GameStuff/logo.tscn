@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlnql71mqkyge"]
+
+[ext_resource type="Texture2D" uid="uid://c6f57vbyexmfe" path="res://Assets/Logo.png" id="1_l0hdr"]
+[ext_resource type="Texture2D" uid="uid://dw0x1eqcijuwi" path="res://GameStuff/Beach_Assets/Label.png" id="2_xhdwt"]
+[ext_resource type="Script" uid="uid://bxfs5y2lbavma" path="res://GameStuff/generic_skin_hider.gd" id="3_gfe34"]
+
+[node name="Logo" type="Sprite2D" unique_id=203095243]
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("1_l0hdr")
+
+[node name="Label" type="Sprite2D" parent="." unique_id=591633156]
+visible = false
+position = Vector2(76, -21.000002)
+rotation = 0.15618928
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_xhdwt")
+script = ExtResource("3_gfe34")

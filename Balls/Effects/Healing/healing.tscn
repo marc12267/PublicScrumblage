@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cdqq2f7ltnppr"]
+
+[ext_resource type="Script" uid="uid://rsmqoladvl74" path="res://Balls/Effects/Healing/status_healing.gd" id="1_8u1yy"]
+[ext_resource type="Texture2D" uid="uid://q0bn5ky55lp6" path="res://Balls/Effects/Healing/Heal.png" id="2_8u1yy"]
+
+[sub_resource type="Gradient" id="Gradient_pe2qm"]
+offsets = PackedFloat32Array(0, 0.60567826, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.9586164, 0.9865247, 0.9403159, 0.84542584, 0.7322731, 0.9128231, 0.6138805, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lclf6"]
+gradient = SubResource("Gradient_pe2qm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kqel2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 75.0
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 120.0
+initial_velocity_max = 250.0
+angular_velocity_min = -10.000016
+angular_velocity_max = 9.999984
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -200.0
+linear_accel_max = -2.2351742e-06
+scale_min = 0.099999994
+scale_max = 0.29999998
+color_ramp = SubResource("GradientTexture1D_lclf6")
+
+[node name="Healing" type="Node" unique_id=892349433 node_paths=PackedStringArray("gpu_particles_2d")]
+script = ExtResource("1_8u1yy")
+gpu_particles_2d = NodePath("GPUParticles2D")
+have_icon = true
+icon_effect = "res://Balls/Effects/Healing/Heal.png"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1581679018]
+amount = 2
+texture = ExtResource("2_8u1yy")
+lifetime = 0.4
+explosiveness = 0.2
+randomness = 0.2
+visibility_rect = Rect2(-110, -220, 220, 300)
+process_material = SubResource("ParticleProcessMaterial_kqel2")

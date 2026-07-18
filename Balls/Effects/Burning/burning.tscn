@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://drtnvflbdv07e"]
+
+[ext_resource type="Script" uid="uid://dgrxd32thigr3" path="res://Balls/Effects/Burning/status_burning.gd" id="1_snnav"]
+[ext_resource type="Texture2D" uid="uid://cbncwc5qwk13j" path="res://Balls/Effects/Burning/Flame.png" id="2_ej023"]
+[ext_resource type="Script" uid="uid://d3q1owtaibrfl" path="res://Balls/hitbox.gd" id="3_gtned"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="4_apncy"]
+[ext_resource type="Texture2D" uid="uid://cl8j2x2ygvhqg" path="res://Assets/boom.png" id="5_evomu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivica"]
+radius = 251.03188
+
+[sub_resource type="Animation" id="Animation_j7bam"]
+resource_name = "Boom"
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-5.9604645e-08, 0.041666627, 0.08333328, 0.12499994, 0.16666663, 0.20833331, 0.24999994, 0.29166663, 0.3333333, 0.375, 0.41666663, 0.4583333, 0.5, 0.5416667, 0.5833333, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16, 0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_n7cwa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qkikj"]
+_data = {
+&"Boom": SubResource("Animation_j7bam"),
+&"RESET": SubResource("Animation_n7cwa")
+}
+
+[sub_resource type="Curve" id="Curve_evomu"]
+_data = [Vector2(0, 0.19513547), 0.0, 0.0, 0, 0, Vector2(0.5653711, 0.37325037), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Burning" type="Node" unique_id=564137416 node_paths=PackedStringArray("gpu_particles_2d")]
+script = ExtResource("1_snnav")
+gpu_particles_2d = NodePath("CPUParticles2D")
+have_icon = true
+icon_effect = "res://Balls/Effects/Burning/StatusIconBurning.png"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=844029790]
+scale = Vector2(0.5, 0.5)
+
+[node name="DangerZone" type="Area2D" parent="Node2D" unique_id=1052347973]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_gtned")
+active = false
+sync_stats = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DangerZone" unique_id=1047277951]
+shape = SubResource("CircleShape2D_ivica")
+debug_color = Color(0.77180344, 0.3856515, 0.57674, 0.24313726)
+
+[node name="HitboxDamager" type="Node" parent="Node2D/DangerZone" unique_id=1182555287]
+script = ExtResource("4_apncy")
+damage = 12.0
+knockback = 0.0
+self_knockback = 0.0
+crit_chance = 0.0
+crit_multiplier = 0.0
+sync_stats = false
+
+[node name="Boom2" type="Node2D" parent="Node2D" unique_id=1511218998]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Boom2" unique_id=255065756]
+visible = false
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("5_evomu")
+hframes = 9
+vframes = 2
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Boom2" unique_id=1803442102]
+libraries/ = SubResource("AnimationLibrary_qkikj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=135574960]
+amount = 3
+texture = ExtResource("2_ej023")
+lifetime = 0.8
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, -100)
+initial_velocity_min = 300.0
+initial_velocity_max = 500.0
+scale_amount_curve = SubResource("Curve_evomu")
+
+[node name="Overlay" type="Node2D" parent="." unique_id=2054407698]
+visible = false
+
+[node name="Flame" type="Sprite2D" parent="Overlay" unique_id=1609298101]
+z_index = 1
+position = Vector2(-6, -13)
+texture = ExtResource("2_ej023")
