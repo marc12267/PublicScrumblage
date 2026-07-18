@@ -57,7 +57,7 @@ func _update_bar_color():
 
 
 func purple_bar(value):
-	$BattleBar/Healthbar.purple_bar(value)
+	$Box/BattleBar/Healthbar.purple_bar(value)
 
 func meter_change(value):
 	meterbar.value = value
