@@ -122,7 +122,7 @@ func can_act(ball:BallBodyBase):
 	return ball.enabled
 
 ## Get direction to closest ball
-func dir_closest_ball(ball,default_val =Vector2.ZERO):
+func dir_closest_ball(ball,default_val =Vector2.ZERO)->Vector2:
 	if get_tree()==null:
 		return default_val
 	var group = get_tree().get_nodes_in_group("Main").duplicate()
@@ -146,7 +146,6 @@ func dir_closest_ball(ball,default_val =Vector2.ZERO):
 		return default_val
 
 	var future_pos = closest.global_position
-
 	return ball.global_position.direction_to(future_pos)
 
 ## Get closest ball to ball

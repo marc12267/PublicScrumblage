@@ -14,7 +14,7 @@ class_name HealthManager
 @export var max_health:float=100
 @export var health:float=-1
 @export var overhealth:float=0.0
-@export var armor:int=0
+@export var armor:float=0
 
 var stat_name:String="HealthManager"
 
@@ -32,7 +32,7 @@ func health_scale():
 	return health/max_health
 
 func set_armor(val):
-	stat_controller.set_base_stat(stat_name+".armor",val)
+	stat_controller.set_base_stat(stat_name+".armor",max(val,0))
 
 
 func add_armor(val):
@@ -142,13 +142,16 @@ func hurt(data):
 	
 	if armor > 0 and calc_dmg>0 and !valid_type(type):
 		if calc_dmg<=1:
-			calc_dmg=0
+			#set_armor(round((armor-calc_dmg*0.25)*10.0)/10.0)
+			set_armor(armor-calc_dmg)
+			
 		else:
 			stat_controller.set_base_stat(stat_name + ".armor", max(armor - 1, 0))
 			calc_dmg=0
+			
+		if armor==0:
 			if sfx=="res://Sounds/hurt_sfx.wav":
 				sfx = "res://Sounds/hard-metal-clang-sfx_70bpm_G_major.wav"
-			
 	if calc_dmg>0:
 		stat_controller.set_base_stat(stat_name + ".health", max(health - dmg, 0))
 		

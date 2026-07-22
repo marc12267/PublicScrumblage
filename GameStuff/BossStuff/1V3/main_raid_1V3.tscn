@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://cxfo0ihu6vcqm"]
 
 [ext_resource type="Script" uid="uid://3tupxqok6qvg" path="res://GameStuff/BossStuff/1V3/main_raid_1v3.gd" id="1_h2w3j"]
-[ext_resource type="PackedScene" uid="uid://btndl1t8n4pg8" path="res://Balls/Bosses/BeanDog/boss_beandog.tscn" id="2_uwdm0"]
-[ext_resource type="PackedScene" uid="uid://04trgdyixemq" path="res://Balls/Fighters/01/ball_01.tscn" id="3_spedn"]
-[ext_resource type="PackedScene" uid="uid://k1xn4ny38p37" path="res://Balls/Fighters/Beta/ball_beta.tscn" id="4_0so2k"]
 [ext_resource type="Script" uid="uid://b4yamxnewh71l" path="res://GameStuff/confetti_cannon.gd" id="4_sqjga"]
-[ext_resource type="PackedScene" uid="uid://bxx3mk6sbs75x" path="res://Balls/Fighters/Hanate/ball_hanate.tscn" id="5_jttai"]
 [ext_resource type="PackedScene" uid="uid://npp6cmnmok3k" path="res://GameStuff/Confetti.tscn" id="5_wcdm5"]
 [ext_resource type="Script" uid="uid://b8q822wn0j3s8" path="res://GameStuff/match_looper.gd" id="6_jttai"]
 [ext_resource type="Script" uid="uid://ff260b1xf73s" path="res://GameStuff/damage_recorder.gd" id="6_urx6i"]
@@ -45,10 +41,6 @@ size = Vector2(2290.0764, 241.99992)
 
 [node name="MainRaid" type="Node2D" unique_id=2110299460 groups=["Arena"]]
 script = ExtResource("1_h2w3j")
-boss_res = ExtResource("2_uwdm0")
-ball1a_res = ExtResource("3_spedn")
-ball1b_res = ExtResource("4_0so2k")
-ball1c_res = ExtResource("5_jttai")
 
 [node name="DamageRecorder" type="Node" parent="." unique_id=1418057878]
 script = ExtResource("6_urx6i")

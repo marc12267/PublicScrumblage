@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://cj1r5h66i6jx3"]
 
 [ext_resource type="Script" uid="uid://ctmonysa1h70t" path="res://GameStuff/main_ffa.gd" id="1_knffn"]
-[ext_resource type="PackedScene" uid="uid://bakfim8mubf6q" path="res://Balls/Fighters/Hones/ball_hones.tscn" id="2_rsqdb"]
-[ext_resource type="PackedScene" uid="uid://bbksgp84t2x71" path="res://Balls/Fighters/Mandalyn/ball_mandalyn.tscn" id="3_coeju"]
-[ext_resource type="PackedScene" uid="uid://bxx3mk6sbs75x" path="res://Balls/Fighters/Hanate/ball_hanate.tscn" id="4_hvge6"]
 [ext_resource type="Script" uid="uid://b4yamxnewh71l" path="res://GameStuff/confetti_cannon.gd" id="4_knffn"]
-[ext_resource type="PackedScene" uid="uid://ddp3sdnq2iw3q" path="res://Balls/Fighters/Boomy/ball_boomy.tscn" id="5_coeju"]
 [ext_resource type="PackedScene" uid="uid://npp6cmnmok3k" path="res://GameStuff/Confetti.tscn" id="5_gm154"]
 [ext_resource type="Script" uid="uid://b8q822wn0j3s8" path="res://GameStuff/match_looper.gd" id="6_0kwm5"]
 [ext_resource type="Script" uid="uid://ff260b1xf73s" path="res://GameStuff/damage_recorder.gd" id="6_coeju"]
@@ -52,10 +48,6 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="MainFFA" type="Node2D" unique_id=2110299460 groups=["Arena"]]
 script = ExtResource("1_knffn")
-ball3_res = ExtResource("2_rsqdb")
-ball4_res = ExtResource("3_coeju")
-ball1_res = ExtResource("4_hvge6")
-ball2_res = ExtResource("5_coeju")
 
 [node name="DamageRecorder" type="Node" parent="." unique_id=1564526608]
 script = ExtResource("6_coeju")

@@ -8,6 +8,7 @@ extends BehaviourScript
 @onready var vision_area = $"../VisionRotater/Area2D"
 @onready var point_light_2d = $"../VisionRotater/PointLight2D"
 @onready var meter_manager = $"../MeterManager"
+
 var counter:float=0.0
 var slept:Array=[]
 var sleep_strength:float=1.5
@@ -99,12 +100,11 @@ func flash():
 	sleep_text()
 	
 	
-@onready var lv: Label = $"../StatsUI/BallStatDisplay/LV"
 
 func sleep_text():
 	var future_val=sleep_val()
 	future_val=round(future_val*100.0)/100.0
-	lv.text="SLEEP: "+str(future_val)
+	%LV.text="SLEEP: "+str(future_val)
 
 var sleep_amount=1
 func sleep_val():

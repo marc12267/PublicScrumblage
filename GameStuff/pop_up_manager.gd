@@ -37,15 +37,15 @@ func damage_number(amount, world_pos: Vector2, type :String= ""):
 	if type=="CRIT":
 		text_pop.modulate= Color.RED
 		text_pop.scale=Vector2(1,1)*1.5
-		text_pop.fade_scale=1.3
+		text_pop.fade_scale=1.5
 	elif type =="REDUCED":
 		text_pop.modulate= Color.SKY_BLUE
 		text_pop.scale=Vector2(1,1)*0.8
-		text_pop.fade_scale=1.3
+		text_pop.fade_scale=0.8
 	elif type == "AMPLIFIED":
 		text_pop.modulate= Color.ORANGE
-		text_pop.scale=Vector2(1,1)*0.8
-		text_pop.fade_scale=1.3
+		text_pop.scale=Vector2(1,1)*1.2
+		text_pop.fade_scale=1.2
 	text_pop.animate()
 	return text_pop
 

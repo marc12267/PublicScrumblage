@@ -126,7 +126,7 @@ autowrap_mode = 3
 [node name="Credit" type="Label" parent="Box/DescriptionBox/Description" unique_id=522021847]
 light_mask = 32768
 layout_mode = 0
-offset_left = 45.0
+offset_left = -14.0
 offset_top = 190.0
 offset_right = 613.0
 offset_bottom = 229.0
@@ -146,6 +146,7 @@ offset_right = 57.0
 offset_bottom = 49.0
 
 [node name="BBBack" type="TextureRect" parent="Box/BattleBar" unique_id=170438548]
+modulate = Color(0.69803923, 0.8, 0.8, 1)
 light_mask = 32768
 layout_mode = 0
 offset_left = -17.0
@@ -157,9 +158,9 @@ texture = ExtResource("6_t2r4s")
 [node name="Meterbar" type="TextureProgressBar" parent="Box/BattleBar" unique_id=368834551]
 light_mask = 32768
 layout_mode = 0
-offset_left = 192.0
+offset_left = 188.0
 offset_top = 50.0
-offset_right = 546.0
+offset_right = 542.0
 offset_bottom = 86.0
 texture_under = ExtResource("2_8j3cl")
 texture_progress = ExtResource("2_8j3cl")

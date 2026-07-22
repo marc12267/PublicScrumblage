@@ -15,6 +15,7 @@ func upd():
 
 func _ready():
 	super()
+	fist_ball.creator_ball=ball
 	ball.update_scale.connect(upd)
 	ball.team_setted.connect(fist_ball.set_team)
 	

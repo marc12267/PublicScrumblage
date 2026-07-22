@@ -79,6 +79,8 @@ func setup_stats():
 		
 	var bstatlist = get_tree().get_nodes_in_group("BStats")
 	
+	for i in bstatlist:
+		print(i.ball)
 	%BStatMarker.set_target(bstatlist[0].box)
 	%BStatMarker2.set_target(bstatlist[1].box)
 	%BStatMarker3.set_target(bstatlist[2].box)

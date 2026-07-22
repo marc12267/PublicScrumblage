@@ -11,7 +11,7 @@ func set_target(ball,value,data):
 	
 	$Sprite2D.visible=true
 	baller.stat_controller.add_modifier("Mood.disabled",2,true,"SPOOKED")
-	baller.stat_controller.add_modifier("Ball.velocity",1,0.75,"SPOOKED")
+	#baller.stat_controller.add_modifier("Ball.velocity",1,0.75,"SPOOKED")
 
 	
 	baller.stat_controller.add_modifier("ContactDamager.enabled",2,false,"SPOOKED")

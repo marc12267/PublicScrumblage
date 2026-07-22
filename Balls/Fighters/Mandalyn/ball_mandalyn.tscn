@@ -249,30 +249,30 @@ script = ExtResource("17_vyu38")
 
 [node name="BallStatDisplay" parent="StatsUI" unique_id=1981925345 instance=ExtResource("19_ml0ku")]
 
-[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="1" unique_id=1921250255]
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="1" unique_id=1921250255]
 text = "MANDALYN THE FIST"
 
-[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="3" unique_id=794553254]
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="3" unique_id=794553254]
 text = "Hair gets stronger from every hit.
 Her special attacks sets it loose into the arena as a projectile."
 
-[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
+[node name="Credit" parent="StatsUI/BallStatDisplay/Box/DescriptionBox/Description" index="0" unique_id=522021847]
 text = "Phishtickz"
 
-[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(1981925345, 846234039) index="3" unique_id=1728433949]
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1981925345, 846234039) index="3" unique_id=1728433949]
 texture = ExtResource("8_ml0ku")
 dict_skin = Dictionary[String, Texture]({
 "Summer": ExtResource("7_b13ln")
 })
 
-[node name="BeachFlower" type="Sprite2D" parent="StatsUI/BallStatDisplay/BattleBar/Icon" index="0" unique_id=1784875076 node_paths=PackedStringArray("ball")]
+[node name="BeachFlower" type="Sprite2D" parent="StatsUI/BallStatDisplay/Box/BattleBar/Icon" index="0" unique_id=461119561 node_paths=PackedStringArray("ball")]
 light_mask = 32768
 z_index = 1
 position = Vector2(31, 27)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_ehu76")
 script = ExtResource("23_m1elr")
-ball = NodePath("../../../../..")
+ball = NodePath("../../../../../..")
 
 [node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(1981925345, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
 name_sound = ExtResource("21_ylutg")

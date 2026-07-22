@@ -15,7 +15,7 @@ func _ready():
 		%Burst.color_ramp = load("uid://bitdp1by4ok33")
 		$"../AreaCircle".color = Color("f24cff28")
 		$"../AreaDotted".color = Color("ffdbeeff")
-		%Spread.color_ramp = load("uid://db0m786gdvcjb")
+		#%Spread.color_ramp = load("uid://db0m786gdvcjb")
 
 func hit_process(data:Dictionary):
 	var attacker = data["ATTACKER"]

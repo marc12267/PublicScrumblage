@@ -17,6 +17,8 @@ var ballInfo = {
 	"res://Balls/Fighters/Hiro/ball_hiro.tscn" : "HIRO",
 	"res://Balls/Fighters/Beta/ball_beta.tscn" : "BETA",
 	"res://Balls/Fighters/T7/ball_t7.tscn" : "T7",
+	"res://Balls/Fighters/Phil/ball_phil.tscn" : "PHIL",
+	"res://Balls/Fighters/Katie/ball_katie.tscn" : "KATIE",
 	"res://Balls/Fighters/Pootis/ball_pootis.tscn" : "MR.POOTIS",
 	"res://Balls/Fighters/HC8/ball_hc8.tscn" : "HC8",
 	"res://Balls/Fighters/01/ball_01.tscn":"01",
@@ -50,7 +52,10 @@ var colorInfo = {
 	"HYLA":Color("75ee84ff"),
 	"PAPRIKA":Color("9a76bc"),
 	"MANDALYN":Color("8f28c7"),
-	"HONES":Color("009971")
+	"HONES":Color("009971"),
+	"PHIL":Color("eac0f8"),
+	"SHIRT":Color("8339bd"),
+	"KATIE":Color("7ce6c1")
 }
 
 func get_team_data(b1_name,b2_name):
@@ -58,9 +63,10 @@ func get_team_data(b1_name,b2_name):
 	pair.sort()
 	
 	for i in TeamDictionary.teamData.keys():
-		i.sort()
-		if i[0]==pair[0] and i[1]==pair[1]:
-			return TeamDictionary.teamData[i]
+		var dup_sort=i.duplicate()
+		dup_sort.sort()
+		if dup_sort[0]==pair[0] and dup_sort[1]==pair[1]:
+			return teamData[i]
 	return null
 
 
@@ -299,6 +305,28 @@ var teamData = {
 			{
 				"line": "\"Quit batting your eyes at me!\"",
 				"color": "SOMNIA"
+			},
+		]
+	},
+	
+	
+	
+	
+	["PHIL","KATIE"]: {
+		"team_name" : "WASHINGMACHINE",
+		"team_audio" : "res://Balls/Teams/washingmachine_teamname.wav",
+		"lines": [
+			{
+				"line": "\"Would you like a tangerine.\"",
+				"color": "KATIE"
+			},
+			{
+				"line": "\"I'll take the tangerine, as long as you take my fashion advice once this is all over.\"",
+				"color": "PHIL"
+			},
+			{
+				"line": "\"PLEASE don't listen to him...\"",
+				"color": "SHIRT"
 			},
 		]
 	},

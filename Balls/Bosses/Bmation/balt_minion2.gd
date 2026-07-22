@@ -1,5 +1,5 @@
 extends BehaviourScript
-const BALL_BALTMINION = preload("res://Balls/Bosses/Bmation/bmationminion0.tscn")
+const BALL_BALTMINION = preload("uid://bsd3phtfung5n")
 
 var triggered=false
 # Called when the node enters the scene tree for the first time.

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://rayatu0km0xm"]
 
 [ext_resource type="Script" uid="uid://djka6gf40esh8" path="res://GameStuff/main_team.gd" id="1_ohrpx"]
-[ext_resource type="PackedScene" uid="uid://bjvxlu2n7cbvi" path="res://Balls/Fighters/Thong/ball_thong.tscn" id="2_7pt0g"]
 [ext_resource type="Script" uid="uid://b4yamxnewh71l" path="res://GameStuff/confetti_cannon.gd" id="3_lrhy7"]
 [ext_resource type="PackedScene" uid="uid://npp6cmnmok3k" path="res://GameStuff/Confetti.tscn" id="4_23ga0"]
 [ext_resource type="Script" uid="uid://b8q822wn0j3s8" path="res://GameStuff/match_looper.gd" id="4_hn4vq"]
@@ -35,7 +34,7 @@ size = Vector2(7726.5, 650)
 size = Vector2(3913.0762, 650)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
-size = Vector2(1040, 2264)
+size = Vector2(1070.9236, 2264)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c57u"]
 size = Vector2(221, 2264)
@@ -49,9 +48,6 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Main2v2" type="Node2D" unique_id=2110299460 groups=["Arena"]]
 script = ExtResource("1_ohrpx")
-ball1a_res = ExtResource("2_7pt0g")
-ball2a_res = ExtResource("2_7pt0g")
-ball2b_res = ExtResource("2_7pt0g")
 
 [node name="DamageRecorder" type="Node" parent="." unique_id=1102797375]
 script = ExtResource("6_knh28")
@@ -60,7 +56,6 @@ enabled = true
 [node name="MatchLooper" type="Node" parent="." unique_id=165501186]
 script = ExtResource("4_hn4vq")
 loop_count = 3
-loop_rounds = true
 
 [node name="Arena" type="Node2D" parent="." unique_id=1622911532]
 position = Vector2(650, 487)
@@ -113,7 +108,7 @@ z_index = -5
 offset_left = -722.0
 offset_top = -559.07623
 offset_right = 721.0
-offset_bottom = 510.99994
+offset_bottom = 469.99994
 color = Color(0.7817457, 0.88292295, 0.86553365, 1)
 
 [node name="StageBorder3" type="ColorRect" parent="Arena" unique_id=1936453163]
@@ -132,7 +127,7 @@ z_index = -5
 offset_left = -699.0
 offset_top = -446.0
 offset_right = 698.0
-offset_bottom = 456.0
+offset_bottom = 425.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("4_ohrpx")
 
@@ -177,7 +172,7 @@ collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_7dm0k")
 
 [node name="Ground" type="CollisionShape2D" parent="Arena/Ground" unique_id=510655395]
-position = Vector2(-1422.9236, 606)
+position = Vector2(-1407.4618, 606)
 shape = SubResource("RectangleShape2D_7dm0k")
 debug_color = Color(0, 0.6, 0.69803923, 0)
 
@@ -229,9 +224,9 @@ scale = Vector2(1, 2)
 
 [node name="Timer" type="Label" parent="Arena" unique_id=1077334379]
 offset_left = 506.0
-offset_top = -576.99994
+offset_top = -572.9999
 offset_right = 688.0
-offset_bottom = -441.99994
+offset_bottom = -437.99988
 scale = Vector2(1.1, 1.1)
 text = "99"
 label_settings = SubResource("LabelSettings_7mycd")
@@ -240,29 +235,29 @@ vertical_alignment = 1
 script = ExtResource("7_0p25n")
 
 [node name="Logo" parent="Arena" unique_id=203095243 instance=ExtResource("5_j00ph")]
-position = Vector2(24, -500.00006)
+position = Vector2(24, -496.00012)
 
 [node name="BStatMarker" type="Marker2D" parent="Arena" unique_id=1111609774]
 unique_name_in_owner = true
-position = Vector2(-712.5, 550)
+position = Vector2(-712.5, 501)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("15_7pt0g")
 
 [node name="BStatMarker2" type="Marker2D" parent="Arena" unique_id=263770526]
 unique_name_in_owner = true
-position = Vector2(-712.5, 725.99994)
+position = Vector2(-712.5, 677.0001)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("15_7pt0g")
 
 [node name="BStatMarker3" type="Marker2D" parent="Arena" unique_id=993078176]
 unique_name_in_owner = true
-position = Vector2(23, 550)
+position = Vector2(23, 501)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("15_7pt0g")
 
 [node name="BStatMarker4" type="Marker2D" parent="Arena" unique_id=53163641]
 unique_name_in_owner = true
-position = Vector2(23, 725.99994)
+position = Vector2(23, 677.0001)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("15_7pt0g")
 

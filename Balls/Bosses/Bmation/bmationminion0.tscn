@@ -129,6 +129,7 @@ max_health = 12.0
 
 [node name="Node" type="Node" parent="HealthManager" unique_id=1476040646]
 script = ExtResource("17_o6qn5")
+drain_per_second = 1.0
 
 [node name="MeterManager" type="Node" parent="." unique_id=1002660597]
 script = ExtResource("19_vrcy8")

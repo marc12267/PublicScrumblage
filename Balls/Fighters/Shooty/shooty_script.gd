@@ -29,7 +29,7 @@ func level_up():
 ## Shoot aims at nearest enemy then shoots a bullet using spawn_thing
 ## If it's special, the bullet has different properties
 func shoot(special = false):
-	await Global.rotate_to(rotater,Global.dir_closest_ball(ball,rotater.angle_dir()).angle(),0.1)
+	await Global.rotate_to(rotater,Global.dir_closest_ball(ball,rotater.vec_dir()).angle(),0.1)
 	SoundQueue.play("res://Sounds/layered-gunshot-7_A_minor.wav",1,0.7)
 	var dir =Vector2.RIGHT.rotated(rotater.rotation)
 	var newb = spawn_thing(bullet_res)

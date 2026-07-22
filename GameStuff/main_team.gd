@@ -443,7 +443,7 @@ func winner_display():
 		await get_tree().create_timer(1.5).timeout
 		winner_audio(2)
 
-	await get_tree().create_timer(3.4).timeout
+	await get_tree().create_timer(2.7).timeout
 	Global.art_showcase.emit()
 
 

@@ -144,7 +144,7 @@ var team :int
 @export_category("Misc")
 ## Id a ball can have to enable/disable alternate looks or behaviours
 ## Reference this flag in behaviour script!
-@export var skin:String = "Default"
+@export var skin:String = ""
 
 ## Currently my implementation is limited to a singular collision shape
 ## The ball's collision should have default name
@@ -297,7 +297,7 @@ func _ready():
 		
 	readied.emit()
 	
-	if groups.has("Main"):
+	if groups.has("Main") and skin=="":
 		skin = Global.skin_mode
 	set_skin.emit()
 	

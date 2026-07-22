@@ -21,6 +21,7 @@ extends Node
 
 ## Starting transparency
 @export var starting_a:float = 0.9
+@export var ending_a:float=0.0
 
 ## Elevation in the after effect, this is saved for super balls
 @export var float_up:float = 0.0
@@ -41,8 +42,11 @@ func _process(delta: float) -> void:
 		var visual_new=visual.duplicate(0)
 		if visual_new.get_node_or_null("HealthLabel")!=null:
 			visual_new.get_node("HealthLabel").queue_free()
-		
-		ball.get_parent().add_child(visual_new)
+		if ball==null:
+			print("BallMissing")
+			get_tree().get_first_node_in_group("Arena").add_child(visual_new)
+		else:
+			ball.get_parent().add_child(visual_new)
 		visual_new.z_index=spawn_z_index
 		if copy_visiblity:
 			visual_new.visible = visual.is_visible_in_tree()
@@ -58,7 +62,7 @@ func _process(delta: float) -> void:
 		tween.set_trans(Tween.TRANS_QUAD)
 		tween.set_ease(Tween.EASE_OUT)
 		visual_new.modulate.a=starting_a
-		tween.tween_property(visual_new, "modulate:a", 0.0, duration)
+		tween.tween_property(visual_new, "modulate:a", ending_a, duration)
 		tween.parallel().tween_property(visual_new, "scale", v_scale*shrink_scale, duration)
 		tween.parallel().tween_property(visual_new, "position:y", visual_new.position.y+float_up, duration)
 		tween.finished.connect(visual_new.queue_free)

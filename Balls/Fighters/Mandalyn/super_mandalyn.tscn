@@ -1,0 +1,406 @@
+[gd_scene format=3 uid="uid://drnn8fsio3sux"]
+
+[ext_resource type="Script" uid="uid://ckpfcnw0bipfi" path="res://Balls/Fighters/Ball.gd" id="1_u1uqk"]
+[ext_resource type="Script" uid="uid://dqraj6dxmc1ix" path="res://Balls/Fighters/Mandalyn/super_mandalyn_script.gd" id="2_r26p2"]
+[ext_resource type="PackedScene" uid="uid://csci2dfu7cv2n" path="res://Balls/Components/after_imager_sb.tscn" id="3_i8s0x"]
+[ext_resource type="Script" uid="uid://dtuxvqxjontcy" path="res://Balls/Components/contact_damager.gd" id="3_xwm27"]
+[ext_resource type="Script" uid="uid://cpml5x1thhodd" path="res://Balls/Fighters/hit_processor.gd" id="4_1rac3"]
+[ext_resource type="Script" uid="uid://dmvukno240m73" path="res://Balls/Components/gain_meter_hit.gd" id="4_t7kfu"]
+[ext_resource type="PackedScene" uid="uid://gfer2umhn1ir" path="res://Balls/Fighters/visuals.tscn" id="5_758w8"]
+[ext_resource type="Texture2D" uid="uid://dgttwc6ohcrw7" path="res://Balls/Fighters/Mandalyn/mandalyn_super.png" id="7_hf301"]
+[ext_resource type="Texture2D" uid="uid://ch54c2euctx1j" path="res://Balls/Fighters/Mandalyn/mandalyn_summer.png" id="7_jkpag"]
+[ext_resource type="Texture2D" uid="uid://s7g4fbabk0mn" path="res://Balls/Fighters/Mandalyn/mandalynhurt_super.png" id="9_u1uqk"]
+[ext_resource type="Texture2D" uid="uid://csm7rkb1yndi" path="res://Assets/circle.png" id="10_jkpag"]
+[ext_resource type="Texture2D" uid="uid://blonoh0sjcbba" path="res://Balls/Fighters/Mandalyn/mandalynhurt_summer.png" id="11_iytvj"]
+[ext_resource type="Script" uid="uid://cuf3rfnp8u3ld" path="res://Balls/Components/traildrawer.gd" id="12_1rac3"]
+[ext_resource type="Script" uid="uid://bu31ttkgcaxsv" path="res://Balls/Components/rotater.gd" id="12_rnpyu"]
+[ext_resource type="Script" uid="uid://dd5wyq35xn3dr" path="res://Balls/Components/weapon_holder.gd" id="13_owpwk"]
+[ext_resource type="PackedScene" uid="uid://slgqs2t3kpxh" path="res://Balls/Components/weapon_hitbox.tscn" id="14_5fd8b"]
+[ext_resource type="Texture2D" uid="uid://c1ouixyf73qqv" path="res://Balls/Fighters/Mandalyn/mandalynfist_super.png" id="14_u1uqk"]
+[ext_resource type="Texture2D" uid="uid://c3dxqdhiqepkd" path="res://Balls/Fighters/Mandalyn/mandalynfist.png" id="15_4u071"]
+[ext_resource type="Script" uid="uid://d4b0fow66y2gv" path="res://GameStuff/generic_skin_swapper.gd" id="16_e7d8y"]
+[ext_resource type="Texture2D" uid="uid://cidqjkg8gpwm0" path="res://Balls/Fighters/Mandalyn/mandalynfist_summer.png" id="17_lrpbt"]
+[ext_resource type="LabelSettings" uid="uid://cup76ope8qaow" path="res://Fonts/OutlineFont.tres" id="18_hb3w2"]
+[ext_resource type="Script" uid="uid://dvdup3e2ioids" path="res://Balls/Components/AntiRotate.gd" id="19_6ju6a"]
+[ext_resource type="Script" uid="uid://by7c4oifa333u" path="res://Balls/Components/clash_bouncer.gd" id="20_tnc6q"]
+[ext_resource type="Script" uid="uid://biq4p8hwljsx4" path="res://Balls/hitbox_damager.gd" id="21_6pq31"]
+[ext_resource type="Script" uid="uid://cyoea1so1sgna" path="res://Balls/health_manager.gd" id="22_ai7j6"]
+[ext_resource type="Script" uid="uid://dkxbq14sowyw0" path="res://Balls/Moods/mood_centered.gd" id="23_4f1v2"]
+[ext_resource type="Script" uid="uid://ccgs4h8pbyba6" path="res://Balls/meter_manager.gd" id="24_xggg0"]
+[ext_resource type="PackedScene" uid="uid://cy2eniqmvljtd" path="res://Balls/ball_stat_display.tscn" id="25_epmnq"]
+[ext_resource type="AudioStream" uid="uid://crhtt0btracql" path="res://Balls/Fighters/Mandalyn/name_mandalyn.wav" id="26_pu82s"]
+[ext_resource type="PackedScene" uid="uid://dabjbvbhds20a" path="res://Balls/Components/super_form_vs_art_anim.tscn" id="29_758w8"]
+[ext_resource type="Script" uid="uid://bu8lf26jjbrdg" path="res://Balls/Moods/mood_aggressive.gd" id="30_u1uqk"]
+[ext_resource type="Script" uid="uid://dwigm6aau4fax" path="res://Balls/Components/scaler.gd" id="30_wtpxb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
+radius = 70.0
+
+[sub_resource type="Curve" id="Curve_758w8"]
+_data = [Vector2(0, 1), 0.0, -2.3820217, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylutg"]
+radius = 88.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ylutg"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_duo83"]
+radius = 82.29824
+
+[node name="SuperMandalynBall" type="RigidBody2D" unique_id=220243503]
+collision_layer = 112
+collision_mask = 17
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_u1uqk")
+
+[node name="SuperMandalynScript" type="Node" parent="." unique_id=1366621914]
+script = ExtResource("2_r26p2")
+
+[node name="AfterImagerSB" parent="SuperMandalynScript" unique_id=1340659784 node_paths=PackedStringArray("ball", "visual") instance=ExtResource("3_i8s0x")]
+ball = NodePath("../..")
+visual = NodePath("../../Visuals")
+
+[node name="GainHit" type="Node" parent="SuperMandalynScript" unique_id=1882085165 node_paths=PackedStringArray("meter_manager")]
+script = ExtResource("4_t7kfu")
+id = "MandaMelee"
+multiplier = 2.0
+meter_manager = NodePath("../../MeterManager")
+
+[node name="ContactDamager" type="Node" parent="." unique_id=751867904 node_paths=PackedStringArray("ball")]
+script = ExtResource("3_xwm27")
+enabled = false
+ball = NodePath("..")
+id = "MandaMelee"
+contact_damage = 4.0
+
+[node name="HitProcessor" type="Node" parent="." unique_id=94343719 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_1rac3")
+ball = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1771587910]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="Visuals" parent="." unique_id=487229136 node_paths=PackedStringArray("ball") instance=ExtResource("5_758w8")]
+ball = NodePath("..")
+
+[node name="Default" parent="Visuals/Default" parent_id_path=PackedInt32Array(487229136, 809842482) index="0" unique_id=550018196]
+texture = ExtResource("7_hf301")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("7_jkpag")
+})
+
+[node name="Circle" type="Sprite2D" parent="Visuals/Default/Default" index="0" unique_id=1388788928]
+modulate = Color(1, 0.07999998, 0.07999998, 1)
+position = Vector2(-61.818176, 25.454529)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_jkpag")
+
+[node name="LeftEye" type="Line2D" parent="Visuals/Default/Default" index="1" unique_id=179742323 node_paths=PackedStringArray("target")]
+top_level = true
+z_index = 3
+width = 12.0
+width_curve = SubResource("Curve_758w8")
+default_color = Color(0.9179056, 0, 0.16127491, 1)
+script = ExtResource("12_1rac3")
+target = NodePath("../Circle")
+MAX_LENGTH = 22
+
+[node name="Hurt" parent="Visuals/Hurt" parent_id_path=PackedInt32Array(487229136, 81481545) index="0" unique_id=1323781346]
+texture = ExtResource("9_u1uqk")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("11_iytvj")
+})
+
+[node name="HealthLabel" parent="Visuals" index="4" unique_id=1931190732 node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../HealthManager")
+
+[node name="Rotater" type="Node2D" parent="." unique_id=48177390 node_paths=PackedStringArray("ball")]
+script = ExtResource("12_rnpyu")
+ball = NodePath("..")
+rotation_rate = 1.0
+normalizer_rate = 6.5
+bounce_spin_boost = 2.75
+
+[node name="WeaponHolder" type="Node2D" parent="Rotater" unique_id=742756955 node_paths=PackedStringArray("ball")]
+position = Vector2(71.92, 0)
+script = ExtResource("13_owpwk")
+ball = NodePath("../..")
+
+[node name="WeaponHitbox" parent="Rotater/WeaponHolder" unique_id=436307943 node_paths=PackedStringArray("ball") instance=ExtResource("14_5fd8b")]
+position = Vector2(74.08001, 0)
+collision_mask = 32
+ball = NodePath("../../..")
+
+[node name="WeaponVisual" type="Node2D" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=912902566]
+
+[node name="Weapon" type="Sprite2D" parent="Rotater/WeaponHolder/WeaponHitbox/WeaponVisual" unique_id=1638252001 node_paths=PackedStringArray("ball")]
+process_mode = 3
+position = Vector2(4.0000153, 0)
+scale = Vector2(0.693, 0.693)
+texture = ExtResource("14_u1uqk")
+script = ExtResource("16_e7d8y")
+ball = NodePath("../../../../..")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("17_lrpbt")
+})
+
+[node name="Count" type="Label" parent="Rotater/WeaponHolder/WeaponHitbox/WeaponVisual/Weapon" unique_id=377254606]
+offset_left = -49.999992
+offset_top = -32.608696
+offset_right = 50.000008
+offset_bottom = 37.391304
+scale = Vector2(2, 2)
+pivot_offset = Vector2(50, 35)
+text = "1"
+label_settings = ExtResource("18_hb3w2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AntiRotate" type="Node" parent="Rotater/WeaponHolder/WeaponHitbox/WeaponVisual/Weapon" unique_id=1454848811 node_paths=PackedStringArray("target")]
+script = ExtResource("19_6ju6a")
+target = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=2085475009]
+position = Vector2(4, 0)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_ylutg")
+debug_color = Color(1, 0.010136722, 0.061445266, 0.41960785)
+
+[node name="ClashBouncer" type="Node" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=1378799140 node_paths=PackedStringArray("ball")]
+script = ExtResource("20_tnc6q")
+ball = NodePath("../../../..")
+
+[node name="HitFlipper" type="Node" parent="Rotater/WeaponHolder/WeaponHitbox" unique_id=504372206 node_paths=PackedStringArray("ball")]
+script = ExtResource("21_6pq31")
+ball = NodePath("../../../..")
+knockback = 240.0
+self_knockback = 25.0
+crit_chance = 0.0
+
+[node name="HealthManager" type="Node2D" parent="." unique_id=1723394857 node_paths=PackedStringArray("hitprocessor")]
+script = ExtResource("22_ai7j6")
+hitprocessor = NodePath("../HitProcessor")
+max_health = 125.0
+
+[node name="Calm" type="Node2D" parent="." unique_id=1072487154 node_paths=PackedStringArray("ball")]
+script = ExtResource("23_4f1v2")
+ball = NodePath("..")
+
+[node name="MeterManager" type="Node" parent="." unique_id=1821800362]
+script = ExtResource("24_xggg0")
+
+[node name="StatsUI" type="Node" parent="." unique_id=473658918]
+
+[node name="BallStatDisplay" parent="StatsUI" unique_id=1981925345 instance=ExtResource("25_epmnq")]
+
+[node name="Folder" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="0" unique_id=281327603]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="1" unique_id=1921250255]
+modulate = Color(1, 0, 0, 1)
+text = "IRON MAIDEN MANDALYN"
+
+[node name="FolderDescription" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="2" unique_id=579873522]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(1981925345, 624450934) index="3" unique_id=794553254]
+modulate = Color(0.99607843, 0, 0, 1)
+text = "Fist size grows after reaching cap.
+Contact hits extend her fist ability's duration."
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/Box/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "A version much colder and sadder."
+
+[node name="BBBack" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1981925345, 846234039) index="0" unique_id=170438548]
+modulate = Color(0.24565476, 0.05478262, 0.50657, 1)
+
+[node name="Meterbar" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1981925345, 846234039) index="1" unique_id=368834551]
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.90588236, 0, 0, 1)
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(1981925345, 846234039) index="3" unique_id=1728433949]
+texture = ExtResource("7_hf301")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("7_jkpag")
+})
+
+[node name="SPLASHART" parent="StatsUI/BallStatDisplay/VsSplash" parent_id_path=PackedInt32Array(1981925345, 2023632038) index="0" unique_id=2081690940 node_paths=PackedStringArray("splasharts")]
+offset_left = 2399.0
+offset_right = 2399.0
+name_sound = ExtResource("26_pu82s")
+name_text = "Mandalyn★"
+splasharts = {
+"Default": NodePath("TextureRect")
+}
+
+[node name="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="0" unique_id=1997730014]
+offset_bottom = 1078.0
+texture = null
+
+[node name="SpecialVS" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/TextureRect" index="0" unique_id=1609705451 instance=ExtResource("29_758w8")]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 330.0
+offset_right = 604.0
+offset_bottom = 330.0
+
+[node name="Chart" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(1981925345, 1935891313) index="0" unique_id=858608945]
+modulate = Color(0.89733064, 0.8273311, 0.064336866, 1)
+grid_value = Vector2(0, -0.63448274)
+
+[node name="StarPoint" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart" parent_id_path=PackedInt32Array(1981925345, 1935891313) index="5" unique_id=2127130666]
+offset_top = -92.0
+offset_bottom = -52.0
+grid_value = Vector2(0, -0.63448274)
+
+[node name="Description" parent="StatsUI/BallStatDisplay/WinSpeech/WinBubble" parent_id_path=PackedInt32Array(1981925345, 347726285) index="1" unique_id=316822069]
+modulate = Color(0.5623027, 0.15863883, 0.7817543, 1)
+text = "\"Your wish is my command.\""
+
+[node name="FistBall" type="Node" parent="." unique_id=1695342565]
+process_mode = 1
+
+[node name="FistBall" type="RigidBody2D" parent="FistBall" unique_id=1907697304]
+position = Vector2(321, -2)
+collision_layer = 36
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_ylutg")
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_u1uqk")
+enabled = false
+groups = Array[String](["Projectile", "AntiDeflect"])
+velocity = 900.0
+bounce_speed_boost = 560.0
+bounce_sfx = "res://Sounds/heavy_bounce.wav"
+bouncable = false
+ball_collide = false
+
+[node name="Aggressive" type="Node2D" parent="FistBall/FistBall" unique_id=664263975 node_paths=PackedStringArray("ball")]
+script = ExtResource("30_u1uqk")
+ball = NodePath("..")
+trigger_chance = 0.3
+
+[node name="Visuals" parent="FistBall/FistBall" unique_id=1576511086 node_paths=PackedStringArray("ball") instance=ExtResource("5_758w8")]
+ball = NodePath("..")
+
+[node name="TeamColor" parent="FistBall/FistBall/Visuals" index="0" unique_id=1460291321 node_paths=PackedStringArray("ball")]
+scale = Vector2(0.76, 0.76)
+ball = NodePath("../..")
+
+[node name="AnimationPlayer" parent="FistBall/FistBall/Visuals" index="1" unique_id=984181658]
+hurt_switch = false
+
+[node name="Default" parent="FistBall/FistBall/Visuals" index="2" unique_id=809842482]
+scale = Vector2(1.1, 1.1)
+
+[node name="Default" parent="FistBall/FistBall/Visuals/Default" index="0" unique_id=550018196]
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("14_u1uqk")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("17_lrpbt")
+})
+
+[node name="Hurt" parent="FistBall/FistBall/Visuals/Hurt" parent_id_path=PackedInt32Array(1576511086, 81481545) index="0" unique_id=1323781346]
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("15_4u071")
+dict_skin = Dictionary[String, Texture]({
+"Summer": ExtResource("17_lrpbt")
+})
+
+[node name="HealthLabel" parent="FistBall/FistBall/Visuals" index="4" unique_id=1931190732]
+visible = false
+
+[node name="Count" type="Label" parent="FistBall/FistBall/Visuals" unique_id=467195688]
+z_index = 3
+offset_left = -53.0
+offset_top = -39.0
+offset_right = 33.0
+offset_bottom = 29.999992
+scale = Vector2(1.24, 1.24)
+text = "1"
+label_settings = ExtResource("18_hb3w2")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FistBall/FistBall" unique_id=1845432964]
+shape = SubResource("CircleShape2D_duo83")
+
+[node name="HitProcessor" type="Node" parent="FistBall/FistBall" unique_id=1787017578 node_paths=PackedStringArray("ball")]
+script = ExtResource("4_1rac3")
+ball = NodePath("..")
+immune = true
+crit_immune = true
+
+[node name="Scaler" type="Node2D" parent="FistBall/FistBall" unique_id=1815022286 node_paths=PackedStringArray("ball")]
+script = ExtResource("30_wtpxb")
+ball = NodePath("..")
+
+[node name="WeaponHitbox" parent="FistBall/FistBall/Scaler" unique_id=1111210933 node_paths=PackedStringArray("ball") instance=ExtResource("14_5fd8b")]
+collision_mask = 32
+ball = NodePath("../..")
+tick_wait = 0.7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FistBall/FistBall/Scaler/WeaponHitbox" unique_id=992023905]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_ylutg")
+debug_color = Color(1, 0.010136722, 0.061445266, 0.41960785)
+
+[node name="HitboxDamager" type="Node" parent="FistBall/FistBall/Scaler/WeaponHitbox" unique_id=1673917141 node_paths=PackedStringArray("ball")]
+script = ExtResource("21_6pq31")
+ball = NodePath("../../..")
+id = "FIST"
+knockback = 240.0
+self_knockback = 0.0
+crit_chance = 0.0
+crit_multiplier = 0.0
+
+[node name="ClashBouncer" type="Node" parent="FistBall/FistBall/Scaler/WeaponHitbox" unique_id=1105650484 node_paths=PackedStringArray("ball")]
+script = ExtResource("20_tnc6q")
+ball = NodePath("../../..")
+ignore_clash = true
+
+[node name="AfterImagerFist" parent="FistBall/FistBall" unique_id=904296457 node_paths=PackedStringArray("ball", "visual") instance=ExtResource("3_i8s0x")]
+ball = NodePath("..")
+visual = NodePath("../Visuals")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponHitbox" method="_on_hiro_ball_body_exited"]
+[connection signal="area_entered" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="Rotater/WeaponHolder/WeaponHitbox" to="Rotater/WeaponHolder/WeaponHitbox" method="_on_body_exited"]
+[connection signal="body_entered" from="FistBall/FistBall" to="FistBall/FistBall" method="_on_body_entered"]
+[connection signal="area_entered" from="FistBall/FistBall/Scaler/WeaponHitbox" to="FistBall/FistBall/Scaler/WeaponHitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="FistBall/FistBall/Scaler/WeaponHitbox" to="FistBall/FistBall/Scaler/WeaponHitbox" method="_on_area_exited"]
+[connection signal="body_entered" from="FistBall/FistBall/Scaler/WeaponHitbox" to="SuperMandalynScript" method="_on_weapon_hitbox_body_entered"]
+[connection signal="body_entered" from="FistBall/FistBall/Scaler/WeaponHitbox" to="FistBall/FistBall/Scaler/WeaponHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="FistBall/FistBall/Scaler/WeaponHitbox" to="FistBall/FistBall/Scaler/WeaponHitbox" method="_on_body_exited"]
+
+[editable path="Visuals"]
+[editable path="StatsUI/BallStatDisplay"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/TextureRect/SpecialVS"]
+[editable path="StatsUI/BallStatDisplay/VsSplash/SPLASHART/AlignmentChart"]
+[editable path="FistBall/FistBall/Visuals"]

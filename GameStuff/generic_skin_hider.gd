@@ -14,4 +14,5 @@ func _ready() -> void:
 func set_visual():
 	if ball:
 		visible=skin_name==ball.skin
-	visible=skin_name==Global.skin_mode
+	else:
+		visible=skin_name==Global.skin_mode

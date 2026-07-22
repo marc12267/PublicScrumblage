@@ -48,7 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://dv8od8d3quck1" path="res://Balls/Fighters/Hones/Summer/grabbed.png" id="33_ue4bw"]
 [ext_resource type="Texture2D" uid="uid://bnm03xrg1kcte" path="res://Balls/Fighters/Hones/uiToothGlow.png" id="35_dre2v"]
 [ext_resource type="Script" uid="uid://f6qsypubafkf" path="res://Balls/Fighters/Hones/progress_bar.gd" id="35_yr6jh"]
-[ext_resource type="Script" uid="uid://bem4an5qo5n8q" path="res://Balls/Fighters/Hones/generic_sound_swapper.gd" id="37_ialbp"]
+[ext_resource type="Script" uid="uid://bem4an5qo5n8q" path="res://Balls/Components/generic_sound_swapper.gd" id="37_ialbp"]
 [ext_resource type="AudioStream" uid="uid://c2bn8qh1djhd1" path="res://Balls/Fighters/Hones/Summer/hydra/castSuper.ogg" id="38_n6g4x"]
 [ext_resource type="AudioStream" uid="uid://byga1a5mokihy" path="res://Balls/Fighters/Hones/Summer/hydra/superFire.wav" id="40_5b3wk"]
 
@@ -231,6 +231,7 @@ script = ExtResource("10_ohd4v")
 rotater = NodePath("../..")
 
 [node name="WeaponHitbox" parent="Rotater/WeaponHolder/WeaponFlipper" unique_id=729923460 node_paths=PackedStringArray("ball") instance=ExtResource("11_r4sxw")]
+unique_name_in_owner = true
 position = Vector2(51.04, 0)
 collision_mask = 32
 ball = NodePath("../../../..")
@@ -296,6 +297,9 @@ text = "HONES THE SKELETON"
 [node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
 text = "Warps to the enemy's backside with a temporary critboosted knife.
 Summons Dragon Lightning on full meter, triggering more warps on hit."
+
+[node name="Credit" parent="StatsUI/BallStatDisplay/Box/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "Luggi"
 
 [node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
 texture = ExtResource("6_vbfjh")
@@ -405,16 +409,18 @@ you somethin' later?\""
 script = ExtResource("23_xa4s0")
 ball = NodePath("..")
 
-[node name="SuperCast" type="AudioStreamPlayer2D" parent="." unique_id=270217070]
+[node name="SuperCast" type="AudioStreamPlayer2D" parent="." unique_id=270217070 node_paths=PackedStringArray("ball")]
 stream = ExtResource("24_uuciw")
 script = ExtResource("37_ialbp")
+ball = NodePath("..")
 dict_sound = Dictionary[String, AudioStream]({
 "Summer": ExtResource("38_n6g4x")
 })
 
-[node name="SuperFire" type="AudioStreamPlayer2D" parent="." unique_id=2083929745]
+[node name="SuperFire" type="AudioStreamPlayer2D" parent="." unique_id=2083929745 node_paths=PackedStringArray("ball")]
 stream = ExtResource("25_ohd4v")
 script = ExtResource("37_ialbp")
+ball = NodePath("..")
 dict_sound = Dictionary[String, AudioStream]({
 "Summer": ExtResource("40_5b3wk")
 })

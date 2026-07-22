@@ -18,7 +18,10 @@ func check_winner(winners):
 		for i in range(10):
 			if winner.contains(str(i)):
 				winner = winner.replace(str(i), "X")
-		print(str(winner, " Wins (",winners[0].get_node("HealthManager").health,"HP left)"))
+		if winners[0].get_node("HealthManager").health<=0:
+			print("Tie")
+		else:
+			print(str(winner, " Wins (",winners[0].get_node("HealthManager").health,"HP left)"))
 	else:
 		print("Tie")
 		

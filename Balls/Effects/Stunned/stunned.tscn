@@ -17,7 +17,7 @@ point_count = 5
 script = ExtResource("1_ibidl")
 cpu_particles_2d = NodePath("CPUParticles2D")
 have_icon = true
-icon_effect = "res://Balls/Effects/Sleeping/Sleep.png"
+icon_effect = "res://Assets/Star.png"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1998256474]
 amount = 3

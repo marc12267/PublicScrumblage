@@ -169,6 +169,8 @@ func hit_reg(data):
 					dmg=dmg_update(dmg)
 					
 				if dmg!=0.0 and !is_muted(mute_num):
+					if damage_scale<1:
+						damage_scale=1
 					PopUpManager.damage_number(dmg, ball.global_position, "CRIT")
 				
 			##If no crit, reduce dmg

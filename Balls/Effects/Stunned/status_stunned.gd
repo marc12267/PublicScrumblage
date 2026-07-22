@@ -12,7 +12,8 @@ func check_apply(ball)->bool:
 	return true
 	
 func update_scale():
-	cpu_particles_2d.scale = Vector2(1,1)*baller.stat_controller.get_stat("Ball.ball_scale")
+	if baller:
+		cpu_particles_2d.scale = Vector2(1,1)*baller.stat_controller.get_stat("Ball.ball_scale")
 	
 func set_target(ball,value,data):
 	super(ball,value,data)

@@ -17,6 +17,7 @@ class_name BStatDisplay
 signal max_health
 signal readied
 
+var default_color:Color=Color("00b88a")
 func group_add():
 	add_to_group("BStats")
 	
@@ -53,7 +54,7 @@ func health_setted():
 
 func _update_bar_color():
 	if not hit_processor.immune:
-		healthbar.tint_progress = Color("00b88a")
+		healthbar.tint_progress = default_color
 
 
 func purple_bar(value):

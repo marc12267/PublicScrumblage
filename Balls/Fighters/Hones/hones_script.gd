@@ -68,7 +68,7 @@ func _ready():
 	sigil_b.modulate = Color(1.0, 1.0, 1.0, 0.0)
 	sigil_b.scale.y = 0.0
 	
-	if Global.skin_mode == "Summer":
+	if ball.skin == "Summer":
 		description.text =  "\"Aren't we here to relax...?!\""
 		$"../Visuals/ShadowAfterImage".texture = preload("uid://bemi784pmetxc")
 		
@@ -83,10 +83,11 @@ func status_check(data):
 func hit_process(data:Dictionary):
 	var attacker = data["ATTACKER"]
 	var victim = data["VICTIM"]
+	var type = data["TYPE"]
 	if !attacker == ball or victim.is_in_group("AntiInteract"):
 		return
 	
-	if aggroMode: # if aggromode is on, turn it off after refunding meter
+	if aggroMode && type == ["WEAPON"]: # if aggromode is on, turn it off after refunding meter
 		meter_manager.gain_meter(20 * victim.get_value_scale())
 		aggroModeController = false
 
@@ -169,7 +170,6 @@ func warp(enemy : BallBodyBase): #the actual teleport
 	aggroMode = true
 	blade_afterimager.active=true
 	aggro_timer.start()
-	
 	var minDist = 196
 	if ball == enemy:
 		minDist=0
@@ -182,6 +182,7 @@ func warp(enemy : BallBodyBase): #the actual teleport
 	await get_tree().physics_frame
 	if is_instance_valid(enemy):
 		ball.global_position = enemy.global_position + offSet
+	%WeaponHitbox.ignore_tick.clear()
 	ball.stat_controller.set_base_stat("Ball.freeze", false)
 	
 	# change weapon angle to cone | commented out

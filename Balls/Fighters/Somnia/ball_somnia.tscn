@@ -213,21 +213,33 @@ offset_top = 833.7251
 offset_right = 286.86438
 offset_bottom = 873.7251
 
-[node name="Folder" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="0" unique_id=281327603]
+[node name="Folder" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="0" unique_id=281327603]
 texture = ExtResource("21_gqo1w")
 
-[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="1" unique_id=1921250255]
 text = "SOMNIA THE DREAM DEMON"
 
-[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(750446237, 624450934) index="3" unique_id=794553254]
 text = "Falling under her gaze puts you to sleep, setting you up for a critical strike from her nasty club.
 Her demon form is incorporeal."
 
-[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
-text = "KelvinDoesArt
-"
+[node name="Credit" parent="StatsUI/BallStatDisplay/Box/DescriptionBox/Description" index="0" unique_id=522021847]
+text = "KelvinDoesArt"
 
-[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="3" unique_id=1728433949]
+[node name="LV" type="Label" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="0" unique_id=1263340200]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 222.13562
+offset_top = 33.274902
+offset_right = 436.13562
+offset_bottom = 102.2749
+text = "SLEEP: 1"
+label_settings = ExtResource("22_noe3p")
+vertical_alignment = 1
+
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(750446237, 846234039) index="4" unique_id=1728433949]
 texture = ExtResource("5_wirdt")
 dict_skin = Dictionary[String, Texture]({
 "Summer": ExtResource("6_gqo1w")
@@ -277,18 +289,6 @@ position = Vector2(-142, 1078)
 modulate = Color(0.47843137, 0.68235296, 1, 1)
 text = "“You’re not waking up
 from this!”"
-
-[node name="LV" type="Label" parent="StatsUI/BallStatDisplay" unique_id=1263340200]
-z_index = 3
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = 238.13562
-offset_top = 95.2749
-offset_right = 452.13562
-offset_bottom = 164.2749
-text = "SLEEP: 1"
-label_settings = ExtResource("22_noe3p")
-vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="Rotater/WeaponHolder/WeaponFlipper/WeaponHitbox" method="_on_hiro_ball_body_exited"]

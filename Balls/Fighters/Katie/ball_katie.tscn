@@ -139,17 +139,14 @@ offset_right = -83.0
 offset_bottom = 141.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Name" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="1" unique_id=1921250255]
+[node name="Name" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="1" unique_id=1921250255]
 text = "KATIE THE ENGINEER"
 
-[node name="Description" parent="StatsUI/BallStatDisplay/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="3" unique_id=794553254]
+[node name="Description" parent="StatsUI/BallStatDisplay/Box/DescriptionBox" parent_id_path=PackedInt32Array(250334219, 624450934) index="3" unique_id=794553254]
 text = "Places down turrets to help her in combat.
 One shoots, the other heals, and the third smacks!"
 
-[node name="Credit" parent="StatsUI/BallStatDisplay/DescriptionBox/Description" index="0" unique_id=522021847]
-text = "Katieverse"
-
-[node name="Icon" parent="StatsUI/BallStatDisplay/BattleBar" parent_id_path=PackedInt32Array(250334219, 846234039) index="3" unique_id=1728433949]
+[node name="Icon" parent="StatsUI/BallStatDisplay/Box/BattleBar" parent_id_path=PackedInt32Array(250334219, 846234039) index="3" unique_id=1728433949]
 texture = ExtResource("6_qaflo")
 dict_skin = Dictionary[String, Texture]({
 "Summer": ExtResource("6_ynggr")
@@ -172,6 +169,7 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("17_t0m3m")
 
 [node name="SummerRect" type="TextureRect" parent="StatsUI/BallStatDisplay/VsSplash/SPLASHART" index="1" unique_id=1628809918 node_paths=PackedStringArray("ball_stat_display")]
+visible = false
 light_mask = 1024
 layout_mode = 0
 offset_left = -542.0

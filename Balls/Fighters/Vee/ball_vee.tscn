@@ -119,15 +119,14 @@ linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_uvjfo")
 bounce_speed_boost = 360.0
-skin = "Summer"
 
 [node name="VeeScript" type="Node" parent="." unique_id=815719418]
 script = ExtResource("2_x2qs7")
 
 [node name="CounterLooper" type="Node" parent="VeeScript" unique_id=701216414]
 script = ExtResource("3_idre6")
-delay_time = 4.0
-added_rand_time = 4.0
+delay_time = 5.0
+added_rand_time = 5.0
 
 [node name="Afterimager" type="Node" parent="VeeScript" unique_id=1305688005 node_paths=PackedStringArray("ball", "visual")]
 script = ExtResource("4_c8kan")

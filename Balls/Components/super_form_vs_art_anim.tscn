@@ -1,0 +1,327 @@
+[gd_scene format=3 uid="uid://dabjbvbhds20a"]
+
+[ext_resource type="Texture2D" uid="uid://fjqd3pxvgp3t" path="res://Balls/Fighters/Mandalyn/VSMand.png" id="1_1hjio"]
+[ext_resource type="Script" uid="uid://bmsiocri242p7" path="res://Balls/Components/super_player.gd" id="2_k2224"]
+[ext_resource type="AudioStream" uid="uid://c4m7dvfwtiqr" path="res://Sounds/Transforms.wav" id="3_grfq4"]
+[ext_resource type="PackedScene" uid="uid://bswgwnt11dnq2" path="res://Balls/Components/VSAfter.tscn" id="4_grfq4"]
+[ext_resource type="Texture2D" uid="uid://pe8rdiblivv8" path="res://Balls/Fighters/Mandalyn/VSMandSuper.png" id="5_1ovxl"]
+
+[sub_resource type="Animation" id="Animation_886m3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuperFormRect:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SuperFormRect:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SuperFormRect:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SuperFormRect:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuperFormRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DefaultFormRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SuperFormRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.972457, 1, 1, 1)]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DefaultFormRect/WhiteFlash:modulate:r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DefaultFormRect/WhiteFlash:modulate:g")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DefaultFormRect/WhiteFlash:modulate:b")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("DefaultFormRect/WhiteFlash:modulate:a")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/Flash:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CPUParticles2D:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jkpag"]
+resource_name = "SuperIntro"
+length = 2.6666701390776786
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultFormRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SuperFormRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DefaultFormRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 1.3666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.97, 1, 1, 1), Color(0.972457, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SuperFormRect/WhiteFlash:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.07777779, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 1.9666666)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuperFormRect/WhiteFlash:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.07777779, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 1.9666666)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SuperFormRect/WhiteFlash:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.07777779, 0, 0, 0),
+"times": PackedFloat32Array(1.5, 1.9666666)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SuperFormRect/WhiteFlash:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.07777779, 0.16666669, 0, 0),
+"times": PackedFloat32Array(1.5, 1.9666666)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer/Flash:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CPUParticles2D:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dscvl"]
+_data = {
+&"RESET": SubResource("Animation_886m3"),
+&"SuperIntro": SubResource("Animation_jkpag")
+}
+
+[node name="SpecialVS" type="Control" unique_id=2064926473]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=178309733]
+libraries/ = SubResource("AnimationLibrary_dscvl")
+script = ExtResource("2_k2224")
+
+[node name="Flash" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1838697413]
+stream = ExtResource("3_grfq4")
+volume_db = -5.0
+
+[node name="SuperFormRect" type="TextureRect" parent="." unique_id=1609705451]
+modulate = Color(0.972457, 1, 1, 1)
+clip_children = 2
+light_mask = 32768
+layout_mode = 0
+offset_left = -812.0
+offset_top = -429.41113
+offset_right = 645.0
+offset_bottom = 1591.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_1ovxl")
+stretch_mode = 2
+
+[node name="WhiteFlash" type="ColorRect" parent="SuperFormRect" unique_id=594661801]
+modulate = Color(1, 1, 1, 0.99595296)
+layout_mode = 0
+offset_left = -274.0
+offset_top = -242.0
+offset_right = 1897.0
+offset_bottom = 2115.7786
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SuperFormRect" unique_id=140278074]
+position = Vector2(728, 1015.41113)
+remote_path = NodePath("../../CPUParticles2D")
+
+[node name="DefaultFormRect" type="TextureRect" parent="." unique_id=1574032586]
+visible = false
+modulate = Color(0, 0, 0, 1)
+light_mask = 32768
+layout_mode = 0
+offset_left = -566.0
+offset_top = -410.0
+offset_right = 514.0
+offset_bottom = 1078.0
+texture = ExtResource("1_1hjio")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="CPUParticles2D" parent="." unique_id=561303567 instance=ExtResource("4_grfq4")]
+visible = false
+position = Vector2(-84, 586)
+texture = ExtResource("5_1ovxl")
